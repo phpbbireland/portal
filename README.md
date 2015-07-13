@@ -1,4 +1,4 @@
-#phpbb3-extension-portal
+#portal
 
 Fully integrated portal for phpBB 3.1.x
 
