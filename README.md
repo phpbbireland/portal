@@ -7,13 +7,19 @@ Fully integrated portal for phpBB 3.1.x
 No more travis errors but no pass?
 
 ## Tested with phpBB 3.1.5
-    • No file updates required for 3.1.5
     • Quite a few updates to the portal code including some additions to the code and minor fixes...
     • Note, the process of updating many files at one time, make commenting impractical.
     • Added a sample style (Olympus).  
   
 *If you have already installed and want to update, please disable the extension, remove it (Delete Data) and reinstall as the latest updates add an extra database table and may changes others... A complete reinstall in the only way to ensure everything works.*
 ...  
+
+*Setting up*
+Menu options for Admin and Registered need to be set up (we can't do this automatically as we don't know if you install used default group id's or is an upgrade, in which case id's will differ).  
+
+The links block is disabled but you can enable it from ACP > PORTAL > Manage right blocks (click on edit block icon).  
+At the moment deleting cache automatically after making changes is not enabled, please manually purge cache if you make changes to settings...  
+
 
 Mike
 
