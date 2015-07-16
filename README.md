@@ -14,12 +14,13 @@ No more travis errors but no pass?
 *If you have already installed and want to update, please disable the extension, remove it (Delete Data) and reinstall as the latest updates add an extra database table and may changes others... A complete reinstall in the only way to ensure everything works.*
 ...  
 
-*Setting up*
-Menu options for Admin and Registered need to be set up (we can't do this automatically as we don't know if you install used default group id's or is an upgrade, in which case id's will differ).  
+**Setting up**  
+The main menu options for Admin and Registered members need to be set up (we can't do this automatically as we don't know if you install used default group id's or is an upgrade, in which case id's will differ).  
 
-The links block is disabled but you can enable it from ACP > PORTAL > Manage right blocks (click on edit block icon).  
-At the moment deleting cache automatically after making changes is not enabled, please manually purge cache if you make changes to settings...  
+The links block is disabled but can enable from: ACP > PORTAL > Manage right blocks (click on edit block icon).  
+At the moment deleting cache automatically after making changes is not enabled, please manually purge cache if you make changes to settings.  
 
+I intend to add some new Youtube videos on how to set up and use the Portal (you may find some old videos which are still relavent).  
 
 Mike
 
