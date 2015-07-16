@@ -25,6 +25,12 @@ At the moment deleting cache automatically after making changes is not enabled, 
 **Tutorials:**  
 I intend to add some new Youtube videos on how to set up and use the Portal (you may find some old videos which are still relavent).  
 
+    • Managing Portal Block in ACP (TBA)  
+    • Managing Menus in ACP (TBA)  
+    • Block visibility (group assess) TBA      
+    • Creating Custom Blocks (TBA)  
+    • Arrange Blocks (yet to be implemented for 3.1) https://www.youtube.com/watch?v=pkEWG6yq4as  
+
 Mike
 
 ## Installation:
