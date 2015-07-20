@@ -60,8 +60,6 @@ if ($auth->acl_gets('u_viewprofile'))
 		$row['last_visit'] = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 		$last_visit = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 
-
-
 		$this->template->assign_block_vars('last_online', array(
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 			'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit, '|d M Y|, H:i'),
