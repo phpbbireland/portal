@@ -104,11 +104,10 @@ class listener implements EventSubscriberInterface
 
 	public function add_permission($event)
 	{
-		// not being called ???
-		//var_dump('listener.php > add_permission(...)');
+		$this->user->add_lang_ext('phpbbireland/portal', 'permissions_portal');
 
 		$categories = $event['categories'];
-		$categories['portal'] = 'PORTAL';
+		$categories['portal'] = 'ACL_CAT_PORTAL';
 		$event['categories'] = $categories;
 
 		$permissions = $event['permissions'];

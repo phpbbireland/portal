@@ -271,3 +271,4 @@ $lang = array_merge($lang, array(
 // modules ucp
 	'UCP_PORTAL_TITLE'		=> 'Portal Options',
 ));
+
