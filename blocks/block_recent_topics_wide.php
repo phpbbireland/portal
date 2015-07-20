@@ -216,7 +216,7 @@ if ($scroll)
 }
 
 
-$next_img = '<img src="' . $phpbb_root_path . 'images/next_line.gif" height="9" width="11" alt="" />';
+//$next_img = '<img src="' . $phpbb_root_path . 'images/next_line.gif" height="9" width="11" alt="" />';
 
 
 $tn = time();
@@ -272,15 +272,8 @@ for ($i = 0; $i < $display_this_many; $i++)
 		$this_post_time = $user->format_date($row[$i]['post_time']);
 	}
 
-	// a workaround //
-	$arg['avatar'] = $row[$i]['user_avatar'];
-	$arg['avatar_type'] = $row[$i]['user_avatar_type'];
-	$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
-	$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
-
 	$template->assign_block_vars($style_row . 'recent_topic_row', array(
-		'AVATAR_SMALL_IMG'	=> phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
-		//'AVATAR_SMALL_IMG'	=> @phpbb_get_avatar($row[$i], $user->lang['USER_AVATAR'], false),
+		'AVATAR_SMALL_IMG'	=> phpbb_get_user_avatar($row[$i], $user->lang['USER_AVATAR'], false),
 		'FORUM_W'			=> $forum_name,
 		'LAST_POST_IMG_W'	=> $user->img('icon_topic_newest', 'VIEW_LATEST_POST'),
 		//'LAST_POST_IMG_W'	=> $next_img,

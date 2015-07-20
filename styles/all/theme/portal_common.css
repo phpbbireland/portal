@@ -787,3 +787,7 @@ table.table1 .flag { text-align: center; width: 30px; }
  padding: 2px;
  margin: 4px;
 }
+
+span.pimg.cat_images { clear:both; float:left }
+
+.small_avatar img { max-height: 16px; width: auto }

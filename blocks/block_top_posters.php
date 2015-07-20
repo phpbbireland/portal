@@ -49,19 +49,12 @@ while ($row = $db->sql_fetchrow($result))
 		continue;
 	}
 
-	//@$ava = phpbb_get_avatar($row, $user->lang['USER_AVATAR'], false);
-
-	// a workaround //
-	$arg['avatar'] = $row['user_avatar'];
-	$arg['avatar_type'] = $row['user_avatar_type'];
-	$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
-	$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
 
 	$this->template->assign_block_vars('top_posters', array(
 		'S_SEARCH_ACTION'	=> append_sid("{$this->phpbb_root_path}search.$phpEx", 'author_id=' . $row['user_id'] . '&amp;sr=posts'),
 		'USERNAME_FULL'		=> @get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 		'POSTER_POSTS'		=> $row['user_posts'],
-		'USER_AVATAR_IMG'	=> phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
+		'USER_AVATAR_IMG'	=> phpbb_get_user_avatar($row, $user->lang['USER_AVATAR'], false),
 		//'URL'				=> $row['user_website'],
 	));
 }

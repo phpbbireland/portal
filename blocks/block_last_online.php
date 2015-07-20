@@ -61,17 +61,11 @@ if ($auth->acl_gets('u_viewprofile'))
 		$last_visit = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 
 
-		// a workaround //
-		$arg['avatar'] = $row['user_avatar'];
-		$arg['avatar_type'] = $row['user_avatar_type'];
-		$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
-		$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
 
 		$this->template->assign_block_vars('last_online', array(
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
-			//'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit),
 			'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit, '|d M Y|, H:i'),
-			'USER_AVATAR_IMG'	=> @phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
+			'USER_AVATAR_IMG'	=> phpbb_get_user_avatar($row, $user->lang['USER_AVATAR'], false),
 			'U_REGISTER'		=> 'append_sid("{$phpbb_root_path}ucp.$phpEx", mode=register)',
 		));
 	}
