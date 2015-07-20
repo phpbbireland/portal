@@ -85,11 +85,10 @@ $sql = "SELECT html_file_name, scroll, position
 	FROM " . K_BLOCKS_TABLE . "
 	WHERE html_file_name = 'block_recent_topics_wide.html'";
 
-$result = $db->sql_query($sql);
+//$result = $db->sql_query($sql);
 
 
-//if ($result = $db->sql_query($sql, $block_cache_time))
-if ($result)
+if ($result = $db->sql_query($sql, $block_cache_time))
 {
 	$row = $db->sql_fetchrow($result);
 	$scroll = $row['scroll'];
@@ -107,10 +106,9 @@ $sql = "SELECT * FROM ". FORUMS_TABLE . " ORDER BY forum_id";
 
 $result = $db->sql_query($sql);
 
-if (!$result)
-//if (!$result = $db->sql_query($sql, $block_cache_time))
+if (!$result = $db->sql_query($sql, $block_cache_time))
 {
-	trigger_error($user->lang['ERROR_PORTAL_FORUMS'] . '117');
+	trigger_error($user->lang['ERROR_PORTAL_FORUMS'] . '111');
 }
 
 /* don't show these (set in ACP) */
@@ -153,9 +151,9 @@ else
 
 $post_time_days = time() - 86400 * $k_recent_search_days;
 
-// New code //
+// New code //user_avatar, user_avatar_type, user_avatar_width , user_avatar_height
 $sql_array = array(
-	'SELECT'		=> 'p.post_id, t.*, p.post_edit_time, p.post_subject, p.post_text, p.post_time, p.bbcode_bitfield, p.bbcode_uid, f.forum_desc, u.user_avatar, u.user_avatar_type, u.user_avatar_height, u.user_avatar_width, f.forum_name',
+	'SELECT'		=> 'p.post_id, t.*, p.post_edit_time, p.post_subject, p.post_text, p.post_time, p.bbcode_bitfield, p.bbcode_uid, f.forum_desc, u.user_avatar, u.user_avatar_type, u.user_avatar_width, u.user_avatar_height, f.forum_name',
 
 	'FROM'			=> array(FORUMS_TABLE => 'f'),
 
@@ -274,22 +272,15 @@ for ($i = 0; $i < $display_this_many; $i++)
 		$this_post_time = $user->format_date($row[$i]['post_time']);
 	}
 
-
-	$avatar_data = array(
-		'avatar' => $row[$i]['user_avatar'],
-		'avatar_width' => $row[$i]['user_avatar_width'],
-		'avatar_height' => $row[$i]['user_avatar_height'],
-		'avatar_type' => $row[$i]['user_avatar_type'],
-	);
-
-	// resize image to 15x15 //
-	$ava = phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false);
-	$ava = str_replace('width="' . $row[$i]['user_avatar_height'] . '"', 'width="15"', $ava);
-	$ava = str_replace('height="' . $row[$i]['user_avatar_width'] . '"', 'height="15"', $ava);
+	// a workaround //
+	$arg['avatar'] = $row[$i]['user_avatar'];
+	$arg['avatar_type'] = $row[$i]['user_avatar_type'];
+	$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
+	$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
 
 	$template->assign_block_vars($style_row . 'recent_topic_row', array(
-		//'AVATAR_SMALL_IMG'	=> get_user_avatar($row[$i]['user_avatar'], $row[$i]['user_avatar_type'], '15', '15'),
-		'AVATAR_SMALL_IMG'	=> $ava,
+		'AVATAR_SMALL_IMG'	=> phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
+		//'AVATAR_SMALL_IMG'	=> @phpbb_get_avatar($row[$i], $user->lang['USER_AVATAR'], false),
 		'FORUM_W'			=> $forum_name,
 		'LAST_POST_IMG_W'	=> $user->img('icon_topic_newest', 'VIEW_LATEST_POST'),
 		//'LAST_POST_IMG_W'	=> $next_img,

@@ -49,24 +49,19 @@ while ($row = $db->sql_fetchrow($result))
 		continue;
 	}
 
-	$avatar_data = array(
-		'avatar' => $row['user_avatar'],
-		'avatar_width' => $row['user_avatar_width'],
-		'avatar_height' => $row['user_avatar_height'],
-		'avatar_type' => $row['user_avatar_type'],
-	);
+	//@$ava = phpbb_get_avatar($row, $user->lang['USER_AVATAR'], false);
 
-	// resize image to 15x15 //
-	$ava = phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false);
-	$ava = str_replace('width="' . $row['user_avatar_height'] . '"', 'width="15"', $ava);
-	$ava = str_replace('height="' . $row['user_avatar_width'] . '"', 'height="15"', $ava);
+	// a workaround //
+	$arg['avatar'] = $row['user_avatar'];
+	$arg['avatar_type'] = $row['user_avatar_type'];
+	$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
+	$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
 
 	$this->template->assign_block_vars('top_posters', array(
 		'S_SEARCH_ACTION'	=> append_sid("{$this->phpbb_root_path}search.$phpEx", 'author_id=' . $row['user_id'] . '&amp;sr=posts'),
-		'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
+		'USERNAME_FULL'		=> @get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 		'POSTER_POSTS'		=> $row['user_posts'],
-		//'USER_AVATAR_IMG'	=> get_user_avatar($row['user_avatar'], $row['user_avatar_type'], '16', '16', $this->user->lang['USER_AVATAR']),
-		'USER_AVATAR_IMG'	=> $ava,
+		'USER_AVATAR_IMG'	=> phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
 		//'URL'				=> $row['user_website'],
 	));
 }

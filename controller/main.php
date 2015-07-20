@@ -11,6 +11,9 @@ namespace phpbbireland\portal\controller;
 
 class main //implements main_interface
 {
+	protected $id;
+	protected $mp;
+
 	/**
 	* phpBB Config object
 	* @var \phpbb\config\config
@@ -107,13 +110,27 @@ class main //implements main_interface
 
 	public function display()
 	{
+		global $request;
+
 		if (empty($this->config['portal_enabled']))
 		{
 			redirect(append_sid("{$this->root_path}index.$this->php_ext"));
 		}
-		return $this->base();
+
+		// added support for styles ... the actual work is handled by the style block //
+		$id = $request->variable('style', 0);
+		$mp = $request->variable('mp', 0);
+
+		return $this->base($id, $mp);
 	}
 
+
+/*
+	public function style($id, $mp)
+	{
+		return $this->base($id, $mp);
+	}
+*/
 
 	/**
 	* Base controller to be accessed with the URL /portal/{page}
@@ -122,24 +139,18 @@ class main //implements main_interface
 	* @return Symfony\Component\HttpFoundation\Response A Symfony Response object
 	*/
 
-	public function base($page = 'portal')
+	public function base($id, $mp)
 	{
-		///var_dump('main.php > base() page = : ' . $page);
-
 		global $phpbb_container;
-		global $k_config, $k_menus, $k_blocks, $k_pages, $k_groups, $k_resources, $phpbb_root_path;//, $block_modules;
+		global $k_config, $k_menus, $k_blocks, $k_pages, $k_groups, $k_resources, $phpbb_root_path;
 
-		$portal_link = $this->get_portal_link();
+
 
 		$this->controller_helper->run_initial_tasks();
 		$this->controller_helper->generate_all_block();
 
 		$phpbb_path_helper = $phpbb_container->get('path_helper');
 		$corrected_path = $phpbb_path_helper->get_web_root_path();
-
-		$web_path = (defined('PHPBB_USE_BOARD_URL_PATH') && PHPBB_USE_BOARD_URL_PATH) ? $board_url : $corrected_path;
-
-		//$mod_style_path	= $this->phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $this->user->style['style_path'];
 
 		if (!class_exists('bbcode'))
 		{
@@ -155,10 +166,6 @@ class main //implements main_interface
 		}
 
 		$this->get_portal_cache();
-
-		//$this->template->assign_vars(array(
-		//	'EXT_TEMPLATE_PATH'    => $mod_style_path,
-		//));
 
 		// Generate logged in/logged out status
 		if ($this->user->data['user_id'] != ANONYMOUS)
@@ -183,13 +190,11 @@ class main //implements main_interface
 		return $this->helper->render('portal_body.html', $this->page_title);
 	}
 
-
-
 	public function rules()
 	{
 		$mod_style_path	= $this->phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $this->user->style['style_path'] . '/';
 
-		$this->user->add_lang_ext('phpbbireland/portal', 'kiss_common');
+		$this->user->add_lang_ext('phpbbireland/portal', 'rules');
 
 		$basic_rules = $this->user->lang['RULES_TEXT'];
 
@@ -283,22 +288,5 @@ class main //implements main_interface
 			$portal_link = $this->path_helper->remove_web_root_path($this->helper->route('phpbbireland_portal_controller'));
 		}
 		return($portal_link);
-	}
-
-
-	public function page_name()
-	{
-		$this_page = explode(".", $this->user->page['page']);
-
-		if ($this_page[0] == 'app')
-		{
-			$this_page_name = explode("/", $this_page[1]);
-			return($this_page_name[1]);
-		}
-		else
-		{
-			$this_page_name = $this_page[0];
-			return($this_page_name);
-		}
 	}
 }

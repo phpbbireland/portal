@@ -60,25 +60,18 @@ if ($auth->acl_gets('u_viewprofile'))
 		$row['last_visit'] = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 		$last_visit = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 
-		$avatar_data = array(
-			'avatar' => $row['user_avatar'],
-			'avatar_width' => $row['user_avatar_width'],
-			'avatar_height' => $row['user_avatar_height'],
-			'avatar_type' => $row['user_avatar_type'],
-		);
 
-		// resize image to 15x15 //
-		$ava = phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false);
-
-		$ava = str_replace('width="' . $row['user_avatar_height'] . '"', 'width="16"', $ava);
-		$ava = str_replace('height="' . $row['user_avatar_width'] . '"', 'height="16"', $ava);
+		// a workaround //
+		$arg['avatar'] = $row['user_avatar'];
+		$arg['avatar_type'] = $row['user_avatar_type'];
+		$arg['avatar_height'] = '16'; //$row[$i]['user_avatar_height'];
+		$arg['avatar_width'] = '16'; //$row[$i]['user_avatar_width'];
 
 		$this->template->assign_block_vars('last_online', array(
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 			//'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit),
 			'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit, '|d M Y|, H:i'),
-			//'USER_AVATAR_IMG'	=> get_user_avatar($row['user_avatar'], $row['user_avatar_type'], '16', '16'),
-			'USER_AVATAR_IMG'	=> $ava,
+			'USER_AVATAR_IMG'	=> @phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
 			'U_REGISTER'		=> 'append_sid("{$phpbb_root_path}ucp.$phpEx", mode=register)',
 		));
 	}

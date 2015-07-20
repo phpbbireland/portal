@@ -50,16 +50,15 @@ else
 	$l_login_logout = $this->user->lang['LOGIN'];
 }
 
-$avatar_data = array(
-	'avatar' => $this->user->data['user_avatar'],
-	'avatar_width' => $this->user->data['user_avatar_width'],
-	'avatar_height' => $this->user->data['user_avatar_height'],
-	'avatar_type' => $this->user->data['user_avatar_type'],
-);
+
+$arg['avatar'] = $this->user->data['user_avatar'];
+$arg['avatar_type'] = $this->user->data['user_avatar_type'];
+$arg['avatar_height'] = $this->user->data['user_avatar_height'];
+$arg['avatar_width'] = $this->user->data['user_avatar_width'];
 
 $this->template->assign_vars(array(
-	//'AVATAR'          => get_user_avatar($this->user->data['user_avatar'], $this->user->data['user_avatar_type'], $this->user->data['user_avatar_width'], $this->user->data['user_avatar_height'], 'USER_AVATAR', true),
-	'AVATAR'          => phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false),
+	//'AVATAR'          => @phpbb_get_avatar($this->user->data, $user->lang['USER_AVATAR'], false),
+	'AVATAR'          => phpbb_get_avatar($arg, $user->lang['USER_AVATAR'], false),
 	'WELCOME_SITE'    => sprintf($this->user->lang['WELCOME_SITE'], $this->config['sitename']),
 	'USR_RANK_TITLE'  => $rank_title,
 	'USR_RANK_IMG'    => $rank_img,
