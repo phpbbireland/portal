@@ -100,7 +100,6 @@ class listener implements EventSubscriberInterface
 			'lang_set' => 'portal',
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
-		$this->user->add_lang_ext('phpbbireland/portal', 'kiss_common');
 	}
 
 	public function add_permission($event)
