@@ -38,7 +38,6 @@ $lang = array_merge($lang, array(
 	'PORTAL'            => 'Portal',
 	'VIEWING_PORTAL'    => 'Portal page',
 	'VIEWING_RULES'     => 'Viewing rules page',
-	'BACK'              => 'Back',
 ));
 
 $lang = array_merge($lang, array(
@@ -380,7 +379,8 @@ $lang = array_merge($lang, array(
 	'AMOUNT'           => 'Amount',
 	'ANNOUNCEMENTS'    => 'Announcements',
 	'AUTHOR'           => 'Author',
-	'BEGIN'            => 'BEGIN',
+	'BACK'             => 'Back',
+	'BEGIN'            => 'Begin',
 	'BIRTHDAY'         => 'Birthday',
 	'BOOKS'            => 'Books',
 	'BOOKMARKS'        => 'Bookmarks',
@@ -482,7 +482,7 @@ $lang = array_merge($lang, array(
 	'TITLE'            => 'Title',
 	'TOTAL'            => 'Total',
 	'TRANSLATE'        => 'Translate',
-	'UCP'              => 'User CP',
+	//'UCP'              => 'User CP',
 	'UNRESOLVED'       => 'Unresolved',
 	'URL'              => 'URL',
 	'UPLOAD'           => 'Upload',
@@ -512,5 +512,5 @@ $lang = array_merge($lang, array(
 	'ACRO_SGP'		=> 'Stargate Portal (aka Kiss Portal), the original phpBB3 portal &copy; Michael O’Toole 2005-2011',
 	'ACRO_KPE'		=> 'Kiss Portal Extension (Stargate/Kiss Portal for 3.1)... &copy; Michael O’Toole 2014',
 	'ACRO_KISS'		=> 'Keep It Simple Stupid',
-	'HI_KISS_PORTAL_EXTENSION'	=> 'Kiss Portal Extension (Stargate/Kiss Portal for 3.1)... &copy; Michael O’Toole 2014',
+	'HI_KISS_PORTAL_EXTENSION'	=> 'Kiss Portal Extension (Kiss Portal for 3.1)... &copy; Michael O’Toole 2014',
 ));

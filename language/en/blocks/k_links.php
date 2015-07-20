@@ -39,21 +39,23 @@ if (empty($lang) || !is_array($lang))
 
 // Top downloads mod 11 July 2013
 $lang = array_merge($lang, array(
-	'K_LINKS_BLOCK_TITLE'        => 'Link Block Variables',
-	'K_LINKS_FORUM_ID'           => 'Link forum ID',
-	'K_LINKS_FORUM_ID_EXPLAIN'   => 'Dedicated forum for uploading link images (optional)',
-	'K_LINKS_TO_DISPLAY'         => 'Number of links to display in Link Block',
-	'K_LINKS_TO_DISPLAY_EXPLAIN' => '0 (zero) to scroll all links...',
 
-	'K_LINKS_SCROLL_AMOUNT'              => 'Scroll Amount/Speed',
-	'K_LINKS_SCROLL_AMOUNT_EXPLAIN'      => 'Set to 1 for slow... 5 for fast...',
-	'LINK_TO_US'                         => 'The link image name',
-	'LINK_TO_US_EXPLAIN'                 => 'The image must exist in: ./images folder. (size: 88x31px)',
-	'K_LINK_FORUM_ID'                    => 'The id of the forum to be used for uploading link images',
-	'K_LINK_FORUM_ID_EXPLAIN'            => 'Places a link at the bottom of the Link Block to direct members to a designated links upload forum, should one exist.',
-	'K_LINKS_SCROLL_DIRECTION'           => 'Scroll Direction',
-	'K_LINKS_SCROLL_DIRECTION_EXPLAIN'   => 'Scroll 0 = Up or 1 = Down',
+	'K_LINK_FORUM_ID'                  => 'The id of the forum to be used for uploading link images',
+	'K_LINK_FORUM_ID_EXPLAIN'          => 'Places a link at the bottom of the Link Block to direct members to a designated links upload forum, should one exist.',
 
-	'LINK_IMAGE'	=> 'Image to use',
-	'LINK_SITE'		=> 'Link to Site',
+	'K_LINKS_BLOCK_TITLE'              => 'Link Block Variables',
+	'K_LINKS_FORUM_ID'                 => 'Link forum ID',
+	'K_LINKS_FORUM_ID_EXPLAIN'         => 'Dedicated forum for uploading link images (optional)',
+	'K_LINKS_SCROLL_AMOUNT'            => 'Scroll Amount/Speed',
+	'K_LINKS_SCROLL_AMOUNT_EXPLAIN'    => 'Set to 1 for slow... 5 for fast...',
+	'K_LINKS_SCROLL_DIRECTION'         => 'Scroll Direction',
+	'K_LINKS_SCROLL_DIRECTION_EXPLAIN' => 'Scroll 0 = Up or 1 = Down',
+	'K_LINKS_TO_DISPLAY'               => 'Number of links to display in Link Block',
+	'K_LINKS_TO_DISPLAY_EXPLAIN'       => '0 (zero) to scroll all links...',
+
+	'LINK_IMAGE'          => 'Image to use',
+	'LINK_SITE'           => 'Link to Site',
+	'LINK_TO_US'          => 'The link image name',
+	'LINK_TO_US_EXPLAIN'  => 'The image must exist in: ./images folder. (size: 88x31px)',
+
 ));

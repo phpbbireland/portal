@@ -42,11 +42,11 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'BLOCKS_DISABLED'         => 'Portal blocks are currently disabled!',
 	'ANNOUNCEMENTS_AND_NEWS'  => 'News and Announcements',
-	'POST_NEWS'				 => 'News',
-	'POST_NEWS_GLOBAL'		 => 'Global News',
-	'POST_NEW_IMG'			 => 'Post New',
-	'POST_NEW_HOT_IMG'		 => 'Post New Hot',
-	'VIEW_TOPIC_NEWS'		 => 'News: ',
+	'BLOCKS_DISABLED'         => 'Portal blocks are currently disabled!',
+	'POST_NEWS'				  => 'News',
+	'POST_NEWS_GLOBAL'		  => 'Global News',
+	'POST_NEW_IMG'			  => 'Post New',
+	'POST_NEW_HOT_IMG'		  => 'Post New Hot',
+	'VIEW_TOPIC_NEWS'		  => 'Post News: ',
 ));

@@ -209,7 +209,6 @@ $lang = array_merge($lang, array(
 	'ERROR_PORTAL_NEWS'				=> 'Error! Could not query news data',
 	'ERROR_PORTAL_RECENT_TOPICS'	=> 'ERROR! Could not query recent topics data',
 	'ERROR_PORTAL_FORUMS'			=> 'Error! Could not query forums information',
-
 	'WARNINGIMG_DIR'				=> 'Check to see if you added the image directory!',
 
 // phpBB pages (k_pages)
@@ -260,13 +259,11 @@ $lang = array_merge($lang, array(
 	'ACP_VARS_CONFIG'       => 'Manage variables',
 	'ACP_RESOURCES_TITLE'	=> 'Resources',
 	'BLOCK_LAYOUT_RESET'    => 'All members layouts have been cleared/reset...',
-
 	'K_PORTAL_ENABLED'		=> 'Enable portal',
 	'K_PORTAL_BUILD'		=> 'Portal build',
 	'K_BLOCKS_ENABLED'		=> 'Enable blocks',
 	'K_BLOCKS_WIDTH'		=> 'Block width',
 	'PORTAL_CONFIG'			=> 'Portal config',
-
 
 // modules ucp
 	'UCP_PORTAL_TITLE'		=> 'Portal Options',
