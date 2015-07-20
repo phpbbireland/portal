@@ -23,7 +23,7 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\config\config */
 	protected $config;
 
-	/** @var  */
+	/** @var */
 	protected $controller_helper;
 
 	protected $helper;
@@ -108,7 +108,7 @@ class listener implements EventSubscriberInterface
 		//var_dump('listener.php > add_permission(...)');
 
 		$categories = $event['categories'];
-		$categories['portal'] = 'ACL_CAT_PORTAL';
+		$categories['portal'] = 'PORTAL';
 		$event['categories'] = $categories;
 
 		$permissions = $event['permissions'];
@@ -174,8 +174,8 @@ class listener implements EventSubscriberInterface
 			'STARGATE_VERSION'    => (isset($this->config['portal_version'])) ? $this->config['portal_version'] : '',
 			'SITE_LOGO_IMG'       => $logo,
 			'SITE_LOGO_IMG_RIGHT' => $logo_right,  // may contain site and & description
-			'SITENAME'            => '',           // hide site name if required
-			'SITE_DESCRIPTION'    => '',           // hide site description if required
+			//'SITENAME'            => '',           // hide site name if required
+			//'SITE_DESCRIPTION'    => '',           // hide site description if required
 		));
 	}
 
@@ -286,7 +286,7 @@ class listener implements EventSubscriberInterface
 
 		$message = $event['message_parser']->message;
 
-		// use kiss_common.php language file > acronyms and highlighted phrases/text //
+		// use portal.php language file > acronyms and highlighted phrases/text //
 		if ($event['preview'] || $event['submit'])
 		{
 			$message = str_replace("Kiss Portal Extension", '<acronym title="' . $user->lang['HI_KISS_PORTAL_EXTENSION'] . '">Kiss Portal Extension</acronym>', $message);

@@ -23,14 +23,10 @@ if ($user->data['user_id'] == ANONYMOUS)
 	return;
 }
 
-global $user_id, $user, $request, $template, $phpbb_root_path, $phpEx, $db, $k_blocks;
+global $user, $request, $template, $phpbb_root_path, $phpEx, $db, $k_blocks;
 
 
-//var_dump($user->style['style_path']);
-//var_dump($user->data['user_style']);
-
-
-$current_style = $user->data['user_style'];		// the current style
+$current_style = $user->data['user_style'];				// the current style
 $new_style = $request->variable('style', 0);			// selected style
 $make_permanent = $request->variable('mp', 'false');	// make style permanent
 
@@ -41,13 +37,19 @@ if ($make_permanent == 'true' && $new_style != $current_style && $change_db_styl
 {
 	$sql = "UPDATE " . USERS_TABLE . "
 		SET user_style = " . (int) $new_style . "
-		WHERE user_id = " . (int) $user_id;
+		WHERE user_id = " . (int) $user->data['user_id'];
 	$db->sql_query($sql);
 }
 
 $style_count = 0;
 $style_select = '';
-$this_page = explode(".", $user->page['page']);
+$this_page = explode("/", $user->page['page']);
+$this_page = explode(".", $this_page[1]);
+
+if ($this_page == 'index')
+{
+	$this_page = 'index' . $phpEx;
+}
 
 // rebuild forum and topic (viewforum, viewtopic) //
 $appends = '';
@@ -85,11 +87,11 @@ while ($row = $db->sql_fetchrow($result))
 
 	if ($style)
 	{
-		$url = str_replace('style=' . $style, 'style=' . $row['style_id'], append_sid("{$phpbb_root_path}{$this_page[0]}.$phpEx", $appends));
+		$url = str_replace('style=' . $style, 'style=' . $row['style_id'], append_sid("{$phpbb_root_path}{$this_page[0]}", $appends));
 	}
 	else
 	{
-		$url = append_sid("{$phpbb_root_path}{$this_page[0]}.$phpEx", 'style=' . $row['style_id'] . $appends);
+		$url = append_sid("{$phpbb_root_path}{$this_page[0]}", 'style=' . $row['style_id'] . $appends);
 	}
 	++$style_count;
 
@@ -101,7 +103,6 @@ if (strlen($style_select))
 {
 	$template->assign_var('STYLE_SELECT', $style_select);
 }
-global $page;
 
 $template->assign_vars(array(
 	'STYLE_COUNT'	=> $style_count,

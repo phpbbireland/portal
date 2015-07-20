@@ -13,13 +13,10 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-$phpEx = substr(strrchr(__FILE__, '.'), 1);
+//$auth->acl($user->data);
 
-$auth->acl($user->data);
+global $user, $forum_id, $phpbb_root_path, $phpEx, $SID, $config, $template, $k_config, $k_blocks, $db, $web_path, $phpbb_container;
 
-global $user, $forum_id, $phpbb_root_path, $phpEx, $SID, $config, $template, $k_config, $k_blocks, $db, $web_path;
-
-global $phpbb_container;
 $phpbb_content_visibility = $phpbb_container->get('content.visibility');
 
 foreach ($k_blocks as $blk)
@@ -30,8 +27,11 @@ foreach ($k_blocks as $blk)
 		break;
 	}
 }
+
 $block_cache_time = (isset($block_cache_time) ? $block_cache_time : $k_config['k_block_cache_time_default']);
 
+
+/*
 if (!defined('POST_TOPIC_URL'))
 {
 	define('POST_TOPIC_URL' , 't');
@@ -40,10 +40,7 @@ if (!defined('POST_CAT_URL'))
 {
 	define('POST_CAT_URL', 'c');
 }
-if (!defined('POST_FORUM_URL'))
-{
-	define('POST_FORUM_URL', 'f');
-}
+
 if (!defined('POST_USERS_URL'))
 {
 	define('POST_USERS_URL', 'u');
@@ -56,14 +53,21 @@ if (!defined('POST_GROUPS_URL'))
 {
 	define('POST_GROUPS_URL', 'g');
 }
+*/
+
+
+if (!defined('POST_FORUM_URL'))
+{
+	define('POST_FORUM_URL', 'f');
+}
 
 /***
 	Could add option to show a simplified listing (without categories or forum grouping)
 	Basically just show most recent topics unsorted... (requested)
 ***/
 
-// set up variables used //
 
+// set up variables used //
 $forum_count = $row_count = 0;
 $valid_forum_ids = array();
 
@@ -85,7 +89,6 @@ $result = $db->sql_query($sql);
 
 
 //if ($result = $db->sql_query($sql, $block_cache_time))
-
 if ($result)
 {
 	$row = $db->sql_fetchrow($result);
@@ -94,7 +97,7 @@ if ($result)
 }
 else
 {
-	trigger_error('ERROR_PORTAL_BLOCKS' . '99');
+	trigger_error('ERROR_PORTAL_BLOCKS' . '102');
 }
 $db->sql_freeresult($result);
 
@@ -176,21 +179,10 @@ $sql_array = array(
 		AND p.post_id = t.topic_last_post_id
 		AND (p.post_time >= ' . $post_time_days . ' OR p.post_edit_time >= ' . $post_time_days . ')
 			ORDER BY t.forum_id, p.post_time DESC'
-/*
-	'WHERE'	=> $where_sql . '
-		AND t.topic_approved = 1
-		AND p.post_approved = 1
-		' . $types_sql . '
-		AND p.post_id = t.topic_first_post_id
-		AND (t.topic_last_post_time >= ' . $post_time_days . '
-			OR p.post_edit_time >= ' . $post_time_days . ')
-			ORDER BY t.forum_id, t.topic_last_post_time DESC'
-*/
-
-
 );
 
 $sql = $db->sql_build_query('SELECT', $sql_array);
+
 $result = $db->sql_query_limit($sql, $display_this_many, 0, $block_cache_time);
 
 $row = $db->sql_fetchrowset($result);
@@ -261,14 +253,14 @@ for ($i = 0; $i < $display_this_many; $i++)
 
 	if (strlen($my_title) > 25)
 	{
-		sgp_checksize ($my_title, 25);
+		sgp_checksize($my_title, 25);
 	}
 
 	$forum_name = $row[$i]['forum_name'];
 
 	if (strlen($forum_name) > 25)
 	{
-		$forum_name = sgp_checksize ($forum_name, 25);
+		$forum_name = sgp_checksize($forum_name, 25);
 	}
 
 	$view_topic_url = append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $row[$i]['forum_id']);
@@ -334,5 +326,4 @@ $template->assign_vars(array(
 	'S_COUNT_RECENT'		=> ($i > 0) ? true : false,
 	'RECENT_SEARCH_TYPE'	=> sprintf($user->lang['K_RECENT_SEARCH_DAYS'], $k_recent_search_days),
 	'S_FULL_LEGEND'			=> ($k_post_types) ? true : false,
-	//'RECENT_TOPICS_WIDE_DEBUG'	=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
 ));

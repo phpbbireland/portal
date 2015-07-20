@@ -710,7 +710,7 @@ if (!function_exists('generate_menus'))
 		$template->assign_vars(array(
 			'S_USER_LOGGED_IN'	=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 			'U_INDEX'			=> append_sid("{$phpbb_root_path}index.$phpEx"),
-			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal.$phpEx"),
+			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal"),
 		));
 	}
 }

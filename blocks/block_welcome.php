@@ -16,7 +16,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-global $user, $k_config, $k_blocks, $phpbb_root_path;
+global $user, $k_config, $k_blocks, $phpbb_root_path, $template;
 
 $k_welcome_message = (isset($k_config['k_welcome_message']) ? $k_config['k_welcome_message'] : '');
 

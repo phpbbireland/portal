@@ -1,8 +1,12 @@
+<!--
+redo all of this code for 3.1
+-->
+
 <div class="block_data">
 	<!-- BEGIN forumrow -->
 		<!-- IF S_DISPLAY_CATS_ONLY and forumrow.S_IS_CAT -->
 			<div class="bg1a sgp-corners" style="text-align:center; padding-bottom:13px; cursor:pointer; margin-bottom:4px;" id="T_{forumrow.FORUM_ID}" title="{L_CLICK_TO_EXPAND}">
-				<span class="pimg cat_images">
+				<span class="pimg cat_images" style="clear:both; float:left">
 					<img src="{forumrow.FORUM_IMAGE_SRC}" title="{CLICK_TO_EXPAND}..." class="smallimage" alt="" />
 				</span>
 				<span style="margin-left: -12px;"><strong><a href="{forumrow.U_VIEWFORUM}" title="{forumrow.POSTS} {L_FORUMS} &bull; {forumrow.TOPICS} {L_TOPICS} &bull; {forumrow.POSTS} {L_POSTS}">{forumrow.FORUM_NAME}<!-- IF forumrow.SUBFORUMS and forumrow.S_LIST_SUBFORUMS -->&deg;<!-- ENDIF --></a></strong></span>
@@ -21,7 +25,7 @@
 
 		<!-- IF not S_DISPLAY_CATS_ONLY and not forumrow.S_IS_CAT -->
 			<div class="bg1a sgp-corners" style="text-align:center; padding-bottom:13px; cursor:pointer; margin-bottom:4px;" id="T_{forumrow.FORUM_ID}" title="{L_CLICK_TO_EXPAND}">
-				<span class="pimg cat_images">
+				<span class="pimg cat_images" style="clear:both; float:left">
 					<img src="{forumrow.FORUM_IMAGE_SRC}" title="{CLICK_TO_EXPAND}..." class="smallimage" alt="" />
 				</span>
 				<span style="margin-left: -12px;"><strong><a href="{forumrow.U_VIEWFORUM}" title="{forumrow.POSTS} {L_FORUMS} &bull; {forumrow.TOPICS} {L_TOPICS} &bull; {forumrow.POSTS} {L_POSTS}">{forumrow.FORUM_NAME}<!-- IF forumrow.SUBFORUMS and forumrow.S_LIST_SUBFORUMS -->&deg;<!-- ENDIF --></a></strong></span>

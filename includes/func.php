@@ -183,7 +183,28 @@ class func
 		}
 
 		$this_page_name = $this->get_current_page();
-		$page_id = get_page_id($this_page_name);
+
+		$id = $request->variable('style', 0);
+
+		if ($id)
+		{
+			if (strstr($this_page_name, 'portal'))
+			{
+				$page_id = get_page_id('portal');
+			}
+			else if (strstr($this_page_name, 'index'))
+			{
+				$page_id = get_page_id('index');
+			}
+			else
+			{
+				$page_id = get_page_id($this_page_name);
+			}
+		}
+		else
+		{
+			$page_id = get_page_id($this_page_name);
+		}
 
 		//var_dump('RETURNED: ' . $this_page_name . ' ID: ' . $page_id);
 
@@ -411,7 +432,7 @@ class func
 			'USERNAME_FULL'           => get_username_string('full', $user->data['user_id'], $user->data['username'], $user->data['user_colour']),
 
 			'U_INDEX'                 => append_sid("{$phpbb_root_path}index.$this->php_ext"),
-			'U_PORTAL'                => append_sid("{$phpbb_root_path}portal.$this->php_ext"),
+			'U_PORTAL'                => append_sid("{$phpbb_root_path}portal"),
 			'U_STAFF'                 => append_sid("{$phpbb_root_path}memberlist.$this->php_ext", 'mode=leaders'),
 			'U_SEARCH_BOOKMARKS'      => append_sid("{$phpbb_root_path}ucp.$this->php_ext", 'i=main&mode=bookmarks'),
 
@@ -440,10 +461,11 @@ class func
 	*/
 	public function get_current_page()
 	{
-		///var_dump('func.php > get_current_page()');
 		global $user;
 
 		$this_page = explode(".", $user->page['page']);
+
+		//var_dump($this_page);
 
 		if ($this_page[0] == 'app')
 		{

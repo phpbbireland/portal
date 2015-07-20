@@ -373,7 +373,7 @@ $lang = array_merge($lang, array(
 
 // one word and common short terms //
 $lang = array_merge($lang, array(
-	'ACP'              => 'Admin CP',
+	'ACP_CP'           => 'Admin CP',
 	'ACRONYMS'         => 'Acronyms',
 	'ADVANCED_SEARCH'  => 'Advanced Search',
 	'ALBUM'            => 'Album',

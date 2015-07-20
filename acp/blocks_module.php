@@ -987,7 +987,7 @@ class blocks_module
 				}
 
 				$template->assign_var('BLOCK_REPORT', $user->lang['BLOCK_LAYOUT_RESET']);
-				meta_refresh(2, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}"));
+				meta_refresh(1, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}"));
 				return;
 
 			case 'config':

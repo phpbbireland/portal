@@ -21,8 +21,7 @@ class helper
 	* Constructor
 	* NOTE: The parameters of this method must match in order and type with
 	* the dependencies defined in the services.yml file for this service.
-	* @param \phpbb\di\service_collection $modules phpbbireland Modules service
-	*						collection
+	* @param \phpbb\di\service_collection $modules phpbbireland Modules service collection
 	*/
 	public function __construct($modules)
 	{

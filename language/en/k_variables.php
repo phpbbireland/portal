@@ -183,7 +183,7 @@ $lang = array_merge($lang, array(
 
 // Portal Menu Names + add you menu language variables here! //
 $lang = array_merge($lang, array(
-	'ACP'              => 'Admin CP',
+	'ACP_CP'           => 'Admin CP',
 	'ALBUM'            => 'Album',
 	'BOOKMARKS'        => 'Bookmarks',
 	'CATEGORIES'       => 'Categories',
