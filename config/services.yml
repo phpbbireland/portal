@@ -2,7 +2,7 @@ imports:
     - { resource: tables.yml }
 
 services:
-    phpbbireland.portal.main:
+    phpbbireland.portal.controller:
         class: phpbbireland\portal\controller\main
         arguments:
             - @config
@@ -99,3 +99,15 @@ services:
         tags:
             - { name: service_collection, tag: phpbbireland.blocks }
 
+    phpbbireland.portal.blocks:
+        class: phpbbireland\portal\blocks
+        arguments:
+            - @auth
+            - @cache
+            - @config
+            - @template
+            - @dbal.conn
+            - @request
+            - @user
+            - %core.root_path%
+            - %core.php_ext%

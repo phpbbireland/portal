@@ -158,10 +158,10 @@ while ($row = $db->sql_fetchrow($result))
 		{
 			global $cache;
 
-			if (!class_exists('cache'))
-			{
-				include($phpbb_root_path . 'includes/cache.' . $phpEx);
-			}
+			//if (!class_exists('cache'))
+			//{
+			//	include($phpbb_root_path . 'includes/cache.' . $phpEx);
+			//}
 
 			$attach_array[$j++] = $row['post_id'];
 
