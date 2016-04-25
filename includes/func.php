@@ -30,12 +30,8 @@ class func
 	/* @var string phpEx */
 	protected $php_ext;
 
-
 	public function process_block_modules()
 	{
-
-		//var_dump('func.php > process_block_modules()');
-
 		global $phpbb_root_path, $config, $table_prefix, $helper;
 		global $db, $user, $avatar_img, $request, $template, $auth;
 		global $k_config, $k_groups, $k_blocks, $page_header;
@@ -464,8 +460,6 @@ class func
 		global $user;
 
 		$this_page = explode(".", $user->page['page']);
-
-		//var_dump($this_page);
 
 		if ($this_page[0] == 'app')
 		{

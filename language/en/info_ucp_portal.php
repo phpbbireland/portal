@@ -40,19 +40,16 @@ $lang = array_merge($lang, array(
 	'ARRANGE_NOW'			=> ' &bull; Arrange Blocks &bull; Tools.',
 	'ARRANGE_ICO'			=> 'Arrange Icon',
 	'ARRANGE_ICON'			=> 'Arrange Blocks, lets you organise blocks from the portal page...<br />You can <strong>move</strong>, <strong>hide</strong> or, <strong>un-hide</strong> them as you wish...<br /><br />Depending on the style, the arrange icon (or text links) are normally located in the header to the left of the phpBB text resize icon...<br /><br />Please note, changes are automatically saved when browse to any othe page... <br /><br />Some arrange icons/text examples: ',
+
 	'B_VERSION'				=> 'build',
-	'CENTER_BLOCKS'			=> 'Centre blocks',
-	'CENTER_BLOCKS_EXPLAIN' => 'comma separated string',
+
 	'DEFAULT_BLOCKS'		=> 'Default blocks',
 	'DELETE_BLOCKS'			=> 'Check to reset blocks',
 	'DELETE_BLOCKS_EXPLAIN'	=> '(to default positions).',
 	'DEV_SITE'				=> 'Development site: ',
-	'LEFT_BLOCKS'			=> 'Left blocks',
-	'LEFT_BLOCKS_EXPLAIN'	=> 'comma separated string',
+
 	'OPTION_WIDTH'			=> 'Wide/Narrow',
 	'P_VERSION'				=> 'Installed version',
-	'RIGHT_BLOCKS'			=> 'Right blocks',
-	'RIGHT_BLOCKS_EXPLAIN' 	=> 'comma separated string',
 
 	'UCP_K_PORTAL'			=> 'Portal',
 	'UCP_K_BLOCKS'			=> 'Portal Options',
@@ -61,14 +58,24 @@ $lang = array_merge($lang, array(
 	'UCP_K_BLOCKS_EDIT'		=> 'Edit blocks layout',
 	'UCP_K_BLOCKS_INFO'		=> 'Portal information',
 	'UCP_K_BLOCKS_WIDTH'	=> 'Set page width',
+
 	'UCP_K_INFO_ARRANGE'	=> 'NOT SET',
 	'UCP_K_INFO_DELETE'		=> 'Delete your current layout and use the board defaults.<br /><br />',
 	'UCP_K_INFO_EDIT'		=> 'Manually edit your current block layout.<br />Can also be used to add newly installed blocks...<br /><br />',
 	'UCP_K_INFO_INFO'		=> 'Some basic portal information here......',
 	'UCP_K_INFO_WIDTH'		=> '<br />If your style support it, click on these images below to set the overall page width',
+
 	'UCP_K_LINK'			=> '<a href="%s"> Arrange Blocks</a>',
 	'UCP_K_NOT_SAVED'		=> 'Block data could not be saved!',
 	'UCP_K_RESET'			=> 'Blocks reset to default positions... refreshing page... <br />',
 	'UCP_K_SAVED'			=> 'Your layout has been updated... <br />',
-	'UCP_PORTAL_TITLE'		=> 'Portal Options',
+
+	'LEFT_BLOCKS'			=> 'Left blocks',
+	'LEFT_BLOCKS_EXPLAIN'	=> 'comma separated string',
+	'CENTER_BLOCKS'			=> 'Centre blocks',
+	'CENTER_BLOCKS_EXPLAIN' => 'comma separated string',
+	'RIGHT_BLOCKS'			=> 'Right blocks',
+	'RIGHT_BLOCKS_EXPLAIN' 	=> 'comma separated string',
+
+	'UCP_PORTAL_TITLE'	=> 'Portal Options',
 ));

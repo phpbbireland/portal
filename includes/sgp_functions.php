@@ -533,19 +533,6 @@ if (!function_exists('generate_menus'))
 		global $template, $phpbb_root_path, $auth, $user, $phpEx, $request;
 		static $process = 0;
 
-/*
-		define('WELCOME_MESSAGE', 1);
-		define('UN_ALLOC_MENUS', 0);
-		define('NAV_MENUS', 1);
-		define('SUB_MENUS', 2);
-		define('HEAD_MENUS', 3);
-		define('FOOT_MENUS', 4);
-		define('LINKS_MENUS', 5);
-		define('ALL_MENUS', 90);
-		define('UNALLOC_MENUS', 99);
-		define('OPEN_IN_TAB', 1);
-		define('OPEN_IN_WINDOW', 2);
-*/
 		$menu_image_path = $phpbb_root_path . 'ext/phpbbireland/portal/images/block_images/menu/';
 
 		// process all menus at once //
