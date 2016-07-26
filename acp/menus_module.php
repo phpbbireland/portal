@@ -107,6 +107,7 @@ class menus_module
 				WHERE config_name = 'k_adm_block'";
 			$result = $db->sql_query($sql);
 			$row = $db->sql_fetchrow($result);
+			$db->sql_freeresult($result);
 			$k_config[$row['config_name']] = $row['config_value'];
 		}
 		$template->assign_var('K_ADM_BLOCK', $k_config['k_adm_block']);
@@ -117,18 +118,22 @@ class menus_module
 				$this->get_menu(NAV_MENUS, $module_id);
 				$template->assign_var('S_OPTIONS', 'nav');
 			break;
+
 			case 'sub':
 				$this->get_menu(SUB_MENUS, $module_id);
 				$template->assign_var('S_OPTIONS', 'sub');
 			break;
+
 			case 'link':
 				$this->get_menu(LINKS_MENUS, $module_id);
 				$template->assign_var('S_OPTIONS', 'link');
 			break;
+
 			case 'all':
 				$this->get_menu(ALL_MENUS, $module_id);
 				$template->assign_var('S_OPTIONS', 'all');
 			break;
+
 			case 'unalloc':
 				$this->get_menu(UNALLOC_MENUS, $module_id);
 				$template->assign_var('S_OPTIONS', 'unalloc');
