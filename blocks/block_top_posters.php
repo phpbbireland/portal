@@ -18,6 +18,8 @@ if (!defined('IN_PHPBB'))
 
 global $k_config, $k_blocks, $user, $phpEx;
 
+$this->template = $template;
+
 foreach ($k_blocks as $blk)
 {
 	if ($blk['html_file_name'] == 'block_top_posters.html')
