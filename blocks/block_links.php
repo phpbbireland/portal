@@ -21,7 +21,7 @@ $show_all_links = false;
 if ($blk['html_file_name'] == 'block_links.html')
 {
 	$block_cache_time = $blk['block_cache_time'];
-	break;
+	//break;
 }
 
 $sql = "SELECT *
