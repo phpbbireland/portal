@@ -16,18 +16,15 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-global $k_config;
+// for bots test //
+//$page_title = $user->lang['BLOCK_TOP_TOPICS'];
 
-$loop_count = 0;
-$emp = '?';
-$rating = '';
-$video = '';
-$last_cat = '';
-$k_video_max = ($k_config['k_yourtube_link_limit']) ? $k_config['k_yourtube_link_limit'] : 3;
+global $k_config, $k_blocks;
+$queries = $cached_queries = 0;
 
 foreach ($k_blocks as $blk)
 {
-	if ($blk['html_file_name'] == 'block_youtube.html')
+	if ($blk['html_file_name'] == 'block_top_topics.html')
 	{
 		$block_cache_time = $blk['block_cache_time'];
 		break;
@@ -35,82 +32,50 @@ foreach ($k_blocks as $blk)
 }
 $block_cache_time = (isset($block_cache_time) ? $block_cache_time : $k_config['k_block_cache_time_default']);
 
-$sql = "SELECT * FROM ". K_YOUTUBE_TABLE . " ORDER BY video_category, video_who ASC";
+$k_top_topics_max = $k_config['k_top_topics_max'];
+$k_top_topics_days = $k_config['k_top_topics_days'];
 
-if (!$result = $db->sql_query($sql))
-{
-	trigger_error($user->lang['ERROR_PORTAL_MODULE'] . basename(dirname(__FILE__)) . '/' . basename(__FILE__) . ', line ' . __LINE__);
-}
 
-$result = $db->sql_query_limit($sql, $k_video_max, 0, $block_cache_time);
+$sql = 'SELECT topic_id, topic_title, forum_id
+	FROM ' . TOPICS_TABLE . '
+	WHERE topic_title
+		AND topic_status <> ' . ITEM_MOVED . '
+		AND topic_last_post_time > ' . (time() - $k_top_topics_days * 86400 ) . '
+	ORDER BY topic_title DESC';
+
+$result = $db->sql_query_limit($sql, $k_top_topics_max, 0, $block_cache_time);
 
 while ($row = $db->sql_fetchrow($result))
 {
-	$unique = ($row['video_category'] == $last_cat) ? false : true;
 
-	if ($row['video_rating'] ==  '')
+	if (!$row['topic_title'])
 	{
-		$row['video_rating'] = 0;
+		continue;
 	}
 
-	switch ($row['video_rating'])
+	if ($auth->acl_gets('f_list', 'f_read', $row['forum_id']))
 	{
-		case 0: $rating = '';
-		break;
-		case 1: $rating = '*';
-		break;
-		case 2: $rating = '**';
-		break;
-		case 3: $rating = '***';
-		break;
-		case 4: $rating = '****';
-		break;
-		case 5: $rating = '*****';
-		break;
-		default: $rating = '';
-		break;
+		// reduce length and pad with ... if too long //
+		$my_title = $row['topic_title'];
+
+		if (strlen($my_title) > 16)
+		{
+			$my_title = sgp_checksize ($my_title, 14);
+		}
+
+		$template->assign_block_vars('top_topics', array(
+			'TOPIC_TITLE'		=> $my_title,
+			'FULL_T_TITLE'		=> $row['topic_title'],
+			'S_SEARCH_ACTION'	=> append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $row['forum_id'] . '&amp;t=' . $row['topic_id']),
+			'TOPIC_REPLIES'		=> $row['topic_replies'],
+			)
+		);
 	}
-
-	$usr_name_full = get_user_data($row['video_poster_id'], 'full');
-
-	$template->assign_block_vars('video_loop_row', array(
-		'VIDEO_CAT'			=> $row['video_category'],
-		'VIDEO_WHO'			=> $row['video_who'],
-		'VIDEO_TITLE'		=> $row['video_title'],
-		'VIDEO_LINK'		=> $row['video_link'],
-		'VIDEO_COMMENT'		=> htmlspecialchars_decode($row['video_comment']),
-		'VIDEO_POSTER'		=> ($usr_name_full) ? $usr_name_full : '',
-		'VIDEO_RATING'		=> $rating,
-		'S_UNIQUE_W'		=> $unique,
-		'S_ROW_COUNT'		=> $loop_count,
-		'L_YOUTUBE_LIMIT'	=> ($k_video_max > 0) ? sprintf($user->lang['YOUTUBE_LIMIT'], $k_video_max) : '',
-	));
-
-	$last_cat = $row['video_category'];
-	$loop_count = $loop_count + 1;
-
-	if ($video == $row['video_link'])
-	{
-		$template->assign_vars(array(
-			'L_POSTERS_COMMENT'		=> ($usr_name_full) ? sprintf($user->lang['POSTERS_COMMENT'], $usr_name_full, htmlspecialchars_decode($row['video_comment'])) : '',
-			'READY'					=> ($video) ? true : false,
-		));
-	}
-
-	$template->assign_vars(array(
-		'VIDEO_PATH'	=> $k_config['k_yourtube_link'],
-		'S_AUTOPLAY'	=> ($k_config['k_yourtube_auto']) ? '&amp;autoplay=1' : '',
-		'S_SLIM'		=> true,
-		'YOUTUBR_MOD'	=> true,
-		'S_STYLE_SPECIFIC_VERSION'	=> true,
-	));
-
-	if ($row['video_category'] != $emp)
-	{
-		$template->assign_block_vars('video_loop_row_cats', array(
-			'CATS'	=> $row['video_category'],
-		));
-	}
-	$emp = $row['video_category'];
 }
+
 $db->sql_freeresult($result);
+
+$template->assign_vars(array(
+	'TOP_TOPICS_DAYS'	=> sprintf($user->lang['TOP_TOPICS_DAYS'], $k_config['k_top_topics_days']),
+	'TOP_TOPICS_DEBUG'	=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
+));
