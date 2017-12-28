@@ -47,7 +47,7 @@ Mike
 
 [GPLv2](license.txt)
 
-**2018**
+**2018**  
 Although there is little or no interest in the Portal these days, I have not completely abandoned it.
 I update occasionally and will probably continue to do so for the foreseeable future...
 
@@ -57,5 +57,5 @@ I test new releases of phpBB (every now and again) and update my files where iss
 
 I had hope that someone would step up and continue developing the code alas there doesn't appear to be any interest...  
 
-What's need and will it ever happen?
+What's need and will it ever happen?  
 Basically I did intend to update all the code to C++ (I write in C) but as I don't actually like C++ I didn't do it (I'm too old)...
