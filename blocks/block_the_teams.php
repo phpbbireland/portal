@@ -140,13 +140,13 @@ while ($row = $db->sql_fetchrow($result))
 	if ($team_count < $team_max_count || $team_max_count == 0)
 	{
 		$this->template->assign_block_vars('loop', array(
-			'FIRST'				=> $i++,
-			'S_CHANGE'			=> $change,
+			'FIRST'			=> $i++,
+			'S_CHANGE'		=> $change,
 			'GROUP_IMG_PATH'	=> $g_path,
-			'GROUP_IMG'			=> $group_img . $ext,
+			'GROUP_IMG'		=> $group_img . $ext,
 			'GROUP_NAME'		=> $group_name,
 			'GROUP_COLOR'		=> $row['group_colour'],
-			'USER_ID'			=> $row['user_id'],
+			'USER_ID'		=> $row['user_id'],
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
 		));
 	}
