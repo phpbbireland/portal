@@ -3,7 +3,7 @@
 *
 * @package Kiss Portal extension for the phpBB Forum Software package 1.0.1
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2014 Michael Oâ€™Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */

@@ -156,9 +156,6 @@ while ($row = $db->sql_fetchrow($result))
 // process phpbb common data //
 //include($phpbb_root_path . 'ext/phpbbireland/portal/blocks/block_build.' . $phpEx);
 
-
-
-
 $this_page_name = $this_page[1];
 $this_page_name = str_replace('php/', '', $this_page_name);
 $page_id = get_page_id($this_page_name);

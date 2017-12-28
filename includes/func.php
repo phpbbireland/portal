@@ -177,6 +177,7 @@ class func
 			$active_blocks[] = $row;
 			$arr[$row['id']] = explode(','  , $row['view_pages']);
 		}
+		$db->sql_freeresult($result);
 
 		$this_page_name = $this->get_current_page();
 
@@ -222,7 +223,6 @@ class func
 				}
 			}
 		}
-		$db->sql_freeresult($result);
 
 		if (!function_exists('group_memberships'))
 		{

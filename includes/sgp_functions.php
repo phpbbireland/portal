@@ -339,6 +339,7 @@ if (!function_exists('get_user_data'))
 
 		$result = $db->sql_query($sql,10);
 		$row = $db->sql_fetchrow($result);
+
 		$db->sql_freeresult($result);
 
 		switch ($what)
