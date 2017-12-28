@@ -172,7 +172,10 @@ while ($row = $db->sql_fetchrow($result))
 		}
 	}
 }
+
 $db->sql_freeresult($result);
+
+
 
 // Pull attachment data
 if (sizeof($attach_list))
