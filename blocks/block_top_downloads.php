@@ -118,7 +118,7 @@ while ($row = $db->sql_fetchrow($result))
 		$forum_count++;
 	}
 }
-$db->sql_freeresult($result);
+@$db->sql_freeresult($result);
 
 for ($i = 0; $i < $forum_count; $i++)
 {
