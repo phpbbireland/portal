@@ -428,7 +428,7 @@ class func
 			'USERNAME_FULL'           => get_username_string('full', $user->data['user_id'], $user->data['username'], $user->data['user_colour']),
 
 			'U_INDEX'                 => append_sid("{$phpbb_root_path}index.$this->php_ext"),
-			'U_PORTAL'                => append_sid("{$phpbb_root_path}portal"),
+			'U_PORTAL'                => append_sid("{$phpbb_root_path}portal.$this->php_ext"),
 			'U_STAFF'                 => append_sid("{$phpbb_root_path}memberlist.$this->php_ext", 'mode=leaders'),
 			'U_SEARCH_BOOKMARKS'      => append_sid("{$phpbb_root_path}ucp.$this->php_ext", 'i=main&mode=bookmarks'),
 

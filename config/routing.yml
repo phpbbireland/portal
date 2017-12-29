@@ -1,5 +1,5 @@
 phpbbireland_portal_controller:
-    pattern: /portal
+    path: /portal.php
     defaults: { _controller: phpbbireland.portal.controller:display }
 
 phpbbireland_portal_redirect_controller:

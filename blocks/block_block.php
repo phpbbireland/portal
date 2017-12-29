@@ -761,7 +761,7 @@ class block
 		$template->assign_vars(array(
 			'S_USER_LOGGED_IN'	=> ($this->user->data['user_id'] != ANONYMOUS) ? true : false,
 			'U_INDEX'			=> append_sid("{$phpbb_root_path}index.$this->phpEx"),
-			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal"),
+			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal.$this->phpEx"),
 		));
 	}
 }

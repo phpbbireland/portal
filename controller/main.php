@@ -144,8 +144,6 @@ class main //implements main_interface
 		global $phpbb_container;
 		global $k_config, $k_menus, $k_blocks, $k_pages, $k_groups, $k_resources, $phpbb_root_path;
 
-
-
 		$this->controller_helper->run_initial_tasks();
 		$this->controller_helper->generate_all_block();
 
