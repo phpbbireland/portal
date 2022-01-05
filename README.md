@@ -1,12 +1,12 @@
 #portal
 
-Fully integrated portal for phpBB 3.1.x
+Fully integrated portal for phpBB 3.3.x
 
-**Development Status:** [![Build Status](https://travis-ci.org/phpbbireland/portal.svg)](https://travis-ci.org/phpbbireland/portal)
+**Development Status:** [![Build Status](https://github.com/Prosk8er/portal/workflows/Tests/badge.svg)](https://github.com/Prosk8er/portal/actions)
 
 No more travis errors but no pass?
 
-## Tested with phpBB 3.1.9
+## Tested with phpBB 3.3.5
     • Quite a few updates to the portal code including some additions to the code and minor fixes...
     • Note, the process of updating many files at one time, make commenting impractical.
     • Added a sample style (Olympus).  
