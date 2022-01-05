@@ -128,9 +128,9 @@ class helper
 
 		if (!$blocks_enabled)
 		{
-			$this->template->assign_vars(array(
+			$this->template->assign_vars([
 				'PORTAL_MESSAGE' => $this->user->lang('BLOCKS_DISABLED'),
-			));
+			]);
 		}
 
 		$this->includes_path = $this->phpbb_root_path . 'ext/phpbbireland/portal/includes/';

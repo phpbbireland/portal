@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -23,9 +23,9 @@ class sgp_functions_admin
 
 		if (!$db->sql_affectedrows() && !isset($k_config[$config_name]))
 		{
-			$sql = 'INSERT INTO ' . K_VARS_TABLE . ' ' . $db->sql_build_array('INSERT', array(
+			$sql = 'INSERT INTO ' . K_VARS_TABLE . ' ' . $db->sql_build_array('INSERT', [
 				'config_name'   => $config_name,
-				'config_value'  => $config_value));
+				'config_value'  => $config_value]);
 			$db->sql_query($sql);
 		}
 
@@ -40,7 +40,7 @@ class sgp_functions_admin
 	{
 		global $reserved_words, $db, $template, $table_prefix;
 
-		$reserved_words = array();
+		$reserved_words = [];
 
 		$sql = 'SELECT *
 			FROM ' . K_RESOURCES_TABLE . "
@@ -52,9 +52,9 @@ class sgp_functions_admin
 		{
 			$reserved_words[] = $row['word'];
 
-			$template->assign_block_vars('reserved_words', array(
+			$template->assign_block_vars('reserved_words', [
 				'RESERVED_WORDS' => $row['word'],
-			));
+			]);
 
 		}
 		$db->sql_freeresult($result);
@@ -73,10 +73,10 @@ class sgp_functions_admin
 		$result = $db->sql_query($sql);
 
 		// backward compatability, set up group zero //
-		$template->assign_block_vars('groups', array(
+		$template->assign_block_vars('groups', [
 			'GROUP_NAME' => $user->lang['NONE'],
 			'GROUP_ID'   => 0,
-		));
+		]);
 
 		while ($row = $db->sql_fetchrow($result))
 		{
@@ -85,10 +85,10 @@ class sgp_functions_admin
 
 			$group_name = ($user->lang(strtoupper('G_'.$group_name))) ? $user->lang(strtoupper('G_'.$group_name)) : $user->lang(strtoupper($group_name));
 
-			$template->assign_block_vars('groups', array(
+			$template->assign_block_vars('groups', [
 				'GROUP_NAME' => $group_name,
 				'GROUP_ID'   => $group_id,
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -103,13 +103,13 @@ class sgp_functions_admin
 			ORDER BY group_id ASC, group_name';
 		$result = $db->sql_query($sql);
 
-		$team_sort_array = array('default', 'g.group_id', 'g.group_name', 'g.group_type', 'u.username');
+		$team_sort_array = ['default', 'g.group_id', 'g.group_name', 'g.group_type', 'u.username'];
 
 		foreach ($team_sort_array as $item)
 		{
-			$template->assign_block_vars('teams_sort', array(
+			$template->assign_block_vars('teams_sort', [
 				'SORT_OPTION' => $item
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -133,7 +133,7 @@ class sgp_functions_admin
 		$errstr = '';
 		$errno = 0;
 
-		$data = array();
+		$data = [];
 
 		$data_read = get_remote_file($url, '/' . $sub, $file, $errstr, $errno);
 
@@ -145,13 +145,13 @@ class sgp_functions_admin
 
 			$version = $row->version->major[0] . '.' . $row->version->minor[0] . '.' . $row->version->revision[0];
 
-			$data = array(
+			$data = [
 				'title'			=> $row->title[0],
 				'description'	=> $row->description[0],
 				'download'		=> $row->download,
 				'announcement'	=> $row->announcement,
 				'version'       => $version,
-			);
+			];
 			return($data);
 		}
 		return(null);
@@ -172,13 +172,12 @@ class sgp_functions_admin
 
 		while ($row = $db->sql_fetchrow($result))
 		{
-			$template->assign_block_vars('link_images_row', array(
+			$template->assign_block_vars('link_images_row', [
 				'LINK_IMAGE'	=> $phpbb_root_path . 'ext/phpbbireland/portal/images/links/' . $row['image'],
 				'LINK_URL'		=> $row['url'],
 				'LINK_LINK'		=> $row['link'],
 				'TLINK'		=> $i++,
-			));
-
+			]);
 		}
 	}
 

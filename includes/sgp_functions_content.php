@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -61,8 +61,8 @@ if (!function_exists('truncate_post'))
 		$text_limitn = $post_length = $position = $offset = $tmp = $m = $count = $pos = $in_list = 0;
 		$bbcodes_start_count = $bbcodes_end_count = 0;
 
-		$bbcodes_start = $bbcodes_end = array();
-		$bbocde_start_array = $bbocde_end_array = array();
+		$bbcodes_start = $bbcodes_end = [];
+		$bbocde_start_array = $bbocde_end_array = [];
 
 		$buffer = '';
 		$post_length = strlen($post_text);

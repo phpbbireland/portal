@@ -5,7 +5,7 @@
 *
 * @package Kiss Portal Engine / Stargate Portal
 * @version $Id$
-* @copyright (c) 2005-2015 phpbbireland
+* @copyright (c) 2005-2022 phpbbireland
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -20,7 +20,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -35,7 +35,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ARRANGE_BLOCKS'		=> '',
 	'ARRANGE_NOW'			=> ' &bull; Arrange Blocks &bull; Tools.',
 	'ARRANGE_ICO'			=> 'Arrange Icon',
@@ -78,4 +78,4 @@ $lang = array_merge($lang, array(
 	'RIGHT_BLOCKS_EXPLAIN' 	=> 'comma separated string',
 
 	'UCP_PORTAL_TITLE'	=> 'Portal Options',
-));
+]);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -40,9 +40,9 @@ if ($request->is_set_post('submit'))
 	$sgp_functions_admin->sgp_acp_set_config('k_teams_sort', $k_teams_sort);
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_TEAMS'                   => $k_teams,
 	'S_K_TEAMS_DISPLAY_THIS_MANY' => $k_teams_display_this_many,
 	'S_K_TEAMPAGE_MEMBERSHIPS'    => $k_teampage_memberships,
 	'S_K_TEAMS_SORT'              => $k_teams_sort,
-));
+]);

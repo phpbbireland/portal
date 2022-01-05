@@ -59,7 +59,7 @@ class modules_helper
 		}
 		else
 		{
-			$disallow_access = array();
+			$disallow_access = [];
 		}
 
 		return $disallow_access;
@@ -101,7 +101,7 @@ class modules_helper
 	{
 		$forum_list = make_forum_select(false, false, true, true, true, false, true);
 
-		$selected_options = $select_ary = array();
+		$selected_options = $select_ary = [];
 		if(isset($this->config[$key]) && strlen($this->config[$key]) > 0)
 		{
 			$selected_options = explode(',', $this->config[$key]);
@@ -110,11 +110,11 @@ class modules_helper
 		// Build forum options
 		foreach ($forum_list as $f_id => $f_row)
 		{
-			$select_ary[] = array(
+			$select_ary[] = [
 				'value'		=> $f_id,
 				'title'		=> $f_row['padding'] . $f_row['forum_name'],
 				'disabled'	=> $f_row['disabled'],
-			);
+			];
 		}
 
 		return $this->generate_select_box($key, $select_ary, $selected_options);
@@ -131,7 +131,7 @@ class modules_helper
 	public function store_selected_forums($key)
 	{
 		// Get selected extensions
-		$values = $this->request->variable($key, array(0 => ''));
+		$values = $this->request->variable($key, [0 => '']);
 		$news = implode(',', $values);
 		$this->config->set($key, $news);
 	}

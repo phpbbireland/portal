@@ -177,10 +177,10 @@ class main //implements main_interface
 			$l_login_logout = $this->user->lang['LOGIN'];
 		}
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'S_LOGIN_ACTION'  => $s_login_logout,
 			'L_LOGIN_LOGOUT'  => $l_login_logout,
-		));
+		]);
 
 		$this->assign_images($this->config['portal_user_info'], $this->config['portal_pick_buttons']);
 		$this->page_title = $this->user->lang['PORTAL'];
@@ -198,21 +198,21 @@ class main //implements main_interface
 
 		$this->get_portal_cache();
 
-		$this->template->assign_block_vars('rules', array(
+		$this->template->assign_block_vars('rules', [
 			'TO_DAY' => $this->user->format_date(time(), false, true),
 			'RULES'  => $basic_rules,
-		));
+		]);
 
 		// Output page
 		page_header($this->user->lang['RULES_HEADER']);
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'EXT_TEMPLATE_PATH'    => $mod_style_path,
-		));
+		]);
 
-		$this->template->set_filenames(array(
+		$this->template->set_filenames([
 			'body' => 'rules.html'
-		));
+		]);
 
 		page_footer();
 
@@ -224,13 +224,13 @@ class main //implements main_interface
 	public function assign_images($assign_user_buttons, $assign_post_buttons)
 	{
 		// may extend to add portal images //
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'REPORTED_IMG'	=> $this->user->img('icon_topic_reported', 'POST_REPORTED'),
-		));
+		]);
 
 		if ($assign_user_buttons)
 		{
-			$this->template->assign_vars(array(
+			$this->template->assign_vars([
 				'PROFILE_IMG'  => $this->user->img('icon_user_profile', 'READ_PROFILE'),
 				'SEARCH_IMG'   => $this->user->img('icon_user_search', 'SEARCH_USER_POSTS'),
 				'PM_IMG'       => $this->user->img('icon_contact_pm', 'SEND_PRIVATE_MESSAGE'),
@@ -241,19 +241,19 @@ class main //implements main_interface
 				'MSN_IMG'      => $this->user->img('icon_contact_msnm', 'MSNM'),
 				'YIM_IMG'      => $this->user->img('icon_contact_yahoo', 'YIM'),
 				'JABBER_IMG'   => $this->user->img('icon_contact_jabber', 'JABBER'),
-			));
+			]);
 		}
 
 		if ($assign_post_buttons)
 		{
-			$this->template->assign_vars(array(
+			$this->template->assign_vars([
 				'QUOTE_IMG'   => $this->user->img('icon_post_quote', 'REPLY_WITH_QUOTE'),
 				'EDIT_IMG'    => $this->user->img('icon_post_edit', 'EDIT_POST'),
 				'DELETE_IMG'  => $this->user->img('icon_post_delete', 'DELETE_POST'),
 				'INFO_IMG'    => $this->user->img('icon_post_info', 'VIEW_INFO'),
 				'REPORT_IMG'  => $this->user->img('icon_post_report', 'REPORT_POST'),
 				'WARN_IMG'    => $this->user->img('icon_user_warn', 'WARN_USER'),
-			));
+			]);
 		}
 	}
 

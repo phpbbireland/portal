@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -86,7 +86,7 @@ class vars_module
 			$var_file_name = $switch;
 		}
 
-		$template->assign_vars(array( 'S_SWITCH' => $var_file_name ));
+		$template->assign_vars([ 'S_SWITCH' => $var_file_name ]);
 
 		if ($submit && !check_form_key('blocks_vars'))
 		{
@@ -106,10 +106,10 @@ class vars_module
 		}
 		$db->sql_freeresult($result);
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_OPT' => 'manage',
 			'MESSAGE' => '',
-		));
+		]);
 
 		if ($submit)
 		{
@@ -283,10 +283,10 @@ class vars_module
 
 				$mode = 'reset';
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'S_OPT' => 'saving',
 					'MESSAGE' => $user->lang['SAVED'],
-				));
+				]);
 
 				$cache->destroy('_k_config');
 				$cache->destroy('sql', K_VARS_TABLE);

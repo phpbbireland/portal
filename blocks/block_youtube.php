@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -63,19 +63,18 @@ while ($row = $db->sql_fetchrow($result))
 			$my_title = sgp_checksize ($my_title, 14);
 		}
 
-		$template->assign_block_vars('top_topics', array(
+		$template->assign_block_vars('top_topics', [
 			'TOPIC_TITLE'		=> $my_title,
 			'FULL_T_TITLE'		=> $row['topic_title'],
 			'S_SEARCH_ACTION'	=> append_sid("{$phpbb_root_path}viewtopic.$phpEx", 'f=' . $row['forum_id'] . '&amp;t=' . $row['topic_id']),
 			'TOPIC_REPLIES'		=> $row['topic_replies'],
-			)
-		);
+		]);
 	}
 }
 
 $db->sql_freeresult($result);
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'TOP_TOPICS_DAYS'	=> sprintf($user->lang['TOP_TOPICS_DAYS'], $k_config['k_top_topics_days']),
 	'TOP_TOPICS_DEBUG'	=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);

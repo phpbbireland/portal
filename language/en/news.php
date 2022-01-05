@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -41,7 +41,7 @@ if (empty($lang) || !is_array($lang))
 // If the portal is disabled we load this file to handle left over lang vars
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ANNOUNCEMENTS_AND_NEWS'  => 'News and Announcements',
 	'BLOCKS_DISABLED'         => 'Portal blocks are currently disabled!',
 	'POST_NEWS'				  => 'News',
@@ -49,4 +49,4 @@ $lang = array_merge($lang, array(
 	'POST_NEW_IMG'			  => 'Post New',
 	'POST_NEW_HOT_IMG'		  => 'Post New Hot',
 	'VIEW_TOPIC_NEWS'		  => 'Post News: ',
-));
+]);

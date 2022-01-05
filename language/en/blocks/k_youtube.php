@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'AUTOPLAY_OFF'               => 'Autoplay is off...',
 	'AUTOPLAY_ON'                => 'Autoplay is on...',
 	'ACP_VIDEO_TITLE'            => 'Portal youtube variables.',
@@ -72,4 +72,4 @@ $lang = array_merge($lang, array(
 	'VIDEO_TITLE_EXPLAIN'        => 'The title of the video.',
 	'VIDEO_WHO'                  => 'Artist',
 	'VIDEO_WHO_EXPLAIN'          => 'Artist or details of the performers.',
-));
+]);

@@ -3,7 +3,7 @@
 
 		<!-- IF S_SHOW_RIGHT_BLOCKS -->
 		<div class="r_block_vert_gap" style="width:{BLOCK_WIDTH};" id="right">
-			<script type="text/javascript">
+			<script>
 				// <![CDATA[
 				if(GetCookie('right_blocks_col_hide') == '2')
 				{
@@ -26,7 +26,7 @@
 	This prevents js reports and ensures the scroll work correctly... Added: 09 March 2008 Mike.
 	-->
 	<!-- IF S_IS_PORTAL and S_ARRANGE -->
-	<script type="text/javascript">
+	<script>
 	// <![CDATA[
 		var _left;
 		var _right;
@@ -88,7 +88,7 @@
 	<!-- ENDIF -->
 
 	<!-- IF S_IS_PORTAL and not S_ARRANGE -->
-	<script type="text/javascript">
+	<script>
 	// <![CDATA[
 		SetCookie('{COOKIE_NAME}_sgp_block_cache', '300');
 	 // ]]>
@@ -96,7 +96,7 @@
 	<!-- ENDIF -->
 
 	<!-- IF S_CLEAR_CACHE -->
-	<script type="text/javascript">
+	<script>
 	// <![CDATA[
 		SetCookie('{COOKIE_NAME}_sgp_block_cache', '0');
 		SetCookie('{COOKIE_NAME}_sgp_left', '', 0);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -76,7 +76,7 @@ class listener implements EventSubscriberInterface
 	*/
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.user_setup'	=> 'load_language_on_setup',
 			'core.page_header'	=> 'add_portal_link',
 			'core.page_footer'	=> 'add_portal_final',
@@ -87,7 +87,7 @@ class listener implements EventSubscriberInterface
 			// ACP event
 			'core.permissions'	=> 'add_categories',
 			'core.permissions'	=> 'add_permission',
-		);
+		];
 	}
 
 	public function load_language_on_setup($event)
@@ -95,10 +95,10 @@ class listener implements EventSubscriberInterface
 		//var_dump('listener.php > load_language_on_setup(...)');
 
 		$lang_set_ext = $event['lang_set_ext'];
-		$lang_set_ext[] = array(
+		$lang_set_ext[] = [
 			'ext_name' => 'phpbbireland/portal',
 			'lang_set' => 'portal',
-		);
+		];
 		$event['lang_set_ext'] = $lang_set_ext;
 	}
 
@@ -111,8 +111,8 @@ class listener implements EventSubscriberInterface
 		$event['categories'] = $categories;
 
 		$permissions = $event['permissions'];
-		$permissions['a_k_portal'] = array('lang' => 'ACL_A_PORTAL', 'cat' => 'portal');
-		$permissions['u_k_portal'] = array('lang' => 'ACL_U_PORTAL', 'cat' => 'portal');
+		$permissions['a_k_portal'] = ['lang' => 'ACL_A_PORTAL', 'cat' => 'portal'];
+		$permissions['u_k_portal'] = ['lang' => 'ACL_U_PORTAL', 'cat' => 'portal'];
 		$event['permissions'] = $permissions;
 	}
 
@@ -138,14 +138,14 @@ class listener implements EventSubscriberInterface
 		$portal_link = str_replace('/app.php', '', $portal_link);
 		$page = $this->page_name();
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'KISS'					=> true,
 			'U_PORTAL'				=> $portal_link,
 			'L_PORTAL'				=> $this->user->lang['PORTAL'],
 			'PAGE'					=> $page,
 			'S_SHOW_RIGHT_BLOCKS'	=> true,
 			'S_SHOW_LEFT_BLOCKS'	=> true,
-		));
+		]);
 
 		if ($page != 'portal')
 		{
@@ -168,14 +168,14 @@ class listener implements EventSubscriberInterface
 		include_once($phpbb_root_path . 'ext/phpbbireland/portal/includes/sgp_functions.' . $this->php_ext);
 		$logo_left = $logo_right = $logo = sgp_get_rand_logo();
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'STARGATE_BUILD'      => (isset($this->config['portal_build'])) ? $this->config['portal_build'] : '',
 			'STARGATE_VERSION'    => (isset($this->config['portal_version'])) ? $this->config['portal_version'] : '',
 			'SITE_LOGO_IMG'       => $logo,
 			'SITE_LOGO_IMG_RIGHT' => $logo_right,  // may contain site and & description
 			//'SITENAME'            => '',           // hide site name if required
 			//'SITE_DESCRIPTION'    => '',           // hide site description if required
-		));
+		]);
 	}
 
 	public function process_blocks_for_phpbb_pages()

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -38,7 +38,7 @@ if (!$auth->acl_get('u_search') || !$auth->acl_getf_global('f_search') || !$this
 	}
 }
 
-$this->template->assign_vars(array(
+$this->template->assign_vars([
 	'S_SEARCH'			=> $allow_search,
 	'L_SEARCH_ADV' 		=> $this->user->lang['SEARCH_ADV'],
 	'L_SEARCH_OPTION' 	=> (!empty($portal_config['search_option_text'])) ? $portal_config['search_option_text'] : $board_config['sitename'],
@@ -48,4 +48,4 @@ $this->template->assign_vars(array(
 	'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal.$phpEx"),
 	'U_SEARCH'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'keywords=' . urlencode($keywords)),
 	'U_SEARCH_BOOKMARKS'=> ($this->user->data['user_id'] != ANONYMOUS) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=main&mode=bookmarks') : '',
-));
+]);

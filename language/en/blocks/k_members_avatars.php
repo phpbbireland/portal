@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'K_RECENT_TOPICS_TITLE'           => 'Recent Topics Variables',
 	'K_RECENT_TOPICS_TO_DISPLAY'      => 'Number of topics to display',
 	'K_RECENT_TOPICS_PER_FORUM'       => 'Number of topics per forum',
@@ -48,4 +48,4 @@ $lang = array_merge($lang, array(
 	'RECENT_TOPICS'         => 'Recent Topics',
 	'RECENT_REPLY'          => 'View latest reply...',
 	'BLOCK_RECENT_TOPICS'   => 'Kiss Portal Recent Topics',
-));
+]);

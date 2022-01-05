@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -37,8 +37,8 @@ if ($request->is_set_post('submit'))
 	$sgp_functions_admin->sgp_acp_set_config('k_yourtube_link_limit', $k_yourtube_link_limit);
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_YOURTUBE_AUTO'       => $k_yourtube_auto,
 	'S_K_YOURTUBE_LINK'       => $k_yourtube_link,
 	'S_K_YOURTUBE_LINK_LIMIT' => $k_yourtube_link_limit
-));
+]);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -52,7 +52,7 @@ if ($this->config['load_online'] && $this->config['load_online_time'] && $displa
 
 	$l_online_time = $user->lang('VIEW_ONLINE_TIMES', (int) $this->config['load_online_time']);
 
-	$this->template->assign_vars(array(
+	$this->template->assign_vars([
 		'TOTAL_USERS_ONLINE'	=> $l_online_users,
 		'LOGGED_IN_USER_LIST'	=> $online_userlist,
 		'RECORD_USERS'			=> $l_online_record,
@@ -66,6 +66,5 @@ if ($this->config['load_online'] && $this->config['load_online_time'] && $displa
 		'S_DISPLAY_SEARCH'		=> (!$this->config['load_search']) ? 0 : (isset($auth) ? ($auth->acl_get('u_search') && $auth->acl_getf_global('f_search')) : 1),
 		'S_DISPLAY_PM'			=> ($this->config['allow_privmsg'] && !empty($user->data['is_registered']) && ($auth->acl_get('u_readpm') || $auth->acl_get('u_sendpm'))) ? true : false,
 		'S_DISPLAY_MEMBERLIST'	=> (isset($auth)) ? $auth->acl_get('u_viewprofile') : 0,
-
-	));
+	]);
 }

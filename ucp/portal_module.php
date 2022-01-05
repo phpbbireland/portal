@@ -3,7 +3,7 @@
 *
 * @package ucp (Kiss Portal Engine)
 * @version $Id$
-* @copyright (c) 2005-2013 phpbbireland
+* @copyright (c) 2005-2022 phpbbireland
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -53,7 +53,7 @@ class portal_module
 		$submit   = $request->variable('submit', false);
 		$delete   = $request->variable('dlete', false);
 
-		$error = $data = array();
+		$error = $data = [];
 		$s_hidden_fields = '';
 		$message = '';
 
@@ -71,46 +71,46 @@ class portal_module
 		switch ($mode)
 		{
 			case 'arrange':
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'ARRANGE_ICO'      => $user->lang['UCP_K_INFO_ARRANGE'],
 					'L_ARRANGE_ICON'   => $user->lang['ARRANGE_ICON'],
 					'U_PORTAL_ARRANGE' => append_sid("{$phpbb_root_path}portal.$phpEx", "arrange=1"),
 					'LINK_IMG'         => '<img src="' . $phpbb_root_path . 'ext/phpbbireland/portal/images/portal_ucp_images/arrange.gif" alt="" />',
-				));
+				]);
 			break;
 
 			case 'edit':
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'L_SWITCH_INFO'    => $user->lang['UCP_K_INFO_EDIT'],
 					'K_LEFT_BLOCKS'    => $row['user_left_blocks'],
 					'K_CENTER_BLOCKS'  => $row['user_center_blocks'],
 					'K_RIGHT_BLOCKS'   => $row['user_right_blocks'],
-				));
+				]);
 
 			break;
 
 			case 'delete':
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'CHECKBOX'       => 1,
 					'L_SWITCH_INFO'  => $user->lang['UCP_K_INFO_DELETE'],
-				));
+				]);
 			break;
 
 			case 'info':
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'CHECKBOX'        => 1,
 					'L_SWITCH_INFO'   => $user->lang['UCP_K_INFO_INFO'],
 					'PORTAL_SITE'     => $user->lang['DEV_SITE'] . 'http://www.phpbbireland.com',
 					'PORTAL_VERSION'  => $config['portal_version'],
 					'PORTAL_BUILD'    => $config['portal_build'],
-				));
+				]);
 			break;
 
 			case 'width':
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'CHECKBOX'       => 1,
 					'L_SWITCH_INFO'  => $user->lang['UCP_K_INFO_WIDTH'],
-				));
+				]);
 			break;
 
 			default:
@@ -161,9 +161,9 @@ class portal_module
 						WHERE user_id = " . $user_id;
 					$result = $db->sql_query_limit($sql, 1);
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'CHECKBOX'		=> 0,
-					));
+					]);
 
 					$message = $user->lang['UCP_K_RESET'];
 					meta_refresh(1, $this->u_action);
@@ -173,7 +173,7 @@ class portal_module
 
 		get_default_block_layout($user_id);
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'SWITCH'           => $mode,
 			'MESSAGE'          => $message,
 			'CHECKBOX'         => ($mode == 'delete') ? 1 : 0,
@@ -183,7 +183,7 @@ class portal_module
 			'L_TITLE'          => $user->lang['UCP_K_BLOCKS_' . strtoupper($mode)],
 			'S_HIDDEN_FIELDS'  => $s_hidden_fields,
 			'S_UCP_ACTION'     => $this->u_action,
-		));
+		]);
 
 		$this->tpl_name = 'ucp_portal';
 	}

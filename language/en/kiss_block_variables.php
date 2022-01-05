@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,7 +38,7 @@ if (empty($lang) || !is_array($lang))
 //
 // Portal Menu Names + add you menu language variables here! //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SGP_BLOG'         => 'SGP Integrated Blog',
 	'LINKS_MENU'       => 'Links Menu',
 	'RATINGS_LATEST'   => 'Latest Ratings',
@@ -52,10 +52,10 @@ $lang = array_merge($lang, array(
 	'UPLOAD_IMAGES'    => 'Upload Images',
 	'USER_INFORMATION' => 'User Information',
 
-));
+]);
 
 // Portal Block Names + add your block name language variables here! //
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ADMIN_CP'          => 'Admin CP',
 	'BOARD_MINI_NAV'    => 'Sub Nav',
 	'BOARD_STYLE'       => 'Board Style',
@@ -83,41 +83,41 @@ $lang = array_merge($lang, array(
 	'WELCOME_SITE'      => 'Welcome to<br /><strong>%s</strong>',
 	'YOUR_PROFILE'      => 'User profile',
 
-));
+]);
 
 // Block Names
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ADMIN_OPTIONS'           => 'Admin Options',
 	'BUG_TRACKER'             => 'Bug Tracker',
 	'TRANSLATE_SITE'          => '<strong>Translate site to...</strong>',
 	'TRANSLATE_RESET'         => '<strong>Reset to original language</strong>',
 	'ANNOUNCEMENTS_AND_NEWS'  => 'News and Announcements',
-));
+]);
 
 // Acronyms
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ALLOW_ACRONYMS'         => 'Process Local Acronyms (built in) in posts',
 	'ALLOW_ACRONYMS_EXPLAIN' => 'Allow local acronyms in posts',
-));
+]);
 
 // IRC Channel(s)
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'IRC_POPUP'    => 'Popup IRC Channel',
 	'SIGNED_OFF'   => 'Signed off',
 	'NO_JAVA_SUP'  => 'No java support',
 	'NO_JAVA_VER'  => 'Sorry, but you need a Java 1.4.x enabled browser to use PJIRC',
-));
+]);
 
 // Age ranges
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'AGE_RANGE'        => 'Age range',
 	'AVERAGE_AGE'      => 'Average age',
 	'TOTAL_AGE'        => 'Total age',
 	'TOTAL_AGE_COUNTS' => 'Total age counts',
-));
+]);
 
 // RSS Newsfeeds
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'NO_CURL'               => 'curl not installed. Use fopen instead (change in ACP)',
 	'NO_FOPEN'              => 'fopen not installed. Use curl instead (change in ACP)',
 	'RSS_CACHE_ERROR'       => 'Sorry, no RSS items found in the cache file.',
@@ -126,14 +126,14 @@ $lang = array_merge($lang, array(
 	'RSS_LIST_ERROR'        => 'Could not get RSS list.',
 	'RSS_ERROR'             => 'RSS Error - Check feed link (above) to confirm.',
 	'LOG_RSS_CACHE_CLEANED' => 'RSS cache cleared',
-));
+]);
 
 // HTTP Referrals
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'TOT_REF' => 'Total Referrals',
-));
+]);
 
 // Mini Mods
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'CHECK_VERSION'  => 'Check for updates',
-));
+]);

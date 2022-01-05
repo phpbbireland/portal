@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -30,7 +30,7 @@ $change = true;
 $ext = '.png';
 $i = 0;
 $poster_image_icon = '';
-$group_names = array();
+$group_names = [];
 
 $limit_reached = $team_count = 0;
 $team_max_count = $k_config['k_teams_display_this_many'];
@@ -139,7 +139,7 @@ while ($row = $db->sql_fetchrow($result))
 
 	if ($team_count < $team_max_count || $team_max_count == 0)
 	{
-		$this->template->assign_block_vars('loop', array(
+		$this->template->assign_block_vars('loop', [
 			'FIRST'			=> $i++,
 			'S_CHANGE'		=> $change,
 			'GROUP_IMG_PATH'	=> $g_path,
@@ -148,7 +148,7 @@ while ($row = $db->sql_fetchrow($result))
 			'GROUP_COLOR'		=> $row['group_colour'],
 			'USER_ID'		=> $row['user_id'],
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
-		));
+		]);
 	}
 	else
 	{
@@ -157,9 +157,9 @@ while ($row = $db->sql_fetchrow($result))
 
 	$store = $group_name;
 
-	$this->template->assign_vars(array(
+	$this->template->assign_vars([
 		'L_TEAM_MAX_COUNT'	=> ($limit_reached) ? sprintf($user->lang['TEAM_MAX_COUNT'], $team_max_count) : '',
-	));
+	]);
 }
 
 $db->sql_freeresult($result);

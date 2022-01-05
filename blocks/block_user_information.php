@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -50,7 +50,7 @@ else
 	$l_login_logout = $this->user->lang['LOGIN'];
 }
 
-$this->template->assign_vars(array(
+$this->template->assign_vars([
 	'AVATAR'          => phpbb_get_user_avatar($this->user->data, $user->lang['USER_AVATAR'], false),
 	'WELCOME_SITE'    => sprintf($this->user->lang['WELCOME_SITE'], $this->config['sitename']),
 	'USR_RANK_TITLE'  => $rank_title,
@@ -58,4 +58,4 @@ $this->template->assign_vars(array(
 	'U_LOGIN_LOGOUT'  => $u_login_logout,
 	'L_LOGIN_LOGOUT'  => $l_login_logout,
 	'S_LOGIN_ACTION'  => append_sid("{$this->phpbb_root_path}ucp.$phpEx", 'mode=login'),
-));
+]);

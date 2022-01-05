@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -36,7 +36,7 @@ else
 	$k_max_block_avatar_height  = $k_config['k_max_block_avatar_height'];
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_MAX_BLOCK_AVATAR_WIDTH'  => $k_max_block_avatar_width,
 	'S_K_MAX_BLOCK_AVATAR_HEIGHT' => $k_max_block_avatar_height,
-));
+]);

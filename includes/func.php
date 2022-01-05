@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -46,15 +46,15 @@ class func
 
 		if (!$blocks_enabled)
 		{
-			$template->assign_vars(array(
+			$template->assign_vars([
 				'PORTAL_MESSAGE' => $user->lang('BLOCKS_DISABLED'),
-			));
+			]);
 		}
 
 		$all = '';
 		$show_center = $show_left = $show_right = false;
-		$LB = $CB = $RB = array();
-		$active_blocks = array();
+		$LB = $CB = $RB = [];
+		$active_blocks = [];
 
 		// if styles use large block images change path to images //
 		$block_image_path = $phpbb_root_path . 'ext/phpbbireland/portal/images/block_images/block/';
@@ -67,12 +67,12 @@ class func
 //		var_dump($logo);
 
 		$theme = rawurlencode($user->style['style_path']);
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'EXT_TEMPLATE_PATH'		=> $phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $theme,
 			'EXT_IMAGE_PATH'		=> $phpbb_root_path . 'ext/phpbbireland/portal/images/',
 			'MOD_IMAGE_LANG_PATH'	=> $phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $theme . '/theme/' . $user->data['user_lang'] . '/',
 			//'SITE_LOGO_IMG'			=> $logo,
-		));
+		]);
 
 		include_once($phpbb_root_path . 'ext/phpbbireland/portal/includes/sgp_functions.' . $this->php_ext);
 
@@ -137,9 +137,9 @@ class func
 						WHERE user_id = ' . (int) $user->data['user_id'];
 					$db->sql_query($sql);
 					// set switch clear cookies now that we have them stored (we use javascript)//
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_CLEAR_CACHE' => true
-					));
+					]);
 				}
 			}
 
@@ -228,7 +228,7 @@ class func
 		{
 			include($phpbb_root_path . 'includes/functions_user.'. $this->php_ext);
 		}
-		$memberships = array();
+		$memberships = [];
 		$memberships = group_memberships(false, $user->data['user_id'], false);
 
 		// Main processing of block data here //
@@ -343,7 +343,7 @@ class func
 		{
 			foreach ($left_block_ary as $block => $value)
 			{
-				$template->assign_block_vars('left_block_files', array(
+				$template->assign_block_vars('left_block_files', [
 					'LEFT_BLOCKS'           => $this->build_block_modules($value),
 					'LEFT_BLOCK_ID'         => 'L_' .$left_block_id[$block],
 					'LEFT_BLOCK_TITLE'      => $left_block_title[$block],
@@ -353,7 +353,7 @@ class func
 					'LEFT_BLOCK_IMG_2'      => (file_exists($big_image_path . $left_block_img[$block])) ? $big_image_path  . $left_block_img[$block] : $big_image_path . 'none.png',
 					'S_CONTENT_FLOW_BEGIN'  => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 					'S_CONTENT_FLOW_END'    => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-				));
+				]);
 			}
 		}
 		//unset($left_block_ary);
@@ -362,7 +362,7 @@ class func
 		{
 			foreach ($right_block_ary as $block => $value)
 			{
-				$template->assign_block_vars('right_block_files', array(
+				$template->assign_block_vars('right_block_files', [
 					'RIGHT_BLOCKS'          => $this->build_block_modules($value),
 					'RIGHT_BLOCK_ID'        => 'R_' .$right_block_id[$block],
 					'RIGHT_BLOCK_TITLE'     => $right_block_title[$block],
@@ -372,7 +372,7 @@ class func
 					'RIGHT_BLOCK_IMG_2'     => (file_exists($big_image_path . $right_block_img[$block])) ? $big_image_path  . $right_block_img[$block] : $big_image_path . 'none.png',
 					'S_CONTENT_FLOW_BEGIN'  => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 					'S_CONTENT_FLOW_END'    => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-				));
+				]);
 			}
 		}
 		//unset($right_block_ary);
@@ -381,7 +381,7 @@ class func
 		{
 			foreach ($center_block_ary as $block => $value)
 			{
-				$template->assign_block_vars('center_block_files', array(
+				$template->assign_block_vars('center_block_files', [
 					'CENTER_BLOCKS'        => $this->build_block_modules($value),
 					'CENTER_BLOCK_ID'      => 'C_' .$center_block_id[$block],
 					'CENTER_BLOCK_TITLE'   => $center_block_title[$block],
@@ -391,21 +391,21 @@ class func
 					'CENTER_BLOCK_IMG_2'   => (file_exists($big_image_path . $center_block_img[$block])) ? $big_image_path  . $center_block_img[$block] : $big_image_path . 'none.png',
 					'S_CONTENT_FLOW_BEGIN' => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 					'S_CONTENT_FLOW_END'   => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-				));
+				]);
 			}
 		}
 		//unset($center_block_ary);
 
 
-		$avatar_data = array(
+		$avatar_data = [
 			'avatar' => $user->data['user_avatar'],
 			'avatar_width' => $user->data['user_avatar_width'],
 			'avatar_height' => $user->data['user_avatar_height'],
 			'avatar_type' => $user->data['user_avatar_type'],
-		);
+		];
 
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'ASSETS_PATH'            => $phpbb_root_path . 'ext/phpbbireland/portal/styles/' . rawurlencode($user->style['style_path']) . '/template/assets/',
 			//'AVATAR'                  => get_user_avatar($user->data['user_avatar'], $user->data['user_avatar_type'], $user->data['user_avatar_width'], $user->data['user_avatar_height']),
 			'AVATAR'                  => phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false),
@@ -440,7 +440,7 @@ class func
 			'HIDE_IMG'		=> '<img src="ext/phpbbireland/portal/images/hide.png"  alt="' . $user->lang['SHOWHIDE'] . '" title="' . $user->lang['SHOWHIDE'] . '" height="16" width="14" />',
 			'MOVE_IMG'		=> '<img src="ext/phpbbireland/portal/images/move.png"  alt="' . $user->lang['MOVE'] . '" title="' . $user->lang['MOVE'] . '" height="16" width="14" />',
 			'SHOW_IMG'		=> '<img src="ext/phpbbireland/portal/images/show.png"  alt="' . $user->lang['SHOW'] . '" title="' . $user->lang['SHOW'] . '" height="16" width="14" />',
-		));
+		]);
 
 	}
 
@@ -448,7 +448,7 @@ class func
 	{
 		///var_dump('func.php > build_block_modules(' . $block_file . ') - called for each block!');
 		global $template;
-		$template->set_filenames(array('block' => '@phpbbireland_portal' . '/blocks/' . $block_file));
+		$template->set_filenames(['block' => '@phpbbireland_portal' . '/blocks/' . $block_file]);
 		return $template->assign_display('block', true);
 	}
 

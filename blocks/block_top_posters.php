@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -52,12 +52,12 @@ while ($row = $db->sql_fetchrow($result))
 	}
 
 
-	$this->template->assign_block_vars('top_posters', array(
+	$this->template->assign_block_vars('top_posters', [
 		'S_SEARCH_ACTION'	=> append_sid("{$this->phpbb_root_path}search.$phpEx", 'author_id=' . $row['user_id'] . '&amp;sr=posts'),
 		'USERNAME_FULL'		=> @get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 		'POSTER_POSTS'		=> $row['user_posts'],
 		'USER_AVATAR_IMG'	=> phpbb_get_user_avatar($row, $user->lang['USER_AVATAR'], false),
 		//'URL'				=> $row['user_website'],
-	));
+	]);
 }
 $db->sql_freeresult($result);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,9 +38,9 @@ if (empty($lang) || !is_array($lang))
 //
 
 // SGP donations
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'DONATIONS'        => 'Manage Donations Variables',
 	'DONATIONS_YEARS'  => 'Select year/years (comma separated, no spaces)',
 	'DONATIONS_MAX'    => 'Maximum number of donations to dispaly',
 	'TOTAL_DONATIONS'  => 'Total donations for %s are $%01.2f',
-));
+]);

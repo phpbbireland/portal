@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ALL_USERS_RESET'	=> 'Reset login attempts for all users',
 	'REPORT'			=> 'Resetting login attempt for all users...',
 	'REPORT_ONE'		=> 'Resetting login attempt for: %s',
@@ -45,4 +45,4 @@ $lang = array_merge($lang, array(
 	'TITLE_EXPLAIN'		=> 'Miscellaneous portal tools.',
 	'TOOL_OPTIONS'		=> 'Available options',
 	'USER_RESET'		=> 'Reset login attempts for user (users name)',
-));
+]);

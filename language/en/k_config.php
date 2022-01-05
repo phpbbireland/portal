@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 // phpbbportal profile fields
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ANNOUNCEMENT_TOPIC'  => 'Announcement Topic',
 	'BLOCK_DEFAULT'       => 'Default',
 	'BLOCK_FIVE_COLUMN'   => 'Five Column',
@@ -96,4 +96,4 @@ $lang = array_merge($lang, array(
 	'RELEASE_ANNOUNCEMENT'  => 'Mod Release Announcement',
 	'TITLE'                 => 'Portal default configuration',
 	'TITLE_EXPLAIN'         => 'Here you can set the portal block default. Items marked with <strong>*</strong> are under construction or for future development.',
-));
+]);

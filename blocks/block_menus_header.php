@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -42,8 +42,8 @@ $block_cache_time = (isset($block_cache_time) ? $block_cache_time : $k_config['k
 
 $j = 0;
 $is_sub_heading = false;
-$portal_menus = array();
-$my_names = array();
+$portal_menus = [];
+$my_names = [];
 
 $sql = "SELECT * FROM ". K_MENUS_TABLE . "
 	WHERE menu_type = " . HEAD_MENUS . "
@@ -57,7 +57,7 @@ if (!$result = $db->sql_query($sql, $block_cache_time))
 	}
 }
 
-$portal_menus = array();
+$portal_menus = [];
 
 while ($row = $db->sql_fetchrow($result))
 {
@@ -69,7 +69,7 @@ if (!function_exists('group_memberships'))
 {
 	include($phpbb_root_path . 'includes/functions_user.'. $phpEx);
 }
-$memberships = array();
+$memberships = [];
 $memberships = group_memberships(false, $user->data['user_id'], false);
 
 
@@ -159,7 +159,7 @@ for ($i = 0; $i < $menu_count; $i++)
 			break;
 		}
 
-		$template->assign_block_vars('header_menus_row', array(
+		$template->assign_block_vars('header_menus_row', [
 			'ID'					=> $portal_menus[$i]['m_id'],
 			'EXTERN'				=> $link_option,
 			'PORTAL_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
@@ -168,14 +168,14 @@ for ($i = 0; $i < $menu_count; $i++)
 			'PORTAL_MENU_ICON'		=> ($portal_menus[$i]['menu_icon']) ? '<img src="' . $phpbb_root_path . 'images/block_images/menu/' . $portal_menus[$i]['menu_icon'] . '" height="16" width="16" alt="" />' : '<img src="' . $phpbb_root_path . 'images/block_images/menu/spacer.gif" height="15px" width="15px" alt="" />',
 			'S_SOFT_HR'				=> $portal_menus[$i]['soft_hr'],
 			'S_SUB_HEADING' 		=> ($portal_menus[$i]['sub_heading']) ? true : false,
-		));
+		]);
 	}
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'DEBUG_QUERIES'		=> (defined('DEBUG_QUERIES')) ? DEBUG_QUERIES : false,
 	'S_USER_LOGGED_IN'	=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 	'U_INDEX'			=> append_sid("{$phpbb_root_path}index.$phpEx"),
 	'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal.$phpEx"),
 	'MENUS_DEBUG'		=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);

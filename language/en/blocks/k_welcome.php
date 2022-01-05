@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,8 +37,8 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'K_WELCOME_MESSAGE_TITLE'   => 'Welcome Block Variables',
 	'K_WELCOME_MESSAGE'         => "Welcome message",
 	'K_WELCOME_MESSAGE_EXPLAIN' => 'The main welcome message is stored in portal.php (language file) and can be altered to suit. You can add up to 250 characters here... You can include phpBB and Portal variables (they will parsed).',
-));
+]);

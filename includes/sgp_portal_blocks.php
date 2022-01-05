@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -30,16 +30,16 @@ $use_block_cookies = (isset($k_config['use_block_cookies'])) ? $k_config['use_bl
 // if block disabled, generate message and return... //
 if (!$blocks_enabled)
 {
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'PORTAL_MESSAGE' => $user->lang('BLOCKS_DISABLED'),
-	));
+	]);
 }
 
 // set up some vars //
 $all = '';
 $show_center = $show_left = $show_right = false;
-$LB = $CB = $RB = array();
-$active_blocks = array();
+$LB = $CB = $RB = [];
+$active_blocks = [];
 
 // if styles use large block images change path to images //
 $block_image_path = $phpbb_root_path . 'ext/phpbbireland/portal/images/block_images/block/';
@@ -112,9 +112,9 @@ if ($row['group_id'] != ANONYMOUS)
 				WHERE user_id = ' . (int) $user->data['user_id'];
 			$db->sql_query($sql);
 			// set switch clear cookies now that we have them stored (we use javascript)//
-			$template->assign_vars(array(
+			$template->assign_vars([
 				'S_CLEAR_CACHE' => true
-			));
+			]);
 		}
 	}
 
@@ -187,7 +187,7 @@ if (!function_exists('group_memberships'))
 {
 	include($phpbb_root_path . 'includes/functions_user.'. $phpEx);
 }
-$memberships = array();
+$memberships = [];
 $memberships = group_memberships(false, $user->data['user_id'], false);
 
 // Main processing of block data here //
@@ -314,7 +314,7 @@ if (isset($left_block_ary) && $show_left)
 {
 	foreach ($left_block_ary as $block => $value)
 	{
-		$template->assign_block_vars('left_block_files', array(
+		$template->assign_block_vars('left_block_files', [
 			'LEFT_BLOCKS'           => portal_block_template($value),
 			'LEFT_BLOCK_ID'         => 'L_' .$left_block_id[$block],
 			'LEFT_BLOCK_TITLE'      => $left_block_title[$block],
@@ -324,7 +324,7 @@ if (isset($left_block_ary) && $show_left)
 			'LEFT_BLOCK_IMG_2'      => (file_exists($big_image_path . $left_block_img[$block])) ? $big_image_path  . $left_block_img[$block] : $big_image_path . 'none.png',
 			'S_CONTENT_FLOW_BEGIN'  => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 			'S_CONTENT_FLOW_END'    => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-		));
+		]);
 	}
 }
 
@@ -332,7 +332,7 @@ if (isset($right_block_ary) && $show_right)
 {
 	foreach ($right_block_ary as $block => $value)
 	{
-		$template->assign_block_vars('right_block_files', array(
+		$template->assign_block_vars('right_block_files', [
 			'RIGHT_BLOCKS'          => portal_block_template($value),
 			'RIGHT_BLOCK_ID'        => 'R_' .$right_block_id[$block],
 			'RIGHT_BLOCK_TITLE'     => $right_block_title[$block],
@@ -342,7 +342,7 @@ if (isset($right_block_ary) && $show_right)
 			'RIGHT_BLOCK_IMG_2'     => (file_exists($big_image_path . $right_block_img[$block])) ? $big_image_path  . $right_block_img[$block] : $big_image_path . 'none.png',
 			'S_CONTENT_FLOW_BEGIN'  => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 			'S_CONTENT_FLOW_END'    => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-		));
+		]);
 	}
 }
 
@@ -372,7 +372,7 @@ if (isset($center_block_ary) && $show_center)
 			}
 		}
 
-		$template->assign_block_vars('center_block_files', array(
+		$template->assign_block_vars('center_block_files', [
 			'CENTER_BLOCKS'        => portal_block_template($value),
 			'CENTER_BLOCK_ID'      => 'C_' .$center_block_id[$block],
 			'CENTER_BLOCK_TITLE'   => $center_block_title[$block],
@@ -382,21 +382,21 @@ if (isset($center_block_ary) && $show_center)
 			'CENTER_BLOCK_IMG_2'   => (file_exists($big_image_path . $center_block_img[$block])) ? $big_image_path  . $center_block_img[$block] : $big_image_path . 'none.png',
 			'S_CONTENT_FLOW_BEGIN' => ($user->lang['DIRECTION'] == 'ltr') ? 'left' : 'right',
 			'S_CONTENT_FLOW_END'   => ($user->lang['DIRECTION'] == 'ltr') ? 'right' : 'left',
-		));
+		]);
 	}
 }
 
 
-$avatar_data = array(
+$avatar_data = [
 	'avatar' => $row['user_avatar'],
 	'avatar_width' => $row['user_avatar_width'],
 	'avatar_height' => $row['user_avatar_height'],
 	'avatar_type' => $row['user_avatar_type'],
-);
+];
 $ava = phpbb_get_avatar($avatar_data, $user->lang['USER_AVATAR'], false);
 
 //var_dump($phpbb_root_path . 'ext/phpbbireland/portal/style/' . rawurlencode($user->style['style_path']) . '/theme/images/');
-$template->assign_vars(array(
+$template->assign_vars([
 	'T_THEME_PATH'            => $phpbb_root_path . 'ext/phpbbireland/portal/style/' . rawurlencode($user->style['style_path']) . '/theme/images/',
 	'AVATAR'				  => $ava,
 	'BLOCK_WIDTH'			  => $blocks_width . 'px',
@@ -428,7 +428,7 @@ $template->assign_vars(array(
 	//'U_PORTAL_ARRANGE'        => append_sid("{$phpbb_root_path}portal.$phpEx", "arrange=1"),
 	'U_STAFF'                 => append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=leaders'),
 	'U_SEARCH_BOOKMARKS'      => append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=main&mode=bookmarks'),
-));
+]);
 
 
 /***
@@ -462,7 +462,7 @@ if ($this_page[0] == 'viewtopic')
 
 	add_form_key('posting');
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'STARGATE'            => true,
 		'MESSAGE'             => '',
 		'L_QUICK_TITLE'       => $user->lang['K_QUICK_REPLY'],
@@ -479,6 +479,6 @@ if ($this_page[0] == 'viewtopic')
 		'S_USER_LOGGED_IN'    => ($user->data['user_id'] != ANONYMOUS) ? true : false,
 		'S_K_SHOW_SMILES'     => $k_config['k_smilies_show'],
 		'QUOTE_IMG'           => $user->img('icon_post_quote', 'REPLY_WITH_QUOTE'),
-	));
+	]);
 }
 ***/

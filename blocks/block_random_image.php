@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -41,10 +41,10 @@ foreach ($k_blocks as $blk)
 // quick report because people forget to add the image directory //
 if (!$handle)
 {
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'RANDOM_ERROR'    => true,
 		'MISSING_FOLDER'  => sprintf($user->lang['MISSING_FOLDER'], $rand_folder),
-	));
+	]);
 	return;
 }
 
@@ -68,7 +68,7 @@ $image = $imglist[$random];
 
 $randomimage .= '<img src="' . $rand_folder . '/' . $image . '" alt="" />';
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'RANDOMIMAGE'         => $randomimage,
 	'S_BLOCK_IS_CENTRED'  => ($block_centred) ? true : false,
-));
+]);

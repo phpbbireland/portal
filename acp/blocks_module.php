@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -70,14 +70,14 @@ class blocks_module
 		// Can not use append_sid here, the $block_id is assigned to the html but unknow to this code //
 		// Would require I add a form element and use $request->variable to retrieve it //
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'U_BACK'        => $this->u_action,
 			'PORTAL_JS'     => $portal_js,
 			'IMG_PATH'      => $img_path_acp_block_icons,
 			'IMG_PATH_ACP'  => $img_path_acp_icons,
 			'CSS_PATH'      => $css_path_acp,
 			'U_MANAGE_PAGES'	=> append_sid("{$phpbb_admin_path}index.$phpEx" , "i={$module_id}&amp;mode=manage"),
-		));
+		]);
 
 		$mode     = $request->variable('mode', '');
 		$block    = $request->variable('block', 0);
@@ -104,7 +104,7 @@ class blocks_module
 			case 'up':
 			case 'down':
 
-				$ids = $ndxs = array();
+				$ids = $ndxs = [];
 				$out_of_wack = false;
 
 				// get current block data using $block var //
@@ -153,10 +153,10 @@ class blocks_module
 					}
 					$db->sql_freeresult($result);
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_BUTTON_HIDE'  => true,
 						'BLOCK_REPORT'   => $user->lang['BLOCKS_AUTO_REINDEXED'],
-					));
+					]);
 
 					$cache->destroy('sql', 	K_BLOCKS_TABLE);
 
@@ -165,7 +165,7 @@ class blocks_module
 					return;
 				}
 
-				$to_move = $move_to = array();
+				$to_move = $move_to = [];
 
 				// get current block data//
 				$sql = "SELECT id, ndx, position
@@ -220,7 +220,7 @@ class blocks_module
 				{
 					$this->index_column_fix($position);
 
-					$to_move = $move_to = array();
+					$to_move = $move_to = [];
 
 					// get current block data//
 					$sql = "SELECT id, ndx, position FROM " . K_BLOCKS_TABLE . "
@@ -362,7 +362,7 @@ class blocks_module
 						$mod_block_id = '0';
 					}
 
-					$view_page_id = $request->variable('view_page_id', array(0));
+					$view_page_id = $request->variable('view_page_id', [0]);
 
 					for ($i = 0; $i < count($view_page_id); $i++)
 					{
@@ -376,7 +376,7 @@ class blocks_module
 
 					$ndx = $this->get_next_ndx($position);		// get the next ndx to use for this position	//
 
-					$sql_array = array(
+					$sql_array = [
 						'ndx'               => $ndx,
 						'title'             => $title,
 						'active'            => $active,
@@ -392,7 +392,7 @@ class blocks_module
 						'minimod_based'     => $minimod_based,
 						'mod_block_id'      => $mod_block_id,
 						'block_cache_time'  => $block_cache_time,
-					);
+					];
 
 					if (!$db->sql_query('INSERT INTO ' . K_BLOCKS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_array)))
 					{
@@ -451,7 +451,7 @@ class blocks_module
 					{
 						if ($dirslist[$i] != '')
 						{
-							$template->assign_block_vars('html_file_name', array('S_BLOCK_FILE_HTML' => $dirslist[$i]));
+							$template->assign_block_vars('html_file_name', ['S_BLOCK_FILE_HTML' => $dirslist[$i]]);
 						}
 					}
 
@@ -476,16 +476,16 @@ class blocks_module
 					{
 						if ($dirslist[$i] != '')
 						{
-							$template->assign_block_vars('img_file_name', array('S_BLOCK_FILE_I' => $dirslist[$i]));
+							$template->assign_block_vars('img_file_name', ['S_BLOCK_FILE_I' => $dirslist[$i]]);
 						}
 					}
 					$dirslist = '';
 
 					// pass default empty/blank image //
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_FNAME_I' => '_blank.gif',
 						'S_OPTIONS' => strtolower($mode),
-					));
+					]);
 				}
 			break;
 
@@ -511,7 +511,7 @@ class blocks_module
 					$img_file_name     = $request->variable('img_file_name', '');
 					$block_cache_time  = $request->variable('block_cache_time', 600);
 
-					$view_page_id = $request->variable('view_page_id', array(0));
+					$view_page_id = $request->variable('view_page_id', [0]);
 
 					for ($i = 0; $i < count($view_page_id); $i++)
 					{
@@ -578,7 +578,7 @@ class blocks_module
 						$ndx = $this->get_next_ndx($position);
 					}
 
-					$sql_ary = array(
+					$sql_ary = [
 						'ndx'               => $ndx,
 						'active'            => $active,
 						'title'             => $title,
@@ -595,7 +595,7 @@ class blocks_module
 						'minimod_based'     => $minimod_based,
 						'mod_block_id'      => $mod_block_id,
 						'block_cache_time'  => $block_cache_time,
-					);
+					];
 
 					$sql = 'UPDATE ' . K_BLOCKS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " WHERE id = " . (int) $id;
 
@@ -661,7 +661,7 @@ class blocks_module
 				{
 					if ($dirslist[$i] != '')
 					{
-						$template->assign_block_vars('html_file_name', array('S_BLOCK_FILE_HTML' => $dirslist[$i]));
+						$template->assign_block_vars('html_file_name', ['S_BLOCK_FILE_HTML' => $dirslist[$i]]);
 					}
 				}
 
@@ -683,7 +683,7 @@ class blocks_module
 				{
 					if ($dirslist[$i] != '')
 					{
-						$template->assign_block_vars('img_file_name', array('S_BLOCK_FILE_I' => $dirslist[$i]));
+						$template->assign_block_vars('img_file_name', ['S_BLOCK_FILE_I' => $dirslist[$i]]);
 					}
 				}
 				$dirslist = '';
@@ -707,7 +707,7 @@ class blocks_module
 					$row['img_file_name'] = 'default.gif';
 				}
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'S_ID'             => $row['id'],
 					'S_NDX'            => $row['ndx'],
 					'S_TITLE'          => $row['title'],
@@ -726,7 +726,7 @@ class blocks_module
 					'S_MOD_BLOCK_ID'   => $row['mod_block_id'],
 					'BLOCK_CACHE_TIME' => $row['block_cache_time'],
 					'S_BLOCK_VAR'      => ($row['var_file_name']) ? $row['var_file_name'] : '',
-				));
+				]);
 
 				$sgp_functions_admin->get_link_images();
 
@@ -806,11 +806,11 @@ class blocks_module
 				}
 				else
 				{
-					confirm_box(false, $user->lang['CONFIRM_OPERATION_BLOCKS'], build_hidden_fields(array(
+					confirm_box(false, $user->lang['CONFIRM_OPERATION_BLOCKS'], build_hidden_fields([
 						'i'       => $module_id,
 						'mode'    => $mode,
 						'action'  => 'delete',
-					)));
+					]));
 				}
 				$template->assign_var('BLOCK_REPORT', $user->lang['ACTION_CANCELLED']);
 				meta_refresh(1, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"));
@@ -823,7 +823,7 @@ class blocks_module
 				if (confirm_box(true))
 				{
 					$thispos = $newpos = '';
-					$list = array();
+					$list = [];
 
 					$sql = 'SELECT * FROM ' . K_BLOCKS_TABLE . ' ORDER by position, ndx';
 
@@ -857,10 +857,10 @@ class blocks_module
 
 					$db->sql_freeresult($result);
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_BUTTON_HIDE'	=> true,
 						'BLOCK_REPORT' => $user->lang['BLOCKS_REINDEXED'],
-					));
+					]);
 
 					$cache->destroy('sql', 	K_BLOCKS_TABLE);
 
@@ -871,11 +871,11 @@ class blocks_module
 				}
 				else
 				{
-					confirm_box(false, $user->lang['CONFIRM_OPERATION_BLOCKS_REINDEX'], build_hidden_fields(array(
+					confirm_box(false, $user->lang['CONFIRM_OPERATION_BLOCKS_REINDEX'], build_hidden_fields([
 						'i'			=> $module_id,
 						'mode'		=> $mode,
 						'action'	=> 'reindex',
-					)));
+					]));
 				}
 
 				$template->assign_var('BLOCK_REPORT', $user->lang['ACTION_CANCELLED']);
@@ -933,7 +933,7 @@ class blocks_module
 							$c_b_last = $c_b_last + 1;
 						}
 
-						$template->assign_block_vars('bdata', array(
+						$template->assign_block_vars('bdata', [
 							'S_ID'               => $row['id'],
 							'S_NDX'              => $row['ndx'],
 							'S_TITLE'            => $row['title'],
@@ -958,7 +958,7 @@ class blocks_module
 							'U_DOWN'     => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=down&amp;block=" . $row['id']),
 							'U_DELETE'   => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=delete&amp;block=" . $row['id']),
 							'U_SET_VARS' => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=config&amp;block=" . $row['id']),
-						));
+						]);
 					}
 
 					$db->sql_freeresult($result);
@@ -966,13 +966,13 @@ class blocks_module
 
 				//$template->assign_var('U_ACTION', $this->u_action);
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'S_OPTIONS'	=> strtolower($mode),
 					'S_LBL' => $l_b_last-1,
 					'S_RBL' => $r_b_last-1,
 					'S_CBL' => $c_b_last-1,
 					'S_LRC' => '1',
-				));
+				]);
 
 				//$module_id = $request->variable('i', '');
 
@@ -1000,7 +1000,7 @@ class blocks_module
 
 				$block_file = $this->get_varfile($block);
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'U_BACK'			=> $this->u_action,
 					'PORTAL_JS'         => $portal_js,
 					'IMG_PATH'          => $img_path_acp_block_icons,
@@ -1008,7 +1008,7 @@ class blocks_module
 					'CSS_PATH'          => $css_path_acp,
 					'S_OPTIONS'         => 'config',
 					'S_BLOCK_VAR'       => $block_file
-				));
+				]);
 
 				process_block_variables($block_file, $submit, $module_id);
 
@@ -1045,7 +1045,7 @@ class blocks_module
 		}
 		else
 		{
-			$k_config = $cached_k_config = array();
+			$k_config = $cached_k_config = [];
 
 			$sql = 'SELECT config_name, config_value
 				FROM ' . K_VARS_TABLE;
@@ -1095,20 +1095,20 @@ class blocks_module
 			ORDER BY page_id ASC, page_name';
 		$result = $db->sql_query($sql);
 
-		$template->assign_block_vars('pages', array(
+		$template->assign_block_vars('pages', [
 			'PAGE_NAME'		=> $user->lang['NONE'],
 			'PAGE_ID'		=> 0,
-		));
+		]);
 
 		while ($row = $db->sql_fetchrow($result))
 		{
 			$page_id = $row['page_id'];
 			$page_name = $row['page_name'];
-			$template->assign_block_vars('pages', array(
+			$template->assign_block_vars('pages', [
 				'PAGE_NAME'  => $page_name,
 				'PAGE_ID'    => $page_id,
 				'IS_CHECKED' => ($id) ? (in_array($page_id, $arr)) ? true : false : '',
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -1204,7 +1204,7 @@ class blocks_module
 		{
 			if ($dirslist[$i] != '')
 			{
-				$template->assign_block_vars('var_file_name', array('S_VAR_FILE_NAME' => $dirslist[$i]));
+				$template->assign_block_vars('var_file_name', ['S_VAR_FILE_NAME' => $dirslist[$i]]);
 			}
 		}
 		$dirslist = '';
@@ -1302,10 +1302,10 @@ class blocks_module
 		$result = $db->sql_query($sql);
 
 		// backward compatability, set up group zero //
-		$template->assign_block_vars('groups', array(
+		$template->assign_block_vars('groups', [
 			'GROUP_NAME'  => $user->lang['NONE'],
 			'GROUP_ID'    => 0,
-		));
+		]);
 
 		while ($row = $db->sql_fetchrow($result))
 		{
@@ -1314,11 +1314,10 @@ class blocks_module
 
 			$group_name = ($user->lang(strtoupper('G_'.$group_name))) ? $user->lang(strtoupper('G_'.$group_name)) : $user->lang(strtoupper($group_name));
 
-			$template->assign_block_vars('groups', array(
+			$template->assign_block_vars('groups', [
 				'GROUP_NAME' => $group_name,
 				'GROUP_ID'   => $group_id,
-				)
-			);
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -1336,8 +1335,8 @@ class blocks_module
 	{
 		global $db, $user;
 
-		$id_array = array();
-		$ndx_array = array();
+		$id_array = [];
+		$ndx_array = [];
 
 		$sql = "SELECT id, ndx
 			FROM  " . K_BLOCKS_TABLE . "

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ALLOW_RAND_BANNER'         => 'Displays a banner in the site header and/or footer',
 	'ALLOW_RAND_BANNER_EXPLAIN' => 'You can add a randomly selected banner image to the header and or footer...<br />Images must be placed in the images/rand_banner folder.<br /><b>Note</b>, for a fixed banner just place one image in folder.',
 	'ALLOW_RAND_HEADER'         => 'Displays a random header image at top of portal and index page',
@@ -158,20 +158,20 @@ $lang = array_merge($lang, array(
 	'USE_COOKIES'         => 'Use cookies to store block info',
 	'USE_COOKIES_EXPLAIN' => 'Use cookies to store block location and visibility',
 
-));
+]);
 
 
 // Tooltips
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ALLOW_TOOLTIPS'    => 'Allow tooltips',
 	'FIRST'             => 'First',
 	'K_TOOLTIPS_WHICH'  => 'Show last/first post in tooltips',
 	'LAST'              => 'Last',
 	'TOOLTIPS'          => 'Tooltips',
-));
+]);
 
 // Portal Menu Names + add you menu language variables here! //
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_CP'           => 'Admin CP',
 	'ALBUM'            => 'Album',
 	'BOOKMARKS'        => 'Bookmarks',
@@ -197,10 +197,10 @@ $lang = array_merge($lang, array(
 	'UPLOAD'           => 'Upload Images',
 	'USER_INFORMATION' => 'User Information',
 	'WELCOME'          => 'Welcome',
-));
+]);
 
 // Portal Block Names + add your block name language variables here! //
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_SHORT'                => 'Admin CP',
 	'ANNOUNCEMENTS'            => 'Announcements',
 	'BIRTHDAY'                 => 'Birthday',
@@ -276,10 +276,10 @@ $lang = array_merge($lang, array(
 	'YOUTUBE_AUTO_EXPLAIN'		=> 'When a video is selected, it will play automatically.',
 	'UNKNOWN_ERROR'            => 'Error not processing saved data<br />',
 	'WELCOME_SITE'             => 'Welcome to<br /><strong>%s</strong>',
-));
+]);
 
 // Block Names
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ADMIN_OPTIONS'           => 'Admin Options',
 	'BABEL_FISH'              => 'Babel Fish',
 	'BUG_TRACKER'             => 'Bug Tracker',
@@ -289,10 +289,10 @@ $lang = array_merge($lang, array(
 	'TOP_POSTERS_SETTINGS'    => 'Top Posters block settings',
 	'TOP_REFERRALS_SETTINGS'  => 'Top Referrals block settings',
 	'THE_TEAM_SETTINGS'       => 'Team Members block settings',
-));
+]);
 
 // Acronyms
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_ACRONYMS'           => 'Manage acronyms',
 	'ACP_ACRONYMS_EXPLAIN'   => 'Add and manage acronyms in posts... <br /><strong>Note:</strong> Where acronyms are comprised or two or more words, they should not contain existing acronyms in their meaning... <br />For example, in the case of the acronym: phpBB3 which appears in the acronym: Stargate Portal, we replace <strong>phpBB3</strong> with <strong>phpBB version 3</strong> to avoid breaking things... In general acronyms should not contain spaces...',
 	'ACRONYM'                => 'Acronym',
@@ -312,19 +312,19 @@ $lang = array_merge($lang, array(
 	'RESERVED_EXPLAIN'       => 'These words cannot be used as an acronym, they are in the reserved word list...',
 	'RESERVED_WORD_LIST'     => 'Manage reserved words',
 	'NEW_WORD'               => 'Add new reserved word.',
-));
+]);
 
 // IRC Channel
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'IRC_CHANNEL'              => 'IRC Channel',
 	'IRC_CHANNEL_NAME'         => 'Name of your IRC channel',
 	'IRC_CHANNEL_EXPLAIN'      => 'The name of the IRC channel you want to use on your board.',
 	'OPT_IRC_CHANNELS'         => 'Optional IRC Channels',
 	'OPT_IRC_CHANNELS_EXPLAIN' => 'Here you can add optional IRC channels. starting with # in the channel name and separated with a comma (,) but NOT spaces. For example: #channel1,#Channel2,#channel3',
-));
+]);
 
 // Age Ranges
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'AGE_RANGES'           => 'Age Ranges',
 	'AGE_INTERVAL'         => 'Age interval',
 	'AGE_INTERVAL_EXPLAIN' => 'The interval to use in the age groups.',
@@ -332,10 +332,10 @@ $lang = array_merge($lang, array(
 	'AGE_START_EXPLAIN'    => 'The age to start the first group with.',
 	'AGE_LIMIT'            => 'Age upper limit',
 	'AGE_LIMIT_EXPLAIN'    => 'The upper age limit to show. NOTE: If you want to show up to for example 100: put in 101 here. (Last group end value + 1)',
-));
+]);
 
 // Cloud
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_CLOUD'               => 'Portal cloud tags default settings. (Cloud 9)',
 	'ACP_CLOUD_EXPLAIN'       => 'Here you can add, edit and delete tags. <strong>Note:</strong> Using a font size greater than 16pt is not recommended, also it might be difficult to see light coloured fonts...',
 	'ADD_CLOUD'               => 'Add a cloud',
@@ -392,11 +392,11 @@ $lang = array_merge($lang, array(
 	'TEAMSPEAK_SETTINGS'      => 'Teanspeak Config',
 	'TEAMSPEAK_PASS'          => 'Password',
 	'TEAMSPEAK_CONNECT'       => 'Connection',
-));
+]);
 
 /*
 // Mini Mod vars
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'MINI_MOD_DEVELOPMENT'         => 'Mini Modules Development, display options',
 	'MINI_MOD_STYLE_COUNT'         => 'The number of styles to include in this block',
 	'MINI_MOD_STYLE_COUNT_EXPLAIN' => '',
@@ -404,25 +404,25 @@ $lang = array_merge($lang, array(
 	'MINI_MOD_BLOCK_COUNT_EXPLAIN' => '',
 	'MINI_MOD_MOD_COUNT'           => 'The number of mods to display in this block',
 	'MINI_MOD_MOD_COUNT_EXPLAIN'   => '',
-));
+]);
 */
 
 // SGP Quick Reply vars 11 February 2010
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SGP_QR_SETTINGS'  => 'SGP Quick Reply Settings',
 	'SGP_QR'           => 'Use SGP quick reply',
 	'SGP_QR_EXPLAIN'   => 'Replace the default quick reply with the portal version.',
-));
+]);
 
 // Random avatars
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'RANDOM_AVATARS'       => 'Random avatar mod',
 	'ALLOW_AVATAR'         => 'Allow random avatars',
 	'ALLOW_AVATAR_EXPLAIN' => 'Use a random avatar if user has no avatar and avatars are allowed.',
-));
+]);
 
 // SGP Teams Block 15 March 2011
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'K_BLOCK_TEAMS'               => 'Select teams to display in block',
 	'K_BLOCK_TEAMS_EXPLAIN'       => 'This dropdown is reusable, each selection will update the list.<br />Selecting <strong>none</strong> will reset the list.',
 	'K_BLOCK_TEAMS_SORT'          => 'Sort By',
@@ -430,12 +430,10 @@ $lang = array_merge($lang, array(
 	'K_TEAMS'                     => 'These teams will be displayed',
 	'K_TEAMS_EXPLAIN'             => '(ID of teams in comma separated list).',
 	'THE_TEAM_SETTINGS_2'         => 'Limit to members',
-));
-
-
+]);
 
 // Member Avatar mod
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'MEMBERS_AVATARS_SETTINGS'       => 'Manage members avatars variables',
 	'K_MA_MAX_AVATARS'               => 'The number of avatars to process',
 	'K_MA_MAX_AVATARS_EXPLAIN'       => 'Set this to 0 (zero) to process all avatars',
@@ -447,4 +445,4 @@ $lang = array_merge($lang, array(
 	'K_MA_AVATAR_MAX_WIDTH'          => 'Limit avatar width to (px)',
 	'K_MA_USER_ACTIVE'               => 'Display only active members',
 	'K_MA_USER_HAS_POSTED'           => 'Include members with no posts',
-));
+]);

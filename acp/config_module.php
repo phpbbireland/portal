@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -33,7 +33,7 @@ class config_module
 		$submit = (isset($_POST['submit'])) ? true : false;
 
 		$forum_id   = $request->variable('f', 0);
-		$forum_data = $errors = array();
+		$forum_data = $errors = [];
 
 		if ($request->is_set_post('submit'))
 		{
@@ -50,18 +50,18 @@ class config_module
 
 		if ($data['version'])
 		{
-			$template->assign_vars(array(
+			$template->assign_vars([
 				'MOD_ANNOUNCEMENT'     => $data['announcement'][0],
 				'MOD_CURRENT_VERSION'  => $config['portal_version'],
 				'MOD_DOWNLOAD'         => $data['download'][0],
 				'MOD_LATEST_VERSION'   => $data['version'],
 				'MOD_TITLE'            => $data['title'][0],
 				'S_UP_TO_DATE'         => ($data['version'] > $config['portal_version']) ? false : true,
-			));
+			]);
 
 		}
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_BLOCKS_WIDTH'    => $blocks_width,
 			'S_BLOCKS_ENABLED'  => $blocks_enabled,
 			'S_PORTAL_VERSION'  => $portal_version,
@@ -69,7 +69,7 @@ class config_module
 			'U_BACK'            => $this->u_action,
 			'S_OPT'             => 'configure',
 			'S_MOD_DATA'        => ($data['version']) ? true : false,
-		));
+		]);
 
 		if ($submit)
 		{
@@ -111,7 +111,7 @@ class config_module
 		$errstr = '';
 		$errno = 0;
 
-		$data = array();
+		$data = [];
 
 		$data_read = get_remote_file($url, '/' . $sub, $file, $errstr, $errno);
 
@@ -123,13 +123,13 @@ class config_module
 
 			$version = $row->version->major[0] . '.' . $row->version->minor[0] . '.' . $row->version->revision[0];
 
-			$data = array(
+			$data = [
 				'title'			=> $row->title[0],
 				'description'	=> $row->description[0],
 				'download'		=> $row->download,
 				'announcement'	=> $row->announcement,
 				'version'       => $version,
-			);
+			];
 			return($data);
 		}
 		return(null);
