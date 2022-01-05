@@ -234,7 +234,7 @@ for ($i = 0; $i < $display_this_many; $i++)
 
 	$total_downloads = $total_downloads + $row[$i]['download_count'];
 
-	switch($row[$i]['extension'])
+	switch ($row[$i]['extension'])
 	{
 		case '7z':
 		case 'ace':

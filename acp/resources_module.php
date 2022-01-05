@@ -23,7 +23,7 @@ class resources_module
 
 		include($phpbb_root_path . 'ext/phpbbireland/portal/includes/sgp_functions.'.$phpEx);
 
-		if(!function_exists('obtain_k_config'))
+		if (!function_exists('obtain_k_config'))
 		{
 			include($phpbb_root_path . 'ext/phpbbireland/portal/includes/functions.' . $phpEx);
 			$k_config = obtain_k_config();

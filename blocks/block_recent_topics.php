@@ -64,7 +64,7 @@ if (!$result = $db->sql_query($sql))
 	trigger_error('Error! Could not query forums information: ' . basename(dirname(__FILE__)) . '/' . basename(__FILE__) . ', line ' . __LINE__);
 }
 
-while( $row = $db->sql_fetchrow($result) )
+while ( $row = $db->sql_fetchrow($result) )
 {
 	$forum_data[] = $row;
 	$forum_count++;
@@ -129,7 +129,7 @@ $sql = "SELECT scroll, position
 	FROM " . K_BLOCKS_TABLE . "
 		WHERE id = '19'";
 
-if( $result = $db->sql_query($sql, 300) )
+if ( $result = $db->sql_query($sql, 300) )
 {
 	$rowx = $db->sql_fetchrow($result);
 	$scroll = $rowx['scroll'];

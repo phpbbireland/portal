@@ -396,14 +396,12 @@ class func
 		}
 		//unset($center_block_ary);
 
-
 		$avatar_data = [
 			'avatar' => $user->data['user_avatar'],
 			'avatar_width' => $user->data['user_avatar_width'],
 			'avatar_height' => $user->data['user_avatar_height'],
 			'avatar_type' => $user->data['user_avatar_type'],
 		];
-
 
 		$template->assign_vars([
 			'ASSETS_PATH'            => $phpbb_root_path . 'ext/phpbbireland/portal/styles/' . rawurlencode($user->style['style_path']) . '/template/assets/',

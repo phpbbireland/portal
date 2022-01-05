@@ -79,7 +79,6 @@ class block
 	{
 		include_once($this->phpbb_root_path . 'ext/phpbbireland/portal/config/constants.' . $this->phpEx);
 
-
 		$block_cache_time  = $this->k_config['k_block_cache_time_default'];
 
 		if (!$this->blocks_enabled)
@@ -87,7 +86,7 @@ class block
 			$this->template->assign_vars([
 				'PORTAL_MESSAGE' => $this->user->lang('BLOCKS_DISABLED'),
 			]);
-			return(NULL);
+			return(null);
 		}
 
 		$sql = "SELECT *

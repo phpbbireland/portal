@@ -109,8 +109,8 @@ if (!function_exists('set_k_config'))
 			WHERE config_name = '" . $db->sql_escape($config_name) . "'";
 		$result = $db->sql_query($sql);
 
-		if (!$result)
 		//if (!$db->sql_affectedrows() && !isset($k_config[$config_name]))
+		if (!$result)
 		{
 			$sql = 'INSERT INTO ' . K_VARS_TABLE . ' ' . $db->sql_build_array('INSERT', [
 				'config_name'   => $config_name,

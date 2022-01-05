@@ -115,7 +115,7 @@ class helper
 		global $db, $k_config, $request;
 
 		$id = $request->variable('style', 0);
-		if($id)
+		if ($id)
 		{
 			return;
 		}

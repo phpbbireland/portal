@@ -79,16 +79,16 @@ class menus_module
 		$menuitem = $request->variable('menuitem', '', false);
 		$type     = $request->variable('type', '', false);
 
-		if($submit)
+		if ($submit)
 		{
-			if($mode == 'nav' || $mode == 'sub' || $mode == 'link')
+			if ($mode == 'nav' || $mode == 'sub' || $mode == 'link')
 			{
 				$mode = 'add';
 			}
 		}
 		else
 		{
-			if($mode == 'nav' || $mode == 'sub' || $mode == 'link')
+			if ($mode == 'nav' || $mode == 'sub' || $mode == 'link')
 			{
 				$store = $mode;
 			}

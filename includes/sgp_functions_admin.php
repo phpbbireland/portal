@@ -169,7 +169,6 @@ class sgp_functions_admin
 
 		$result = $db->sql_query($sql, 10);//$block_cache_time);
 
-
 		while ($row = $db->sql_fetchrow($result))
 		{
 			$template->assign_block_vars('link_images_row', [

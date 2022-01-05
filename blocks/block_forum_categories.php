@@ -361,4 +361,3 @@ function display_forums_categories()
 		'S_DISPLAY_CATS_ONLY' => false,
 	]);
 }
-

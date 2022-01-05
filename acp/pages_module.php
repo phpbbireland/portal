@@ -26,7 +26,7 @@ class pages_module
 
 		include_once($phpbb_root_path . 'ext/phpbbireland/portal/config/constants.' . $phpEx);
 
-		if(!function_exists('obtain_k_config'))
+		if (!function_exists('obtain_k_config'))
 		{
 			include($phpbb_root_path . 'ext/phpbbireland/portal/includes/functions.' . $phpEx);
 			$k_config = obtain_k_config();
@@ -108,7 +108,7 @@ class pages_module
 			{
 				$mods_folder_array = explode(',', $mod_pages);
 
-				foreach($mods_folder_array as $folder)
+				foreach ($mods_folder_array as $folder)
 				{
 					$folder = trim($folder);
 					if (!file_exists($phpbb_root_path . $folder))
@@ -332,7 +332,7 @@ function get_all_available_files()
 		{
 			$mods_folder_array = explode(',', $k_config['k_mod_folders']);
 
-			foreach($mods_folder_array as $folder)
+			foreach ($mods_folder_array as $folder)
 			{
 				$folder = trim($folder);
 
