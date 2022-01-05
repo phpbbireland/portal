@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package Kiss Portal extension for the phpBB Forum Software package 1.0.1
+* @package Kiss Portal extension for the phpBB Forum Software package
 *
 * @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
