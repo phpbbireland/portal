@@ -111,7 +111,7 @@ class block
 		$sql = "SELECT *
 			FROM " . K_BLOCKS_TABLE . "
 			WHERE active = 1
-				AND id = " . (int)$id;
+				AND id = " . (int) $id;
 
 		$result = $db->sql_query($sql);
 

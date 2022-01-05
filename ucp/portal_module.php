@@ -196,7 +196,7 @@ function get_current_block_layout($id)
 
 	$sql = "SELECT user_id, user_left_blocks, user_center_blocks, user_right_blocks
 		FROM " . USERS_TABLE . "
-		WHERE user_id = " . (int)$id;
+		WHERE user_id = " . (int) $id;
 
 	if ($result = $db->sql_query($sql))
 	{
