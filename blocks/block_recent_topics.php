@@ -8,14 +8,6 @@
 *
 */
 
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 // URL PARAMETERS
 if (!defined('POST_TOPIC_URL'))
 {

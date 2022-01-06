@@ -8,11 +8,6 @@
 *
 */
 
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 if (!defined('POST_TOPIC_URL'))
 {
 	define('POST_TOPIC_URL' , 't');

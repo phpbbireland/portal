@@ -7,11 +7,6 @@
 *
 */
 
-if (!defined('IN_PHPBB'))
-{
-   exit;
-}
-
 global $user, $phpbb_root_path;
 
 $this->user = $user;

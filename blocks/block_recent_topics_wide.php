@@ -8,11 +8,6 @@
 *
 */
 
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 //$auth->acl($user->data);
 
 global $user, $forum_id, $phpbb_root_path, $phpEx, $SID, $config, $template, $k_config, $k_blocks, $db, $web_path, $phpbb_container;
