@@ -10,24 +10,6 @@
 
 namespace phpbbireland\portal\ucp;
 
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
-/**
-* Note to potential users of this code ...
-*
-* Remember this is released under the _GPL_ and is subject
-* to that licence. Do not incorporate this within software
-* released or distributed in any way under a licence other
-* than the GPL. We will be watching ... ;)
-*
-* @package ucp
-*/
 class portal_module
 {
 	var $u_action;
