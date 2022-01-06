@@ -13,8 +13,9 @@ if (!defined('IN_PHPBB'))
    exit;
 }
 
-global $k_config, $k_blocks, $template, $user;
+global $k_config, $k_blocks, $config, $template, $user;
 
+$this->config = $config;
 $this->template = $template;
 $this->user = $user;
 
