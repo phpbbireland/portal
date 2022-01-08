@@ -655,7 +655,7 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'ndx'			=> '2',
 				'menu_type'		=> '1',
 				'name'			=> 'Portal',
-				'link_to'		=> 'portal',
+				'link_to'		=> 'portal.php',
 				'extern'		=> '0',
 				'append_sid'	=> '0',
 				'append_uid'	=> '0',

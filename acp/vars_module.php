@@ -64,11 +64,11 @@ class vars_module
 
 			$row = $db->sql_fetchrow($result);
 
-			$title = strtoupper($row['title']);
+			$title = strtoupper($row['title'] = isset($row['title']) ? $row['title'] : '');
 			$title = str_replace(' ','_', $row['title']);
 
-			$block_id = $row['id'];
-			$var_file_name = $row['var_file_name'];
+			$block_id = $row['id'] = isset($row['id']) ? $row['id'] : '';
+			$var_file_name = $row['var_file_name'] = isset($row['var_file_name']) ? $row['var_file_name'] : '';
 
 			$db->sql_freeresult($result);
 			$sgp_functions_admin->get_all_groups();

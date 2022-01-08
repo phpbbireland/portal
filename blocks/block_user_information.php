@@ -13,11 +13,12 @@ if (!defined('IN_PHPBB'))
    exit;
 }
 
-global $k_config, $k_blocks, $config, $template, $user;
+global $k_config, $k_blocks, $config, $template, $user, $phpEx;
 
 $this->config = $config;
 $this->template = $template;
 $this->user = $user;
+$this->php_ext = $phpEx;
 
 $total_queries = $queries = $cached_queries = 0;
 $rank_title = $rank_img = $rank_img_src = '';
@@ -42,12 +43,12 @@ get_user_rank($this->user->data['user_rank'], (($this->user->data['user_id'] == 
 // Generate logged in/logged out status
 if ($this->user->data['user_id'] != ANONYMOUS)
 {
-	$u_login_logout = append_sid("{$this->phpbb_root_path}ucp.$phpEx", 'mode=logout', true, $this->user->session_id);
+	$u_login_logout = append_sid("{$this->phpbb_root_path}ucp.{$this->php_ext}", 'mode=logout', true, $this->user->session_id);
 	$l_login_logout = sprintf($this->user->lang['LOGOUT_USER'], $this->user->data['username']);
 }
 else
 {
-	$u_login_logout = append_sid("{$this->phpbb_root_path}ucp.$phpEx", 'mode=login');
+	$u_login_logout = append_sid("{$this->phpbb_root_path}ucp.{$this->php_ext}", 'mode=login');
 	$l_login_logout = $this->user->lang['LOGIN'];
 }
 
@@ -58,5 +59,5 @@ $this->template->assign_vars([
 	'USR_RANK_IMG'    => $rank_img,
 	'U_LOGIN_LOGOUT'  => $u_login_logout,
 	'L_LOGIN_LOGOUT'  => $l_login_logout,
-	'S_LOGIN_ACTION'  => append_sid("{$this->phpbb_root_path}ucp.$phpEx", 'mode=login'),
+	'S_LOGIN_ACTION'  => append_sid("{$this->phpbb_root_path}ucp.{$this->php_ext}", 'mode=login'),
 ]);

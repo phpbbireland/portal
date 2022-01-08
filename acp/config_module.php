@@ -48,7 +48,7 @@ class config_module
 		$portal_version	= $config['portal_version'];
 		$portal_build	= $config['portal_build'];
 
-		if ($data['version'])
+		if ($data['version'] ?? [])
 		{
 			$template->assign_vars([
 				'MOD_ANNOUNCEMENT'     => $data['announcement'][0],
@@ -68,7 +68,7 @@ class config_module
 			'S_PORTAL_BUILD'    => $portal_build,
 			'U_BACK'            => $this->u_action,
 			'S_OPT'             => 'configure',
-			'S_MOD_DATA'        => ($data['version']) ? true : false,
+			'S_MOD_DATA'        => ($data['version'] ?? []) ? true : false,
 		]);
 
 		if ($submit)
@@ -104,8 +104,8 @@ class config_module
 	{
 		global $db, $template;
 
-		$url = 'phpbbireland.com';
-		$sub = 'kiss2/updates';
+		$url = 'gotskillslounge.com';
+		$sub = 'version/phpbb-extensions/';
 		$file = 'portal.xml';
 
 		$errstr = '';
