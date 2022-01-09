@@ -207,7 +207,7 @@ if ($bbcode_bitfield !== '')
 }
 
 
-$image_path = $mod_root_path . 'styles/common/theme/images/';
+$image_path = $mod_root_path . 'styles/all/theme/images/';
 
 for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 {

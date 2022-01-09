@@ -781,7 +781,7 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'ndx'			=> '11',
 				'menu_type'		=> '1',
 				'name'			=> 'Rules',
-				'link_to'		=> 'rules',
+				'link_to'		=> 'rules.php',
 				'extern'		=> '0',
 				'append_sid'	=> '0',
 				'append_uid'	=> '0',

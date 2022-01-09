@@ -364,7 +364,7 @@ if (isset($center_block_ary) && $show_center)
 		}
 		else
 		{
-			$my_file_wide = "{$style_path_ext}common/template/blocks/" . $value;
+			$my_file_wide = "{$style_path_ext}all/template/blocks/" . $value;
 			$my_file_wide = str_replace('.html', '_wide.html', $my_file_wide);
 			if (file_exists($my_file_wide))
 			{

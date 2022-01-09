@@ -49,7 +49,7 @@ $lang = array_merge($lang, [
 	'BLOCK_DELETED'               => ' Block deleted',
 	'BLOCK_DISABLED_BIG'          => 'Block is Disabled',
 	'BLOCK_EDITED'                => ' Block Edited!',
-	'BLOCK_FNAME_EXPLAIN'         => '(styles/portal_common/template/blocks)',
+	'BLOCK_FNAME_EXPLAIN'         => '(ext/phpbbireland/portal/styles/all/template/blocks)',
 	'BLOCK_FNAME_H'               => 'Filename (.html)',
 	'BLOCK_FNAME_H_BIG'           => 'Block Filename.html',
 	'BLOCK_FNAME_I'               => 'Icon',
@@ -90,7 +90,7 @@ $lang = array_merge($lang, [
 	'BLOCKS_REINDEXED'            => 'All blocks have been Re-Indexed',
 	'BLOCKS_TITLE'                   => 'Block Administration/Management',
 	'BLOCKS_TITLE_EXPLAIN'           => '&bull; Block titles will be replaced with user language variables, if none exits, the values show below will be used.<br />&bull; The last edited block is highlighted (bold).',
-	'BLOCKS_TITLE_EXPLAIN_EXPAND'    => '&bull; The NDX indicates position relative to other blocks in the same column.<br />&bull; Block html files are located in: styles/_portal_common/template/blocks folder.',
+	'BLOCKS_TITLE_EXPLAIN_EXPAND'    => '&bull; The NDX indicates position relative to other blocks in the same column.<br />&bull; Block html files are located in: ext/phpbbireland/portal/styles/all/template/blocks folder.',
 
 	'CONFIRM_OPERATION_BLOCKS'            => 'Do you wish to delete this block?',
 	'CONFIRM_OPERATION_BLOCKS_REINDEX'    => 'Do you wish to re-index the blocks?',

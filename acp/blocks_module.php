@@ -427,7 +427,7 @@ class blocks_module
 
 					$dirslist = '... '; // use ... for empty //
 
-					$dirs = $this->dir_file_exists($phpbb_root_path . 'ext/phpbbireland/portal/styles/common/template/blocks/');
+					$dirs = $this->dir_file_exists($phpbb_root_path . 'ext/phpbbireland/portal/styles/all/template/blocks/');
 
 					while ($file = $dirs->read())
 					{
@@ -638,9 +638,9 @@ class blocks_module
 					return;
 				}
 
-				// search our common styles folder for all available html files //
+				// search our all styles folder for all available html files //
 				$dirslist = '... ';
-				$dirs = $this->dir_file_exists($phpbb_root_path . 'ext/phpbbireland/portal/styles/common/template/blocks');
+				$dirs = $this->dir_file_exists($phpbb_root_path . 'ext/phpbbireland/portal/styles/all/template/blocks');
 
 				while ($file = $dirs->read())
 				{
