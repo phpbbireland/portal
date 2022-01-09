@@ -19,7 +19,8 @@ class release_1_0_2 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return [
-			['config.update', ['portal_build', '321-001']],
+			['config.update', ['portal_version', '1.0.2']],
+			['config.update', ['portal_build', '335-001']],
 			['custom', [[$this, 'seed_db']]],
 		];
 	}
@@ -30,7 +31,7 @@ class release_1_0_2 extends \phpbb\db\migration\migration
 			[
 				'link'			=> 'github',
 				'url'			=> 'github.com/phpbbireland/portal',
-				'image'			=> 'github.gif',
+				'image'			=> 'github.com.png',
 				'active'		=> '1',
 				'open_in_tab'	=> '1',
 			],
