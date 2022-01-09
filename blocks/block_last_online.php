@@ -77,3 +77,11 @@ if ($user->data['user_type'] <> USER_IGNORE && !$auth->acl_gets('u_viewprofile')
 		'NO_VIEWONLINE_R' => true,
 	]);
 }
+
+//Is user not logged in and have no auth to view profiles/memberlist/onlinelist?
+if ($user->data['user_id'] == ANONYMOUS && !$auth->acl_gets('u_viewprofile'))
+{
+	$template->assign_vars([
+		'NO_VIEWONLINE_A' => true,
+	]);
+}
