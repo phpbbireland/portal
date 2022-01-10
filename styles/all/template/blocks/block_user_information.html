@@ -38,7 +38,9 @@
 			</span>
 		</div>
 		<div style="text-align: center; padding: 3px;"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></div>
-		<div style="text-align: center; padding: 3px;"><a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a></div>
+		<div style="text-align: center; padding: 3px;"><a href="{U_SEARCH_NEW}"><i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_NEW}</span></a></div>
+		<div style="text-align: center; padding: 3px;"><a href="{U_SEARCH_UNREAD}"><i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_UNREAD}</span></a></div>
+		<div style="text-align: center; padding: 3px;"><a href="{U_SEARCH_SELF}"><i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_SEARCH_SELF}</span></a></div>
 		<div style="text-align: center; padding: 3px;"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}"><i class="icon fa-power-off fa-fw" aria-hidden="true"></i> {L_LOGIN_LOGOUT}</a></div>
 	<!-- ENDIF -->
 	{S_LOGIN_REDIRECT}
