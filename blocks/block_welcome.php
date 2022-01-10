@@ -54,7 +54,7 @@ $block_details	= $user->lang['WELCOME_MESSAGE'];
 $block_details = str_replace('{WM}', $k_welcome_message, $block_details);
 
 $block_details	= process_for_vars($block_details, true);
-$block_details	= str_replace("[you]", ('<span style="font-weight:bold; color:#' . $user->data['user_colour'] . ';">' . $user->data['username'] . '</span>'), $block_details);
+$block_details	= str_replace("[you]", ('<span style="font-weight: bold; color: #' . $user->data['user_colour'] . ';">' . $user->data['username'] . '</span>'), $block_details);
 
 $this->template->assign_vars( [
 	'W_TITLE'	=> $block_name,
