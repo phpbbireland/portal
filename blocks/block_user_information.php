@@ -55,7 +55,7 @@ else
 	$l_login_logout = $this->user->lang['LOGIN'];
 }
 
-$s_login_redirect = build_hidden_fields(array('redirect' => append_sid("{$this->phpbb_root_path}portal.{$this->php_ext}")));
+$s_login_redirect = build_hidden_fields(['redirect' => append_sid("{$this->phpbb_root_path}portal.{$this->php_ext}")]);
 
 // Add form token for login box, in case page is presenting a login form.
 add_form_key('login', '_LOGIN');
