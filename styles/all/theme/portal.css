@@ -265,3 +265,15 @@ div.rules_page {
 	.l_block_vert_gap { padding-right: 0; padding-left: 0; }
 	.r_block_vert_gap { padding-right: 0; padding-left: 0; }
 }
+
+/*Clock*/
+#digital-clock {
+	background-color: #CADCEB;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	border: solid 1px #ABC5D9;
+}
