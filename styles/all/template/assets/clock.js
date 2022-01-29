@@ -1,50 +1,59 @@
-function Time() {
-	// Creating object of the Date class
+var myhour, myminute, mysecond;
+
+function flipNumber(el, newnumber) {
+	var thistop = el.find(".topc").clone();
+	var thisbottom = el.find(".bottomc").clone();
+	thistop.addClass("new");
+	thisbottom.addClass("new");
+	thisbottom.find(".text").text(newnumber);
+	el.find(".topc").after(thistop);
+	el.find(".topc.new").append(thisbottom);
+	el.addClass("flipping");
+	el.find(".topc:not(.new)").find(".text").text(newnumber);
+	setTimeout(function () {
+		el.find(".bottomc:not(.new)").find(".text").text(newnumber);
+	}, 500);
+}
+function setTime() {
+	$(".flipper").removeClass("flipping");
+	$(".flipper .new").remove();
 	var date = new Date();
-	// Get current hour
-	var hour = date.getHours();
-	// Get current minute
-	var minute = date.getMinutes();
-	// Get current second
-	var second = date.getSeconds();
-	// Variable to store AM / PM
-	var period = "";
-	// Assigning AM / PM according to the current hour
-
-	if (hour >= 12) {
-		period = "PM";
-	} else {
-		period = "AM";
+	var seconds = date.getSeconds().toString();
+	if (seconds.length == 1) {
+		seconds = "0" + seconds;
 	}
-
-	// Converting the hour in 12-hour format
+	var minutes = date.getMinutes().toString();
+	if (minutes.length == 1) {
+		minutes = "0" + minutes;
+	}
+	var hour = date.getHours();
+	if (hour > 12) {
+		hour = hour - 12;
+	}
 	if (hour == 0) {
 		hour = 12;
-	} else {
-		if (hour > 12) {
-			hour = hour - 12;
-		}
 	}
-
-	// Updating hour, minute, and second
-	// if they are less than 10
-	hour = update(hour);
-	minute = update(minute);
-	second = update(second);
-	// Adding time elements to the div
-	document.getElementById("digital-clock").innerText = hour + " : " + minute + " : " + second + " " + period;
-	// Set Timer to 1 sec (1000 ms)
-	setTimeout(Time, 1000);
+	hour = hour.toString();
+	if (hour.length == 1) {
+		hour = "0" + hour;
+	}
+	if ($(myhour[0]).text() !== hour) {
+		flipNumber($(myhour[0]).closest(".flipper"), hour);
+	}
+	if ($(myminute[0]).text() !== minutes) {
+		flipNumber($(myminute[0]).closest(".flipper"), minutes);
+	}
+	if ($(mysecond[0]).text() !== seconds) {
+		flipNumber($(mysecond[0]).closest(".flipper"), seconds);
+	}
+	setTimeout(function () {
+		setTime();
+	}, 500);
 }
 
-// Function to update time elements if they are less than 10
-// Append 0 before time elements if they are less than 10
-function update(t) {
-	if (t < 10) {
-		return "0" + t;
-	}
-	else {
-		return t;
-	}
-}
-Time();
+$(function () {
+	myhour = $(".clock .flipper:nth-child(1) div:not(.new) .text");
+	myminute = $(".clock .flipper:nth-child(2) div:not(.new) .text");
+	mysecond = $(".clock .flipper:nth-child(3) div:not(.new) .text");
+	setTime();
+});
