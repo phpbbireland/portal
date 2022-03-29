@@ -28,7 +28,7 @@ class config_module
 		$mode	= $request->variable('mode', '');
 		$generate = $request->variable('generate', '');
 
-		$data = $this->check_version();
+		/*$data = $this->check_version();*/
 
 		$submit = (isset($_POST['submit'])) ? true : false;
 
@@ -48,7 +48,7 @@ class config_module
 		$portal_version	= $config['portal_version'];
 		$portal_build	= $config['portal_build'];
 
-		if ($data['version'] ?? [])
+/**		if ($data['version'] ?? [])
 		{
 			$template->assign_vars([
 				'MOD_ANNOUNCEMENT'     => $data['announcement'][0],
@@ -60,7 +60,7 @@ class config_module
 			]);
 
 		}
-
+*/
 		$template->assign_vars([
 			'S_BLOCKS_WIDTH'    => $blocks_width,
 			'S_BLOCKS_ENABLED'  => $blocks_enabled,
@@ -100,7 +100,7 @@ class config_module
 			break;
 		}
 	}
-	public function check_version()
+/**	public function check_version()
 	{
 		global $db, $template;
 
@@ -134,5 +134,5 @@ class config_module
 		}
 		return(null);
 	}
-
+*/
 }
