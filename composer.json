@@ -4,7 +4,7 @@
 	"description": "Adds a fully integrated portal to your phpBB 3.3.x forum",
 	"homepage": "https://github.com/phpbbireland/phpbb3-extension-portal",
 	"version": "1.0.2-dev",
-	"time": "2022-01-05",
+	"time": "2022-12-07",
 	"keywords": ["phpbb", "extension", "kiss", "portal"],
 	"license": "GPL-2.0",
 	"authors": [
@@ -39,6 +39,12 @@
 		"display-name": "Kiss Portal Extension",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.3.0,<4.0.0@dev"
+		},
+		"version-check": {
+			"host": "www.gotskillslounge.com",
+			"directory": "/version/phpbb-extensions",
+			"filename": "kissportal_versions.json",
+			"ssl": true
 		}
 	}
 }

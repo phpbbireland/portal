@@ -20,7 +20,7 @@ class release_1_0_2 extends \phpbb\db\migration\migration
 	{
 		return [
 			['config.update', ['portal_version', '1.0.2']],
-			['config.update', ['portal_build', '335-001']],
+			['config.update', ['portal_build', '339-001']],
 			['custom', [[$this, 'seed_db']]],
 		];
 	}
