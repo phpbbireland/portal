@@ -3,17 +3,12 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
 namespace phpbbireland\portal\acp;
-
-if (!defined('IN_PHPBB'))
-{
-   exit;
-}
 
 class pages_module
 {
@@ -26,7 +21,7 @@ class pages_module
 
 		include_once($phpbb_root_path . 'ext/phpbbireland/portal/config/constants.' . $phpEx);
 
-		if(!function_exists('obtain_k_config'))
+		if (!function_exists('obtain_k_config'))
 		{
 			include($phpbb_root_path . 'ext/phpbbireland/portal/includes/functions.' . $phpEx);
 			$k_config = obtain_k_config();
@@ -52,7 +47,7 @@ class pages_module
 		$action	= $request->variable('config', '');
 		$tag_id = $request->variable('tag_id', '');
 
-		$current_pages = array();
+		$current_pages = [];
 
 		$submit = false;
 		if ($request->is_set_post('submit'))
@@ -108,7 +103,7 @@ class pages_module
 			{
 				$mods_folder_array = explode(',', $mod_pages);
 
-				foreach($mods_folder_array as $folder)
+				foreach ($mods_folder_array as $folder)
 				{
 					$folder = trim($folder);
 					if (!file_exists($phpbb_root_path . $folder))
@@ -119,22 +114,22 @@ class pages_module
 					}
 				}
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					//'MESSAGE'  => $user->lang['FOLDER_ADDED'] . ' ' . $folder,
 					'MESSAGE'  => $user->lang['FOLDER_ADDED'],
-				));
+				]);
 			}
 			$sgp_functions_admin->sgp_acp_set_config('k_mod_folders', $mod_pages);
 		}
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'U_BACK'        => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"),
 			'U_ADD'         => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=add"),
 			'U_MANAGE'      => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"),
 			'S_OPT'         => 'S_MANAGE',
 			'S_PAGE'        => isset($k_config['k_landing_page']) ? $k_config['k_landing_page'] : 'portal',
 			'IMG_PATH_ACP'	=> $img_path_acp,
-		));
+		]);
 
 		switch ($mode)
 		{
@@ -154,21 +149,21 @@ class pages_module
 
 					$cache->destroy('sql', K_PAGES_TABLE);
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_OPTION' => 'processing',
 						'MESSAGE'  => $user->lang['REMOVING_PAGES'] . $page_name,
-					));
+					]);
 
 					meta_refresh(1, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"));
 					break;
 				}
 				else
 				{
-					confirm_box(false, sprintf("%s (%s)", $user->lang['DELETE_FROM_LIST'], $page_name), build_hidden_fields(array(
+					confirm_box(false, sprintf("%s (%s)", $user->lang['DELETE_FROM_LIST'], $page_name), build_hidden_fields([
 						'id'      => $page_id,
 						'mode'    => $mode,
-						'action'  => 'delete'))
-					);
+						'action'  => 'delete'
+					]));
 				}
 
 				$template->assign_var('MESSAGE', $user->lang['ACTION_CANCELLED']);
@@ -186,10 +181,10 @@ class pages_module
 					// skip the spacer //
 					if ($tag_id == '..')
 					{
-						$template->assign_vars(array(
+						$template->assign_vars([
 							'S_OPTION' => 'processing', // not lang var
 							'MESSAGE'  => sprintf($user->lang['ERROR_PAGE'], $tag_id),
-						));
+						]);
 						meta_refresh(2, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"));
 						return;
 					}
@@ -199,18 +194,18 @@ class pages_module
 						break;
 					}
 
-					$sql_array = array(
+					$sql_array = [
 						'page_name'	=> $tag_id,
-					);
+					];
 
 					$db->sql_query('INSERT INTO ' . K_PAGES_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_array));
 
 					meta_refresh(1, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=manage"));
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_OPTION' => 'processing', // not lang var
 						'MESSAGE'  => $user->lang['ADDING_PAGES'],
-					));
+					]);
 
 					$cache->destroy('sql', K_PAGES_TABLE);
 					break;
@@ -223,10 +218,10 @@ class pages_module
 
 				$sgp_functions_admin->sgp_acp_set_config('k_landing_page', $page_name, 1);
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'S_OPTION' => 'processing',
 					'MESSAGE'  => $user->lang['LANDING_PAGE_SET'] . ': '. $page_name,
-				));
+				]);
 
 				$cache->destroy('k_config');
 				$cache->destroy('sql', K_VARS_TABLE);
@@ -264,20 +259,20 @@ function get_pages_data()
 	{
 		$current_pages = $row['page_name'];
 
-		$template->assign_block_vars('phpbbpages', array(
+		$template->assign_block_vars('phpbbpages', [
 			'S_PAGE_ID'     => $row['page_id'],
 			'S_PAGE_NAME'   => $row['page_name'],
 			'U_EDIT'        => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=edit&amp;page_id=" . $row['page_id']),
 			'U_DELETE'      => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=delete&amp;page_id=" . $row['page_id']),
 			'U_LAND'        => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=land&amp;page_id=" . $row['page_id']),
-		));
+		]);
 	}
 	$db->sql_freeresult($result);
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'S_OPTION'       => 'manage',
 		'K_MOD_FOLDERS'  => $k_config['k_mod_folders'],
-	));
+	]);
 }
 
 /**
@@ -293,7 +288,7 @@ function get_all_available_files()
 	$page_name = '';
 	$dirslist = $store = ' ';
 
-	$illegal_files = array(".htaccess", "app.$phpEx", "common.$phpEx", "report.$phpEx", "feed.$phpEx", "cron.$phpEx", "config.$phpEx", "csv.$phpEx", "style.$phpEx", "sgp_ajax.$phpEx", "sgpical.$phpEx", "rss.$phpEx");
+	$illegal_files = [".htaccess", "app.$phpEx", "common.$phpEx", "report.$phpEx", "feed.$phpEx", "cron.$phpEx", "config.$phpEx", "csv.$phpEx", "style.$phpEx", "sgp_ajax.$phpEx", "sgpical.$phpEx", "rss.$phpEx"];
 
 	$sql = 'SELECT page_name
 		FROM ' . K_PAGES_TABLE . '
@@ -332,7 +327,7 @@ function get_all_available_files()
 		{
 			$mods_folder_array = explode(',', $k_config['k_mod_folders']);
 
-			foreach($mods_folder_array as $folder)
+			foreach ($mods_folder_array as $folder)
 			{
 				$folder = trim($folder);
 
@@ -347,7 +342,7 @@ function get_all_available_files()
 				{
 					if ($file != '.' && $file != '..' && stripos($file, ".php") && !stripos($file, ".bak") && !in_array($folder .'/'. $file, $arr, true))
 					{
-						$illegal_files_array = array($folder . '/' . 'dummy.' . $phpEx);
+						$illegal_files_array = [$folder . '/' . 'dummy.' . $phpEx];
 
 						$temp = $folder . '/' . $file;
 
@@ -383,10 +378,10 @@ function get_all_available_files()
 		}
 	}
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'S_PHPBB_FILES' => $phpbb_files,
 		'S_FILES_FOUND' => $files_found,
-	));
+	]);
 }
 
 /**
@@ -406,10 +401,10 @@ function get_page_filename($page_id)
 		$row = $db->sql_fetchrow($result);
 	}
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'PAGE_ID'   => $row['page_id'],
 		'PAGE_NAME' => $row['page_name'],
-	));
+	]);
 
 	$db->sql_freeresult($result);
 

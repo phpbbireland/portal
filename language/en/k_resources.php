@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_K_RES_WORDS'			=> 'Resources',
 	'ACP_K_ADMIN_REFERRALS'		=> 'Manage Resource words',
 	'ADD_VARIABLE'				=> 'Add Variable',
@@ -94,4 +94,4 @@ $lang = array_merge($lang, array(
 	'TITLE' 		=> 'Portal Variables Manager',
 	'TITLE_EXPLAIN'	=> 'Method used to pass variables to pages/web pages...<br />The portal replaces the variables with their values automatically.<br />Only variables from $config and $k_config tables are processed...',
 	'TITLE_ADD'		=> 'Add Variable',
-));
+]);

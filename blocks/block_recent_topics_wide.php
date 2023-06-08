@@ -3,15 +3,10 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
-
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
 
 //$auth->acl($user->data);
 
@@ -69,7 +64,7 @@ if (!defined('POST_FORUM_URL'))
 
 // set up variables used //
 $forum_count = $row_count = 0;
-$valid_forum_ids = array();
+$valid_forum_ids = [];
 
 $display_this_many = $k_config['k_recent_topics_to_display'];
 $except_forum_id = $k_config['k_recent_topics_search_exclude'];
@@ -79,7 +74,7 @@ $k_recent_topics_per_forum = $k_config['k_recent_topics_per_forum'];
 
 static $last_forum = 0;
 
-$forum_data = array();
+$forum_data = [];
 
 $sql = "SELECT html_file_name, scroll, position
 	FROM " . K_BLOCKS_TABLE . "
@@ -152,32 +147,32 @@ else
 $post_time_days = time() - 86400 * $k_recent_search_days;
 
 // New code //user_avatar, user_avatar_type, user_avatar_width , user_avatar_height
-$sql_array = array(
+$sql_array = [
 	'SELECT'		=> 'p.post_id, t.*, p.post_edit_time, p.post_subject, p.post_text, p.post_time, p.bbcode_bitfield, p.bbcode_uid, f.forum_desc, u.user_avatar, u.user_avatar_type, u.user_avatar_width, u.user_avatar_height, f.forum_name',
 
-	'FROM'			=> array(FORUMS_TABLE => 'f'),
+	'FROM'			=> [FORUMS_TABLE => 'f'],
 
-	'LEFT_JOIN'		=> array(
-		array(
-			'FROM'	=> array(TOPICS_TABLE => 't'),
+	'LEFT_JOIN'		=> [
+		[
+			'FROM'	=> [TOPICS_TABLE => 't'],
 			'ON'	=> "f.forum_id = t.forum_id",
-		),
-		array(
-			'FROM'	=> array(POSTS_TABLE => 'p'),
+		],
+		[
+			'FROM'	=> [POSTS_TABLE => 'p'],
 			'ON'	=> "t.topic_id = p.topic_id",
-		),
-		array(
-			'FROM'	=> array(USERS_TABLE => 'u'),
+		],
+		[
+			'FROM'	=> [USERS_TABLE => 'u'],
 			'ON'	=> "t.topic_last_poster_id = u.user_id",
-		),
-	),
+		],
+	],
 
 	'WHERE'	=> $where_sql . '
 		' . $types_sql . '
 		AND p.post_id = t.topic_last_post_id
 		AND (p.post_time >= ' . $post_time_days . ' OR p.post_edit_time >= ' . $post_time_days . ')
 			ORDER BY t.forum_id, p.post_time DESC'
-);
+];
 
 $sql = $db->sql_build_query('SELECT', $sql_array);
 
@@ -272,7 +267,7 @@ for ($i = 0; $i < $display_this_many; $i++)
 		$this_post_time = $user->format_date($row[$i]['post_time']);
 	}
 
-	$template->assign_block_vars($style_row . 'recent_topic_row', array(
+	$template->assign_block_vars($style_row . 'recent_topic_row', [
 		'AVATAR_SMALL_IMG'	=> phpbb_get_user_avatar($row[$i], $user->lang['USER_AVATAR'], false),
 		'FORUM_W'			=> $forum_name,
 		'LAST_POST_IMG_W'	=> $user->img('icon_topic_newest', 'VIEW_LATEST_POST'),
@@ -292,7 +287,7 @@ for ($i = 0; $i < $display_this_many; $i++)
 		//'TOOLTIP2_W'		=> bbcode_strip($row[$i]['forum_desc']),
 		'S_PC'              => $thisd,
 		'SS' => $tn - $pd,
-	));
+	]);
 
 	$last_forum = $row[$i]['forum_id'];
 }
@@ -306,8 +301,8 @@ else
 	$post_or_posts = strtolower($user->lang['TOPIC']);
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_COUNT_RECENT'		=> ($i > 0) ? true : false,
 	'RECENT_SEARCH_TYPE'	=> sprintf($user->lang['K_RECENT_SEARCH_DAYS'], $k_recent_search_days),
 	'S_FULL_LEGEND'			=> ($k_post_types) ? true : false,
-));
+]);

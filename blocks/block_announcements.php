@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -48,7 +48,7 @@ $k_announce_item_max_length = $k_config['k_announce_item_max_length'];
 
 $bbcode_bitfield = $a_type = '';
 $has_attachments = $display_notice = false;
-$attach_array = $attach_list = $post_list = $posts = $attachments = $extensions = array();
+$attach_array = $attach_list = $post_list = $posts = $attachments = $extensions = [];
 $time_now = time();
 
 switch ($k_announce_type)
@@ -70,7 +70,7 @@ switch ($k_announce_type)
 	break;
 }
 
-$this->template->assign_block_vars('welcome_text', array());
+$this->template->assign_block_vars('welcome_text', []);
 
 // Search and return all posts of type announcement including global...
 $sql = 'SELECT
@@ -127,7 +127,7 @@ while ($row = $db->sql_fetchrow($result))
 		$post_list[$i++] = $row['post_id'];
 
 		// store all data for now //
-		$rowset[$row['post_id']] = array(
+		$rowset[$row['post_id']] = [
 			'post_id'			=> $row['post_id'],
 			'post_text'			=> $row['post_text'],
 			'topic_id'			=> $row['topic_id'],
@@ -148,7 +148,7 @@ while ($row = $db->sql_fetchrow($result))
 			'bbcode_uid'		=> $row['bbcode_uid'],
 			'enable_bbcode'		=> $row['enable_bbcode'],
 			'bbcode_options'	=> (($row['enable_bbcode']) ? OPTION_FLAG_BBCODE : 0) + (($row['enable_smilies']) ? OPTION_FLAG_SMILIES : 0) + (($row['enable_magic_url']) ? OPTION_FLAG_LINKS : 0),
-		);
+		];
 
 		// Define the global bbcode bitfield, will be used to load bbcodes
 		$bbcode_bitfield = $bbcode_bitfield | base64_decode($row['bbcode_bitfield']);
@@ -207,7 +207,7 @@ if ($bbcode_bitfield !== '')
 }
 
 
-$image_path = $mod_root_path . 'styles/common/theme/images/';
+$image_path = $mod_root_path . 'styles/all/theme/images/';
 
 for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 {
@@ -247,7 +247,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 //3.1.5		$message = sgp_local_acronyms($message);
 	}
 
-	$postrow = array(
+	$postrow = [
 		'ALLOW_REPLY'	=> ($auth->acl_get('f_reply', $row['forum_id']) && $row['topic_status'] != ITEM_LOCKED) ? true : false,
 		'ALLOW_POST'	=> ($auth->acl_get('f_post', $row['forum_id']) && $row['topic_status'] != ITEM_LOCKED) ? true : false,
 		'POSTER'		=> '<span style="color:#' . $row['user_colour'] . ';">' . $row['username'] . '</span>',
@@ -273,7 +273,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 
 		'S_HAS_ATTACHMENTS'	=> (!empty($attachments[$row['post_id']])) ? true : false,
 		'S_DISPLAY_NOTICE'	=> $display_notice && $row['post_attachment'],
-	);
+	];
 
 	$template->assign_block_vars('announce_row', $postrow);
 
@@ -282,9 +282,9 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 	{
 		foreach ($attachments[$row['post_id']] as $attachment)
 		{
-			$this->template->assign_block_vars('announce_row.attachment', array(
-				'DISPLAY_ATTACHMENT'	=> $attachment)
-			);
+			$this->template->assign_block_vars('announce_row.attachment', [
+				'DISPLAY_ATTACHMENT'	=> $attachment
+			]);
 		}
 	}
 
@@ -295,10 +295,10 @@ unset($rowset, $user_cache);
 
 $message = '';
 
-$this->template->assign_vars(array(
+$this->template->assign_vars([
 	'S_ANNOUNCEMENTS_COUNT_ASKED'		=> sizeof($posts),
 	'S_ANNOUNCEMENTS_COUNT_RETURNED'	=> sizeof($post_list),
 	//'ANNOUNCEMENYS_DEBUG'				=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);
 
 // END: Fetch Announcements //

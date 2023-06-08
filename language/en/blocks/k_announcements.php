@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,7 +38,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 // Top downloads mod 11 July 2013
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ANNOUNCE_SETTINGS'                  => 'Announcement Block Variables',
 	'ANNOUNCE_FORUM_ID'                  => 'Announcements Forum ID',
 	'ANNOUNCE_FORUM_ID_EXPLAIN'          => 'The ID of the announcement forum.',
@@ -48,4 +48,4 @@ $lang = array_merge($lang, array(
 	'K_ANNOUNCE_ITEM_MAX_LENGTH_EXPLAIN' => 'Maximum length of each announcement to display, 0 to show full article.',
 	'K_ANNOUNCE_ALLOW'                   => 'Allow Announcements',
 	'K_ANNOUNCE_ALLOW_EXPLAIN'           => 'Allow announcements to be displayed on portal.',
-));
+]);

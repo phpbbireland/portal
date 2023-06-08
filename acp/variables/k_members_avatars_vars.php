@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -52,7 +52,7 @@ else
 	$k_ma_user_has_posted        = $k_config['k_ma_user_has_posted'];
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_MA_AVATAR_MAX_WIDTH'       => $k_ma_avatar_max_width,
 	'S_K_MA_COLUMNS'                => $k_ma_columns,
 	'S_K_MA_DISPLAY_LOGGED_IN_ONLY' => $k_ma_display_logged_in_only,
@@ -60,4 +60,4 @@ $template->assign_vars(array(
 	'S_K_MA_ROWS'                   => $k_ma_rows,
 	'S_K_MA_USER_ACTIVE'            => $k_ma_user_active,
 	'S_K_MA_USER_HAS_POSTED'        => $k_ma_user_has_posted,
-));
+]);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -35,11 +35,6 @@
 * @license http://opensource.org/licenses/gpl-license.php GNU License
 */
 
-if (!defined('IN_PHPBB'))
-{
-   exit;
-}
-
 if (!function_exists('sgp_get_rand_logo'))
 {
 	function sgp_get_rand_logo()
@@ -50,7 +45,7 @@ if (!function_exists('sgp_get_rand_logo'))
 		$imgs ="";
 
 		// Random logos are disabled config, so return default logo //
-		if ($k_config['k_allow_rotating_logos'] == 0)
+		if ($k_config['k_allow_rotating_logos'] ?? [])
 		{
 			return $user->img('site_logo');
 		}
@@ -109,13 +104,13 @@ if (!function_exists('set_k_config'))
 			WHERE config_name = '" . $db->sql_escape($config_name) . "'";
 		$result = $db->sql_query($sql);
 
-		if (!$result)
 		//if (!$db->sql_affectedrows() && !isset($k_config[$config_name]))
+		if (!$result)
 		{
-			$sql = 'INSERT INTO ' . K_VARS_TABLE . ' ' . $db->sql_build_array('INSERT', array(
+			$sql = 'INSERT INTO ' . K_VARS_TABLE . ' ' . $db->sql_build_array('INSERT', [
 				'config_name'   => $config_name,
 				'config_value'  => $config_value,
-				'is_dynamic'    => ($is_dynamic) ? 1 : 0));
+				'is_dynamic'    => ($is_dynamic) ? 1 : 0]);
 			$db->sql_query($sql);
 		}
 
@@ -251,11 +246,11 @@ if (!function_exists('search_block_func'))
 
 		$phpEx = substr(strrchr(__FILE__, '.'), 1);
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			"L_SEARCH_ADV"     => $lang['SEARCH_ADV'],
 			"L_SEARCH_OPTION"  => (!empty($portal_config['search_option_text'])) ? $portal_config['search_option_text'] : $board_config['sitename'],
 			'U_SEARCH'         => append_sid("{$phpbb_root_path}search.$phpEx", 'keywords=' . urlencode($keywords)),
-		));
+		]);
 	}
 }
 
@@ -291,10 +286,10 @@ if (!function_exists('process_for_vars'))
 		global $config;
 		global $k_config, $k_menus, $k_blocks, $k_pages, $k_groups, $k_resources;
 
-		$a = array('{', '}');
-		$b = array('','');
+		$a = ['{', '}'];
+		$b = ['',''];
 
-		$replace = array();
+		$replace = [];
 
 		foreach ($k_resources as $search)
 		{
@@ -368,9 +363,9 @@ if (!function_exists('portal_block_template'))
 		//if ($block_file == '') var_dump('Bug missing: '. $block_file);
 
 		// Set template filename
-		$template->set_filenames(array('block' => 'blocks/' . $block_file));
+		$template->set_filenames(['block' => 'blocks/' . $block_file]);
 
-		//$template->set_filenames(array('block' => $phpbb_root_path .  'ext/phpbbireland/portal/styles/prosilver/template/blocks/' . $block_file));
+		//$template->set_filenames(['block' => $phpbb_root_path .  'ext/phpbbireland/portal/styles/prosilver/template/blocks/' . $block_file]);
 
 		// Return templated data
 		return $template->assign_display('block', true);
@@ -460,7 +455,7 @@ if (!function_exists('s_get_vars_array'))
 
 		define('K_RESOURCES_TABLE',	$table_prefix . 'k_resources');
 
-		$resources = array();
+		$resources = [];
 
 		$sql = 'SELECT * FROM ' . K_RESOURCES_TABLE  . ' ORDER BY word ASC';
 		$result = $db->sql_query($sql);
@@ -489,9 +484,9 @@ if (!function_exists('s_get_vars'))
 
 		while ($row = $db->sql_fetchrow($result))
 		{
-			$template->assign_block_vars('adm_vars', array(
+			$template->assign_block_vars('adm_vars', [
 				'VAR' => $row['word'],
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -553,7 +548,7 @@ if (!function_exists('generate_menus'))
 		{
 			include($phpbb_root_path . 'includes/functions_user.'. $phpEx);
 		}
-		$memberships = array();
+		$memberships = [];
 		$memberships = group_memberships(false, $user->data['user_id'], false);
 
 		for ($i = 1; $i < $p_count + 1; $i++)
@@ -656,7 +651,7 @@ if (!function_exists('generate_menus'))
 					// can be reduce later...
 					if ($k_menus[$i]['menu_type'] == NAV_MENUS)
 					{
-						$template->assign_block_vars('portal_nav_menus_row', array(
+						$template->assign_block_vars('portal_nav_menus_row', [
 							'PORTAL_LINK_OPTION'	=> $link_option,
 							'PORTAL_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_MENU_NAME' 		=> $name,
@@ -664,11 +659,11 @@ if (!function_exists('generate_menus'))
 							'U_PORTAL_MENU_LINK' 	=> ($k_menus[$i]['sub_heading']) ? '' : $link,
 							'S_SOFT_HR'				=> $k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING' 		=> ($k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 					else if ($k_menus[$i]['menu_type'] == SUB_MENUS)
 					{
-						$template->assign_block_vars('portal_sub_menus_row', array(
+						$template->assign_block_vars('portal_sub_menus_row', [
 							'PORTAL_LINK_OPTION'	=> $link_option,
 							'PORTAL_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_MENU_NAME' 		=> $name,
@@ -676,11 +671,11 @@ if (!function_exists('generate_menus'))
 							'U_PORTAL_MENU_LINK' 	=> ($k_menus[$i]['sub_heading']) ? '' : $link,
 							'S_SOFT_HR'				=> $k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING' 		=> ($k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 					else if ($k_menus[$i]['menu_type'] == LINKS_MENUS)
 					{
-						$template->assign_block_vars('portal_link_menus_row', array(
+						$template->assign_block_vars('portal_link_menus_row', [
 							'LINK_OPTION'					=> $link_option,
 							'PORTAL_LINK_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_LINK_MENU_NAME'			=> ($is_sub_heading) ? '' : $name,
@@ -688,17 +683,17 @@ if (!function_exists('generate_menus'))
 							'PORTAL_LINK_MENU_ICON'			=> ($k_menus[$i]['menu_icon'] == 'NONE') ? '' : '<img src="' . $menu_image_path . $k_menus[$i]['menu_icon'] . '" alt="" />',
 							'S_SOFT_HR'						=> $k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING'					=> ($k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 				}
 			}
 		}
 		$process = 1;
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_USER_LOGGED_IN'	=> ($user->data['user_id'] != ANONYMOUS) ? true : false,
 			'U_INDEX'			=> append_sid("{$phpbb_root_path}index.$phpEx"),
 			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal"),
-		));
+		]);
 	}
 }

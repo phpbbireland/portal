@@ -1,9 +1,9 @@
-<!-- IDTAG block_news.html updated 28 March 2011 copyright phpbbireland.com -->
+<!-- IDTAG block_news.html updated 08 January 2022 copyright phpbbireland.com -->
 
 <div class="news">
-	<a id="bstart" name="bstart" accesskey="t"></a>
+	<a id="bstart" accesskey="t"></a>
 	<!-- IF S_NEWS_COUNT_RETURNED == 0 -->
-		<div class="genmed" style="text-align:center;"><strong>{L_NO_NEWS}</strong></div>
+		<div class="genmed" style="text-align: center;"><strong>{L_NO_NEWS}</strong></div>
 	<!-- ELSE -->
 	<!-- BEGIN news_row -->
 		<!-- IF news_row.S_TOPIC_TYPE != 3 -->
@@ -11,7 +11,7 @@
 			<!-- ELSE -->
 			<div class="news bg3a sgp-corners">
 			<!-- ENDIF -->
-				<div class="inner" style="min-height:50px; width:100%;">
+				<div class="inner" style="min-height: 50px; width: 100%;">
 					<div class="news_header">
 						<span class="news_title">
 						<!-- IF news_row.CAT -->
@@ -25,7 +25,7 @@
 						<span class="news_time">{news_row.TIME}</span>
 					</div>
 					<div class="news_body">
-						<div class="news" style="width:100%;">
+						<div class="news" style="width: 100%;">
 							<div class="news_box">
 								<!-- IF news_row.S_TOPIC_TYPE == 4 -->
 									<img src="{MOD_IMAGE_LANG_PATH}/news/generalnews2.png" alt="" />
@@ -47,18 +47,17 @@
 							<!-- IF news_row.S_DISPLAY_NOTICE --><div class="rules">{L_DOWNLOAD_NOTICE}</div><!-- ENDIF -->
 						</div>
 					</div>
-					<div class="news_footer" style="width:100%;">
-						<span class="news_poster" style="width:50%;"> {L_POSTED_BY}: {news_row.U_POSTER}</span>
-						<span class="news_reply" style="width:50%;">
-							<a href="{news_row.U_VIEW}"> <img src="{news_row.VIEW_IMG}" alt="{L_VIEW_FULL_ARTICLE}" title="{L_VIEW_FULL_ARTICLE}" /></a>
-							<a href="{news_row.U_PRINT}"> <img src="{news_row.PRINT_IMG}" alt="{L_PRINT_IT}" title="{L_PRINT_IT}" /></a>
+					<div class="news_footer" style="width: 100%;">
+						<span class="news_poster" style="width: 50%;"> {L_POSTED_BY}: {news_row.U_POSTER}</span>
+						<span class="news_reply" style="width: 50%;">
+							<a href="{news_row.U_VIEW}" title="{L_VIEW_FULL_ARTICLE}"> <i class="icon fa-search fa-fw" aria-hidden="true"></i></a>
+							<a href="{news_row.U_PRINT}" title="{L_PRINT_IT}"> <i class="icon fa-print fa-fw" aria-hidden="true"></i></a>
 							<!-- IF news_row.ALLOW_POST -->
-								<a href="{news_row.U_REPLY}"> <img src="{news_row.REPLY_IMG}" alt="{L_POST_COMMENTS}" title="{L_POST_COMMENTS}" /></a>
+								<a href="{news_row.U_REPLY}" title="{L_POST_COMMENTS}"> <i class="icon fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
 							<!-- ENDIF -->
-							<a href="#bstart" title="Top"><img src="{MOD_COMMON_IMAGES_PATH}icon_back_top.png" width="14" height="14" alt="Top" /></a>
+							<a href="#bstart" title="{L_BACK_TO_TOP}"><i class="icon fa-arrow-up fa-fw" aria-hidden="true"></i></a>
 						</span>
 					</div>
-
 					<br class="clear" />
 				</div>
 			</div>

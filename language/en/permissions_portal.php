@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,12 +18,12 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACL_A_PORTAL'	=> 'Can manage portal settings',
 	'ACL_U_PORTAL'	=> 'Can view portal',
 	'ACL_U_K_PORTAL' => 'Can use portal',
 	'ACL_CAT_PORTAL' => 'Portal',
-));
+]);

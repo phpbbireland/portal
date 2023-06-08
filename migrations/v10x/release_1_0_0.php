@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -19,264 +19,264 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 
 	static public function depends_on()
 	{
-		return array('\phpbb\db\migration\data\v310\dev');
+		return ['\phpbb\db\migration\data\v310\dev'];
 	}
 
 	public function update_data()
 	{
-		return array(
-			array('config.add', array('portal_enabled', 1)),
-			array('config.add', array('blocks_enabled', 1)),
-			array('config.add', array('portal_version', '1.0.0')),
-			array('config.add', array('portal_build', '310-004')),
-			array('config.add', array('blocks_width', '190')),
+		return [
+			['config.add', ['portal_enabled', 1]],
+			['config.add', ['blocks_enabled', 1]],
+			['config.add', ['portal_version', '1.0.0']],
+			['config.add', ['portal_build', '310-004']],
+			['config.add', ['blocks_width', '190']],
 
-			array('permission.add', array('a_k_portal')),
-			array('permission.add', array('u_k_portal')),
+			['permission.add', ['a_k_portal']],
+			['permission.add', ['u_k_portal']],
 
-//			array('permission.role_add', array('Administer Portal', 'a_', 'portal')),
+//			['permission.role_add', ['Administer Portal', 'a_', 'portal']],
 
-			array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_k_portal')),
-			array('permission.permission_set', array('REGISTERED', 'u_k_portal', 'group')),
+			['permission.permission_set', ['ROLE_ADMIN_FULL', 'a_k_portal']],
+			['permission.permission_set', ['REGISTERED', 'u_k_portal', 'group']],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'',
 				'ACP_PORTAL_TITLE',
-			)),
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_CONFIG_TITLE',
-			)),
-			array('module.add', array(
+			]],
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_BLOCKS_TITLE',
-			)),
-			array('module.add', array(
+			]],
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_MENUS_TITLE',
-			)),
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_PAGES_TITLE',
-			)),
-			array('module.add', array(
+			]],
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_RESOURCES_TITLE',
-			)),
-			array('module.add', array(
+			]],
+			['module.add', [
 				'acp',
 				'ACP_PORTAL_TITLE',
 				'ACP_VARS_TITLE',
-			)),
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_CONFIG_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\config_module',
-					'modes'           => array('config_portal'),
-				),
-			)),
+					'modes'           => ['config_portal'],
+				],
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_BLOCKS_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\blocks_module',
-					'modes'           => array('add', 'edit', 'delete', 'up', 'down', 'reindex', 'L', 'C', 'R', 'manage', 'reset'),
-				),
-			)),
-			array('module.add', array(
+					'modes'           => ['add', 'edit', 'delete', 'up', 'down', 'reindex', 'L', 'C', 'R', 'manage', 'reset'],
+				],
+			]],
+			['module.add', [
 				'acp',
 				'ACP_MENUS_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\menus_module',
-					'modes'           => array('add', 'nav', 'sub', 'link', 'edit', 'delete', 'up', 'down', 'all', 'unalloc'),
-				),
-			)),
+					'modes'           => ['add', 'nav', 'sub', 'link', 'edit', 'delete', 'up', 'down', 'all', 'unalloc'],
+				],
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_PAGES_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\pages_module',
-					'modes'           => array('add', 'delete', 'land', 'manage'),
-				),
-			)),
+					'modes'           => ['add', 'delete', 'land', 'manage'],
+				],
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_RESOURCES_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\resources_module',
-					'modes'           => array('select'),
-				),
-			)),
+					'modes'           => ['select'],
+				],
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'acp',
 				'ACP_VARS_TITLE',
-				array(
+				[
 					'module_basename' => '\phpbbireland\portal\acp\vars_module',
-					'modes'           => array('manage'),
-				),
-			)),
+					'modes'           => ['manage'],
+				],
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'ucp',
 				'0',
 				'UCP_PORTAL_TITLE',
-			)),
+			]],
 
-			array('module.add', array(
+			['module.add', [
 				'ucp',
 				'UCP_PORTAL_TITLE',
-				array(
+				[
 					'module_basename'	=> '\phpbbireland\portal\ucp\portal_module',
-					'modes'				=> array('info', 'arrange', 'edit', 'delete', 'width'),
+					'modes'				=> ['info', 'arrange', 'edit', 'delete', 'width'],
 					'module_auth'		=> 'acl_u_k_portal',
-				),
-			)),
+				],
+			]],
 
-			array('config.add', array('portal_mod_version', '1.0.0')),
+			['config.add', ['portal_mod_version', '1.0.0']],
 
-			array('custom', array(array($this, 'seed_db'))),
-		);
+			['custom', [[$this, 'seed_db']]],
+		];
 	}
 
 	public function update_schema()
 	{
-		return array(
+		return [
 
-			'add_tables' => array(
-				$this->table_prefix . 'k_config' => array(
-					'COLUMNS' => array(
-						'config_name'		=> array('VCHAR', ''),
-						'config_value'		=> array('VCHAR', ''),
-						'is_dynamic'		=> array('BOOL', '0'),
-					),
+			'add_tables' => [
+				$this->table_prefix . 'k_config' => [
+					'COLUMNS' => [
+						'config_name'		=> ['VCHAR', ''],
+						'config_value'		=> ['VCHAR', ''],
+						'is_dynamic'		=> ['BOOL', '0'],
+					],
 					'PRIMARY_KEY'	=> 'config_name',
-					'KEYS'			=> array('is_dynamic'	=> array('INDEX', 'is_dynamic'),
-					),
-				),
-				$this->table_prefix . 'k_vars' => array(
-					'COLUMNS' => array(
-						'config_name'		=> array('VCHAR', ''),
-						'config_value'		=> array('VCHAR', ''),
-					),
+					'KEYS'			=> ['is_dynamic'	=> ['INDEX', 'is_dynamic'],
+					],
+				],
+				$this->table_prefix . 'k_vars' => [
+					'COLUMNS' => [
+						'config_name'		=> ['VCHAR', ''],
+						'config_value'		=> ['VCHAR', ''],
+					],
 					'PRIMARY_KEY'	=> 'config_name',
-				),
-				$this->table_prefix . 'k_blocks' => array(
-					'COLUMNS' => array(
-						'id'                => array('UINT', null, 'auto_increment'),
-						'ndx'               => array('UINT', '0'),
-						'title'             => array('VCHAR:50', ''),
-						'position'          => array('CHAR:1', 'L'),
-						'type'              => array('CHAR:1', 'H'),
-						'active'            => array('BOOL', '1'),
-						'html_file_name'    => array('VCHAR', ''),
-						'var_file_name'     => array('VCHAR', 'none.gif'),
-						'img_file_name'     => array('VCHAR', 'none.gif'),
-						'view_all'          => array('BOOL', '1'),
-						'view_groups'       => array('VCHAR:100', ''),
-						'view_pages'        => array('VCHAR:100', ''),
-						'groups'            => array('UINT', '0'),
-						'scroll'            => array('BOOL', '0'),
-						'block_height'      => array('USINT', '0'),
-						'has_vars'          => array('BOOL', '0'),
-						'is_static'         => array('BOOL', '0'),
-						'minimod_based'     => array('BOOL', '0'),
-						'mod_block_id'      => array('UINT', '0'),
-						'block_cache_time'  => array('UINT', '600'),
-					),
+				],
+				$this->table_prefix . 'k_blocks' => [
+					'COLUMNS' => [
+						'id'                => ['UINT', null, 'auto_increment'],
+						'ndx'               => ['UINT', '0'],
+						'title'             => ['VCHAR:50', ''],
+						'position'          => ['CHAR:1', 'L'],
+						'type'              => ['CHAR:1', 'H'],
+						'active'            => ['BOOL', '1'],
+						'html_file_name'    => ['VCHAR', ''],
+						'var_file_name'     => ['VCHAR', 'none.gif'],
+						'img_file_name'     => ['VCHAR', 'none.gif'],
+						'view_all'          => ['BOOL', '1'],
+						'view_groups'       => ['VCHAR:100', ''],
+						'view_pages'        => ['VCHAR:100', ''],
+						'groups'            => ['UINT', '0'],
+						'scroll'            => ['BOOL', '0'],
+						'block_height'      => ['USINT', '0'],
+						'has_vars'          => ['BOOL', '0'],
+						'is_static'         => ['BOOL', '0'],
+						'minimod_based'     => ['BOOL', '0'],
+						'mod_block_id'      => ['UINT', '0'],
+						'block_cache_time'  => ['UINT', '600'],
+					],
 					'PRIMARY_KEY'  => 'id',
-				),
-				$this->table_prefix . 'k_menus' => array(
-					'COLUMNS' => array(
-						'm_id'			=> array('UINT', null, 'auto_increment'),
-						'ndx'			=> array('UINT', '0'),
-						'menu_type'		=> array('USINT', '0'),
-						'name'			=> array('VCHAR:50', ''),
-						'link_to'		=> array('VCHAR', ''),
-						'extern'		=> array('BOOL', '0'),
-						'menu_icon'		=> array('VCHAR:30', 'none.gif'),
-						'append_sid'	=> array('BOOL', '1'),
-						'append_uid'	=> array('BOOL', '0'),
-						'view_all'		=> array('BOOL', '1'),
-						'view_groups'	=> array('VCHAR:100', ''),
-						'soft_hr'		=> array('BOOL', '0'),
-						'sub_heading'	=> array('BOOL', '0'),
-					),
+				],
+				$this->table_prefix . 'k_menus' => [
+					'COLUMNS' => [
+						'm_id'			=> ['UINT', null, 'auto_increment'],
+						'ndx'			=> ['UINT', '0'],
+						'menu_type'		=> ['USINT', '0'],
+						'name'			=> ['VCHAR:50', ''],
+						'link_to'		=> ['VCHAR', ''],
+						'extern'		=> ['BOOL', '0'],
+						'menu_icon'		=> ['VCHAR:30', 'none.gif'],
+						'append_sid'	=> ['BOOL', '1'],
+						'append_uid'	=> ['BOOL', '0'],
+						'view_all'		=> ['BOOL', '1'],
+						'view_groups'	=> ['VCHAR:100', ''],
+						'soft_hr'		=> ['BOOL', '0'],
+						'sub_heading'	=> ['BOOL', '0'],
+					],
 					'PRIMARY_KEY'  => 'm_id',
-				),
-				$this->table_prefix . 'k_pages' => array(
-					'COLUMNS' => array(
-						'page_id'	=> array('UINT', null, 'auto_increment'),
-						'page_name'	=> array('VCHAR_UNI:100', ''),
-					),
+				],
+				$this->table_prefix . 'k_pages' => [
+					'COLUMNS' => [
+						'page_id'	=> ['UINT', null, 'auto_increment'],
+						'page_name'	=> ['VCHAR_UNI:100', ''],
+					],
 					'PRIMARY_KEY'	=> 'page_id',
-				),
-				$this->table_prefix . 'k_resources' => array(
-					'COLUMNS' => array(
-						'id'	=> array('UINT', null, 'auto_increment'),
-						'word'	=> array('VCHAR:50', ''),
-						'type'	=> array('CHAR:1', 'V'),
-					),
+				],
+				$this->table_prefix . 'k_resources' => [
+					'COLUMNS' => [
+						'id'	=> ['UINT', null, 'auto_increment'],
+						'word'	=> ['VCHAR:50', ''],
+						'type'	=> ['CHAR:1', 'V'],
+					],
 					'PRIMARY_KEY'	=> 'id',
-				),
-			),
+				],
+			],
 
-			'add_columns'    => array(
-				$this->table_prefix . 'users' => array(
-					'user_left_blocks'    => array('VCHAR:255', ''),
-					'user_center_blocks'  => array('VCHAR:255', ''),
-					'user_right_blocks'   => array('VCHAR:255', ''),
-				),
-			),
-		);
+			'add_columns'    => [
+				$this->table_prefix . 'users' => [
+					'user_left_blocks'    => ['VCHAR:255', ''],
+					'user_center_blocks'  => ['VCHAR:255', ''],
+					'user_right_blocks'   => ['VCHAR:255', ''],
+				],
+			],
+		];
 	}
 
 	public function revert_schema()
 	{
-		return array(
-			'drop_tables'	=> array(
+		return [
+			'drop_tables'	=> [
 				$this->table_prefix . 'k_config',
 				$this->table_prefix . 'k_blocks',
 				$this->table_prefix . 'k_menus',
 				$this->table_prefix . 'k_pages',
 				$this->table_prefix . 'k_resources',
 				$this->table_prefix . 'k_vars',
-			),
-			'drop_columns' => array(
-				$this->table_prefix . 'users' => array(
+			],
+			'drop_columns' => [
+				$this->table_prefix . 'users' => [
 					'user_left_blocks',
 					'user_center_blocks',
 					'user_right_blocks',
-				),
-			),
-			array('config.remove', array('portal_enabled')),
-			array('config.remove', array('blocks_enabled')),
-			array('config.remove', array('portal_version')),
-			array('config.remove', array('portal_build')),
-			array('config.remove', array('blocks_width')),
+				],
+			],
+			['config.remove', ['portal_enabled']],
+			['config.remove', ['blocks_enabled']],
+			['config.remove', ['portal_version']],
+			['config.remove', ['portal_build']],
+			['config.remove', ['blocks_width']],
 
-			array('permission.remove', array('a_k_portal')),
-			array('permission.remove', array('u_k_portal')),
-		);
+			['permission.remove', ['a_k_portal']],
+			['permission.remove', ['u_k_portal']],
+		];
 	}
 
 	public function seed_db()
 	{
-		$blocks_sql = array(
-			array(
+		$blocks_sql = [
+			[
 				'ndx'			=> '1',
 				'title'			=> 'Site Navigator',
 				'position'		=> 'L',
@@ -296,8 +296,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'title'			=> 'Sub_Menu',
 				'position'		=> 'L',
@@ -317,8 +317,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '3',
 				'title'			=> 'Links_Menu',
 				'position'		=> 'L',
@@ -338,8 +338,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '4',
 				'title'			=> 'Online Users',
 				'position'		=> 'L',
@@ -359,8 +359,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '5',
 				'title'			=> 'Last Online',
 				'position'		=> 'L',
@@ -380,8 +380,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '300',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '6',
 				'title'			=> 'Search',
 				'position'		=> 'L',
@@ -401,8 +401,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '7',
 				'title'			=> 'Categories',
 				'position'		=> 'L',
@@ -422,8 +422,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '667',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'title'			=> 'Welcome',
 				'position'		=> 'C',
@@ -443,8 +443,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '999',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '3',
 				'title'			=> 'Announcements',
 				'position'		=> 'C',
@@ -464,8 +464,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '300',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '4',
 				'title'			=> 'Recent Topics',
 				'position'		=> 'C',
@@ -485,8 +485,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '20',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '5',
 				'title'			=> 'News Report',
 				'position'		=> 'C',
@@ -506,8 +506,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '50',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '1',
 				'title'			=> 'User Information',
 				'position'		=> 'R',
@@ -527,8 +527,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '600',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'title'			=> 'The Team',
 				'position'		=> 'R',
@@ -548,8 +548,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '555',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '3',
 				'title'			=> 'Top Posters',
 				'position'		=> 'R',
@@ -569,8 +569,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '200',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '4',
 				'title'			=> 'Most Active Topics',
 				'position'		=> 'R',
@@ -590,8 +590,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '100',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '5',
 				'title'			=> 'Clock',
 				'position'		=> 'R',
@@ -611,8 +611,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '6009',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '6',
 				'title'			=> 'Links',
 				'position'		=> 'R',
@@ -632,12 +632,12 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'mod_block_id'	=> '0',
 				'is_static'		=> '0',
 				'block_cache_time'	=> '668',
-			),
-		);
+			],
+		];
 		$this->db->sql_multi_insert($this->table_prefix . 'k_blocks', $blocks_sql);
 
-		$menus_sql = array(
-			array(
+		$menus_sql = [
+			[
 				'ndx'			=> '1',
 				'menu_type'		=> '1',
 				'name'			=> 'Main Menu',
@@ -650,12 +650,12 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '1',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'menu_type'		=> '1',
 				'name'			=> 'Portal',
-				'link_to'		=> 'portal',
+				'link_to'		=> 'portal.php',
 				'extern'		=> '0',
 				'append_sid'	=> '0',
 				'append_uid'	=> '0',
@@ -664,8 +664,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '3',
 				'menu_type'		=> '1',
 				'name'			=> 'Forum',
@@ -678,8 +678,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '4',
 				'menu_type'		=> '1',
 				'name'			=> 'Navigator',
@@ -692,8 +692,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '1',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '5',
 				'menu_type'		=> '99',
 				'name'			=> 'Album',
@@ -706,8 +706,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '6',
 				'menu_type'		=> '1',
 				'name'			=> 'Bookmarks',
@@ -720,8 +720,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '7',
 				'menu_type'		=> '99',
 				'name'			=> 'Downloads',
@@ -734,8 +734,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '8',
 				'menu_type'		=> '99',
 				'name'			=> 'Links',
@@ -748,8 +748,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '9',
 				'menu_type'		=> '1',
 				'name'			=> 'Members',
@@ -762,8 +762,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '10',
 				'menu_type'		=> '99',
 				'name'			=> 'Ratings',
@@ -776,12 +776,12 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '11',
 				'menu_type'		=> '1',
 				'name'			=> 'Rules',
-				'link_to'		=> 'rules',
+				'link_to'		=> 'rules.php',
 				'extern'		=> '0',
 				'append_sid'	=> '0',
 				'append_uid'	=> '0',
@@ -790,8 +790,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '12',
 				'menu_type'		=> '1',
 				'name'			=> 'Staff',
@@ -804,8 +804,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '13',
 				'menu_type'		=> '99',
 				'name'			=> 'Statistics',
@@ -818,8 +818,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '14',
 				'menu_type'		=> '1',
 				'name'			=> 'UCP',
@@ -832,8 +832,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '15',
 				'menu_type'		=> '99',
 				'name'			=> 'Chat',
@@ -846,8 +846,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '16',
 				'menu_type'		=> '1',
 				'name'			=> 'Admin Menu',
@@ -860,8 +860,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '1',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '17',
 				'menu_type'		=> '1',
 				'name'			=> 'Admin CP',
@@ -874,8 +874,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '1',
 				'menu_type'		=> '2',
 				'name'			=> 'Mini Menu',
@@ -888,8 +888,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '1',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'menu_type'		=> '2',
 				'name'			=> 'Active Posts',
@@ -902,8 +902,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '1',
 				'menu_type'		=> '5',
 				'name'			=> 'Lnks Menu',
@@ -916,8 +916,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '1',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '2',
 				'menu_type'		=> '5',
 				'name'			=> 'Kiss Portal dev. site',
@@ -930,8 +930,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '3',
 				'menu_type'		=> '5',
 				'name'			=> 'Stargate Portal',
@@ -944,8 +944,8 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-			array(
+			],
+			[
 				'ndx'			=> '4',
 				'menu_type'		=> '5',
 				'name'			=> 'phpBB3',
@@ -958,239 +958,239 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 				'view_groups'	=> '',
 				'soft_hr'		=> '0',
 				'sub_heading'	=> '0',
-			),
-		);
+			],
+		];
 		$this->db->sql_multi_insert($this->table_prefix . 'k_menus', $menus_sql);
 
-		$resources_sql = array(
-			array(
+		$resources_sql = [
+			[
 				'word'	=> 'phpBB',
 				'type'	=> 'R',
-			),
-			array(
+			],
+			[
 				'word'	=> '{PORTAL_VERSION}',
 				'type'	=> 'V',
-			),
-			array(
+			],
+			[
 				'word'	=> '{PORTAL_BUILD}',
 				'type'	=> 'V',
-			),
-			array(
+			],
+			[
 				'word'	=> '{VERSION}',
 				'type'	=> 'V',
-			),
-			array(
+			],
+			[
 				'word'	=> '{SITENAME}',
 				'type'	=> 'V',
-			),
-		);
+			],
+		];
 		$this->db->sql_multi_insert($this->table_prefix . 'k_resources', $resources_sql);
 
-		$pages_sql = array(
-			array(
+		$pages_sql = [
+			[
 				'page_name'	=> 'index',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'portal',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'viewforum',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'viewtopic',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'memberlist',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'mcp',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'ucp',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'search',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'faq',
-			),
-			array(
+			],
+			[
 				'page_name'	=> 'posting',
-			),
-		);
+			],
+		];
 		$this->db->sql_multi_insert($this->table_prefix . 'k_pages', $pages_sql);
 
-		$vars_sql = array(
-			array(
+		$vars_sql = [
+			[
 				'config_name'	=> 'k_announce_allow',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_allow_acronyms',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_bot_display_allow',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_footer_images_allow',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_news_allow',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_announce_type',
 				'config_value'	=> '0',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_blocks_display_globally',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_smilies_show',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_links_scroll_amount',
 				'config_value'	=> '0',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_links_scroll_direction',
 				'config_value'	=> '0',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_announce_item_max_length',
 				'config_value'	=> '400',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_news_item_max_length',
 				'config_value'	=> '350',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_last_online_max',
 				'config_value'	=> '10',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_news_type',
 				'config_value'	=> '0',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_announce_to_display',
 				'config_value'	=> '5',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_links_to_display',
 				'config_value'	=> '5',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_links_forum_id',
 				'config_value'	=> '',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_news_items_to_display',
 				'config_value'	=> '5',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_recent_topics_to_display',
 				'config_value'	=> '25',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_recent_topics_per_forum',
 				'config_value'	=> '5',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_top_posters_to_display',
 				'config_value'	=> '10',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_top_posters_show',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_recent_search_days',
 				'config_value'	=> '7',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_allow_rotating_logos',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_post_types',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_top_topics_max',
 				'config_value'	=> '5',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_adm_block',
 				'config_value'	=> '',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_quick_reply',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_recent_topics_search_exclude',
 				'config_value'	=> '',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_top_topics_days',
 				'config_value'	=> '7',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_block_cache_time_default',
 				'config_value'	=> '600',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_block_cache_time_short',
 				'config_value'	=> '10',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_teams',
 				'config_value'	=> '',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_teams_display_this_many',
 				'config_value'	=> '2',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_max_block_avatar_width',
 				'config_value'	=> '80',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_max_block_avatar_height',
 				'config_value'	=> '80',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_teampage_memberships',
 				'config_value'	=> '0',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_tooltips_active',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_tooltips_which',
 				'config_value'	=> '1',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_landing_page',
 				'config_value'	=> 'portal',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_mod_folders',
 				'config_value'	=> '',
-			),
-			array(
+			],
+			[
 				'config_name'	=> 'k_teams_sort',
 				'config_value'	=> 'default',
-			),
+			],
 
-		);
+		];
 		$this->db->sql_multi_insert($this->table_prefix . 'k_vars', $vars_sql);
 	}
 }

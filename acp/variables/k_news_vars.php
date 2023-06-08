@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -55,9 +55,9 @@ else
 	$k_news_type             = $k_config['k_news_type'];
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_NEWS_ALLOW'            => $k_news_allow,
 	'S_K_NEWS_ITEM_MAX_LENGTH'  => $k_news_item_max_length,
 	'S_K_NEWS_ITEMS_TO_DISPLAY' => $k_news_items_to_display,
 	'S_K_NEWS_TYPE'             => $k_news_type,
-));
+]);

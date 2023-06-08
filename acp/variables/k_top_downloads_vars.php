@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -45,10 +45,10 @@ else
 	$k_top_downloads_types           = $k_config['k_top_downloads_types'];
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_TOP_DOWNLOADS_TO_DISPLAY'     => $k_top_downloads_to_display,
 	'S_K_TOP_DOWNLOADS_SEARCH_EXCLUDE' => $k_top_downloads_search_exclude,
 	'S_K_TOP_DOWNLOADS_SEARCH_DAYS'    => $k_top_downloads_search_days,
 	'S_K_TOP_DOWNLOADS_PER_FORUM'      => $k_top_downloads_per_forum,
 	'S_K_TOP_DOWNLOADS_TYPES'          => $k_top_downloads_types
-));
+]);

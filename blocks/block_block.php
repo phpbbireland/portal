@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -79,15 +79,14 @@ class block
 	{
 		include_once($this->phpbb_root_path . 'ext/phpbbireland/portal/config/constants.' . $this->phpEx);
 
-
 		$block_cache_time  = $this->k_config['k_block_cache_time_default'];
 
 		if (!$this->blocks_enabled)
 		{
-			$this->template->assign_vars(array(
+			$this->template->assign_vars([
 				'PORTAL_MESSAGE' => $this->user->lang('BLOCKS_DISABLED'),
-			));
-			return(NULL);
+			]);
+			return(null);
 		}
 
 		$sql = "SELECT *
@@ -112,7 +111,7 @@ class block
 		$sql = "SELECT *
 			FROM " . K_BLOCKS_TABLE . "
 			WHERE active = 1
-				AND id = " . (int)$id;
+				AND id = " . (int) $id;
 
 		$result = $db->sql_query($sql);
 
@@ -144,7 +143,7 @@ class block
 		// set some variables //
 		$all = '';
 		$show_center = $show_left = $show_right = false;
-		$LB = $CB = $RB = $active_blocks = array();
+		$LB = $CB = $RB = $active_blocks = [];
 
 		// if styles use large block images change path to images //
 		$block_image_path = $this->phpbb_root_path . 'ext/phpbbireland/portal/images/block_images/block/';
@@ -153,11 +152,11 @@ class block
 		$this_page = explode(".", $this->user->page['page']);
 		$theme = rawurlencode($this->user->style['style_path']);
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'EXT_TEMPLATE_PATH'		=> $this->phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $theme,
 			'EXT_IMAGE_PATH'		=> $this_>phpbb_root_path . 'ext/phpbbireland/portal/images/',
 			'MOD_IMAGE_LANG_PATH'	=> $this_>phpbb_root_path . 'ext/phpbbireland/portal/styles/' . $theme . '/theme/' . $this->user->data['user_lang'] . '/',
-		));
+		]);
 	}
 
 
@@ -438,11 +437,11 @@ class block
 
 	public function search_block_func()
 	{
-		$template->assign_vars(array(
+		$template->assign_vars([
 			"L_SEARCH_ADV"     => $this->user->lang['SEARCH_ADV'],
 			"L_SEARCH_OPTION"  => (!empty($this->portal_config['search_option_text'])) ? $this->portal_config['search_option_text'] : $this->board_config['sitename'],
 			'U_SEARCH'         => append_sid("{$this->phpbb_root_path}search.$phpEx", 'keywords=' . urlencode($keywords)),
-		));
+		]);
 	}
 
 	public function which_group($id)
@@ -463,10 +462,10 @@ class block
 
 	public function process_for_vars($data)
 	{
-		$a = array('{', '}');
-		$b = array('','');
+		$a = ['{', '}'];
+		$b = ['',''];
 
-		$replace = array();
+		$replace = [];
 
 		foreach ($this->k_resources as $search)
 		{
@@ -521,7 +520,7 @@ class block
 
 	public function portal_block_template($block_file)
 	{
-		$this->template->set_filenames(array('block' => 'blocks/' . $block_file));
+		$this->template->set_filenames(['block' => 'blocks/' . $block_file]);
 		return $this->template->assign_display('block', true);
 	}
 
@@ -564,7 +563,7 @@ class block
 	{
 		//define('K_RESOURCES_TABLE',	$this->table_prefix . 'k_resources');
 
-		$resources = array();
+		$resources = [];
 
 		$sql = 'SELECT * FROM ' . K_RESOURCES_TABLE  . ' ORDER BY word ASC';
 		$result = $db->sql_query($sql);
@@ -588,9 +587,9 @@ class block
 
 		while ($row = $db->sql_fetchrow($result))
 		{
-			$template->assign_block_vars('adm_vars', array(
+			$template->assign_block_vars('adm_vars', [
 				'VAR' => $row['word'],
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 	}
@@ -616,7 +615,7 @@ class block
 		{
 			include($this->phpbb_root_path . 'includes/functions_user.'. $this->phpEx);
 		}
-		$memberships = array();
+		$memberships = [];
 		$memberships = group_memberships(false, $this->user->data['user_id'], false);
 
 		for ($i = 1; $i < $p_count + 1; $i++)
@@ -719,7 +718,7 @@ class block
 					// can be reduce later...
 					if ($this->k_menus[$i]['menu_type'] == NAV_MENUS)
 					{
-						$template->assign_block_vars('portal_nav_menus_row', array(
+						$template->assign_block_vars('portal_nav_menus_row', [
 							'PORTAL_LINK_OPTION'	=> $link_option,
 							'PORTAL_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_MENU_NAME' 		=> $name,
@@ -727,11 +726,11 @@ class block
 							'U_PORTAL_MENU_LINK' 	=> ($this->k_menus[$i]['sub_heading']) ? '' : $link,
 							'S_SOFT_HR'				=> $this->k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING' 		=> ($this->k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 					else if ($this->k_menus[$i]['menu_type'] == SUB_MENUS)
 					{
-						$template->assign_block_vars('portal_sub_menus_row', array(
+						$template->assign_block_vars('portal_sub_menus_row', [
 							'PORTAL_LINK_OPTION'	=> $link_option,
 							'PORTAL_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_MENU_NAME' 		=> $name,
@@ -739,11 +738,11 @@ class block
 							'U_PORTAL_MENU_LINK' 	=> ($this->k_menus[$i]['sub_heading']) ? '' : $link,
 							'S_SOFT_HR'				=> $this->k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING' 		=> ($this->k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 					else if ($this->k_menus[$i]['menu_type'] == LINKS_MENUS)
 					{
-						$template->assign_block_vars('portal_link_menus_row', array(
+						$template->assign_block_vars('portal_link_menus_row', [
 							'LINK_OPTION'					=> $link_option,
 							'PORTAL_LINK_MENU_HEAD_NAME'	=> ($is_sub_heading) ? $name : '',
 							'PORTAL_LINK_MENU_NAME'			=> ($is_sub_heading) ? '' : $name,
@@ -751,17 +750,17 @@ class block
 							'PORTAL_LINK_MENU_ICON'			=> ($this->k_menus[$i]['menu_icon'] == 'NONE') ? '' : '<img src="' . $menu_image_path . $this->k_menus[$i]['menu_icon'] . '" alt="" />',
 							'S_SOFT_HR'						=> $this->k_menus[$i]['soft_hr'],
 							'S_SUB_HEADING'					=> ($this->k_menus[$i]['sub_heading']) ? true : false,
-						));
+						]);
 					}
 				}
 			}
 		}
 		$process = 1;
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_USER_LOGGED_IN'	=> ($this->user->data['user_id'] != ANONYMOUS) ? true : false,
 			'U_INDEX'			=> append_sid("{$phpbb_root_path}index.$this->phpEx"),
 			'U_PORTAL'			=> append_sid("{$phpbb_root_path}portal.$this->phpEx"),
-		));
+		]);
 	}
 }

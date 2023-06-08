@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -14,12 +14,12 @@ class vars_info
 {
 	function module()
 	{
-		return array(
+		return [
 			'filename' => '\phpbbireland\portal\acp\vars_module',
 			'title'    => 'ACP_VARS_TITLE',
-			'modes'    => array(
-				'manage'  => array('title' => 'ACP_VARS_CONFIG', 'auth' => 'ext_phpbbireland/portal && acl_a_k_portal', 'cat' => array('ACP_K_PORTAL')),
-			),
-		);
+			'modes'    => [
+				'manage'  => ['title' => 'ACP_VARS_CONFIG', 'auth' => 'ext_phpbbireland/portal && acl_a_k_portal', 'cat' => ['ACP_K_PORTAL']],
+			],
+		];
 	}
 }

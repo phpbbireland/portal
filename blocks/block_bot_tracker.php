@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -50,18 +50,18 @@ while ($row = $db->sql_fetchrow($result))
 {
 	$bot_name = get_username_string('full', '', sgp_checksize($row['username'],23), $row['user_colour']);
 
-	$template->assign_block_vars('bot_tracker', array(
+	$template->assign_block_vars('bot_tracker', [
 		'BOT_NAME'					=> $bot_name,
 		'BOT_TRACKER_VISIT_DATE'	=> $user->format_date($row['user_lastvisit'], 'D. M. d Y, H:i'),
-	));
+	]);
 	$loop_count = $loop_count + 1;
 }
 $db->sql_freeresult($result);
 
 // assign vars
-$template->assign_vars(array(
+$template->assign_vars([
 	'NO_DATA'				=> ($loop_count == 0) ? true : false,
 	'BOT_TRACKER'			=> sprintf($user->lang['BOT_TRACKER'], $k_bots_to_display),
 	'S_BOT_TRACKER_SHOW'	=> ($k_bot_display_allow) ? true : false,
 	//'BOT_TRACKER_DEBUG'		=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);

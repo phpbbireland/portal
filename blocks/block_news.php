@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -48,7 +48,7 @@ $k_news_type = $k_config['k_news_type'];
 
 $bbcode_bitfield = $a_type = '';
 $has_attachments = $display_notice = false;
-$attach_array = $attach_list = $post_list = $posts = $attachments = $extensions = array();
+$attach_array = $attach_list = $post_list = $posts = $attachments = $extensions = [];
 $time_now = time();
 
 
@@ -139,7 +139,7 @@ while ($row = $db->sql_fetchrow($result))
 		$post_list[$i++] = $row['post_id'];
 
 		// store all data for now //
-		$rowset[$row['post_id']] = array(
+		$rowset[$row['post_id']] = [
 			'post_id'			=> $row['post_id'],
 			'post_text'			=> $row['post_text'],
 			'topic_id'			=> $row['topic_id'],
@@ -162,7 +162,7 @@ while ($row = $db->sql_fetchrow($result))
 			'enable_bbcode'		=> $row['enable_bbcode'],
 			'forum_name'		=> $row['forum_name'],
 			'bbcode_options'	=> (($row['enable_bbcode']) ? OPTION_FLAG_BBCODE : 0) + (($row['enable_smilies']) ? OPTION_FLAG_SMILIES : 0) + (($row['enable_magic_url']) ? OPTION_FLAG_LINKS : 0),
-		);
+		];
 
 		// Define the global bbcode bitfield, will be used to load bbcodes
 		$bbcode_bitfield = $bbcode_bitfield | base64_decode($row['bbcode_bitfield']);
@@ -217,7 +217,7 @@ if ($bbcode_bitfield !== '')
 	$bbcode = new bbcode(base64_encode($bbcode_bitfield));
 }
 
-$image_path = $mod_root_path . 'styles/common/theme/images/';
+$image_path = $mod_root_path . 'styles/all/theme/images/';
 
 for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 {
@@ -269,7 +269,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 
 	$posts[$i]['store'] = $store;
 
-	$postrow = array(
+	$postrow = [
 		'CAT'			=> ($posts[$i]['store'] != 0) ? $row['forum_name'] : '',
 		'ALLOW_REPLY'	=> ($auth->acl_get('f_reply', $row['forum_id']) && $row['topic_status'] != ITEM_LOCKED) ? true : false,
 		'ALLOW_POST'	=> ($auth->acl_get('f_post', $row['forum_id']) && $row['topic_status'] != ITEM_LOCKED) ? true : false,
@@ -296,7 +296,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 
 		'S_HAS_ATTACHMENTS'	=> (!empty($attachments[$row['post_id']])) ? true : false,
 		'S_DISPLAY_NOTICE'	=> $display_notice && $row['post_attachment'],
-	);
+	];
 
 	$template->assign_block_vars('news_row', $postrow);
 
@@ -305,9 +305,9 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 	{
 		foreach ($attachments[$row['post_id']] as $attachment)
 		{
-			$template->assign_block_vars('news_row.attachment', array(
-				'DISPLAY_ATTACHMENT'	=> $attachment)
-			);
+			$template->assign_block_vars('news_row.attachment', [
+				'DISPLAY_ATTACHMENT'	=> $attachment
+			]);
 		}
 	}
 
@@ -318,11 +318,11 @@ unset($rowset, $user_cache);
 
 $message = '';
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_NEWS_COUNT' 			=> sizeof($posts),
 	'S_NEWS_COUNT_RETURNED' => sizeof($post_list),
 
 	//'NEWS_ADVANCED_DEBUG'	=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);
 
 // END: Fetch News //

@@ -2,15 +2,10 @@
 /**
 *
 * Kiss Portal extension for the phpBB Forum Software package.
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
-
-if (!defined('IN_PHPBB'))
-{
-   exit;
-}
 
 global $user, $phpbb_root_path;
 
@@ -51,22 +46,22 @@ function display_forums_categories()
 
 	$default_icon = $phpbb_root_path . 'ext/phpbbireland/portal/images/forum_icons/default.png';
 
-	$forum_rows = $subforums = $forum_ids = $active_forum_ary = array(); // $forum_ids_moderator = $forum_moderators = $active_forum_ary = array();
+	$forum_rows = $subforums = $forum_ids = $active_forum_ary = []; // $forum_ids_moderator = $forum_moderators = $active_forum_ary = [];
 	$parent_id = $visible_forums = 0;
 	$sql_from = '';
 
-	$root_data = array('forum_id' => 0);
+	$root_data = ['forum_id' => 0];
 	$sql_where = '';
 
-	$sql_array = array(
+	$sql_array = [
 		'SELECT'	=> 'f.*',
-		'FROM'		=> array(
+		'FROM'		=> [
 			FORUMS_TABLE		=> 'f'
-		),
-		'LEFT_JOIN'	=> array(),
-	);
+		],
+		'LEFT_JOIN'	=> [],
+	];
 
-	$sql = $db->sql_build_query('SELECT', array(
+	$sql = $db->sql_build_query('SELECT', [
 		'SELECT'	=> $sql_array['SELECT'],
 		'FROM'		=> $sql_array['FROM'],
 		'LEFT_JOIN'	=> $sql_array['LEFT_JOIN'],
@@ -74,7 +69,7 @@ function display_forums_categories()
 		'WHERE'		=> $sql_where,
 
 		'ORDER_BY'	=> 'f.left_id',
-	));
+	]);
 
 	$result = $db->sql_query($sql);
 
@@ -144,7 +139,7 @@ function display_forums_categories()
 			$subforums[$parent_id][$forum_id]['display'] = ($row['display_on_index']) ? true : false;
 			$subforums[$parent_id][$forum_id]['name'] = $row['forum_name'];
 			$subforums[$parent_id][$forum_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
-			$subforums[$parent_id][$forum_id]['children'] = array();
+			$subforums[$parent_id][$forum_id]['children'] = [];
 
 			if (isset($subforums[$parent_id][$row['parent_id']]) && !$row['display_on_index'])
 			{
@@ -175,15 +170,15 @@ function display_forums_categories()
 		// Empty category
 		if ($row['parent_id'] == $root_data['forum_id'] && $row['forum_type'] == FORUM_CAT)
 		{
-			$template->assign_block_vars('forumrow', array(
+			$template->assign_block_vars('forumrow', [
 				'S_ID'                  => $cnt,
 				'S_IS_CAT'				=> true,
 				'FORUM_ID'				=> $row['forum_id'],
 				'FORUM_NAME'			=> $row['forum_name'],
 				'FORUM_DESC'			=> generate_text_for_display($row['forum_desc'], $row['forum_desc_uid'], $row['forum_desc_bitfield'], $row['forum_desc_options']),
 				'FORUM_IMAGE_SRC'		=> ($row['forum_image']) ? $row['forum_image'] : $default_icon,
-				'U_VIEWFORUM'			=> append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $row['forum_id']))
-			);
+				'U_VIEWFORUM'			=> append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $row['forum_id'])
+			]);
 
 			continue;
 		}
@@ -200,7 +195,7 @@ function display_forums_categories()
 		}
 
 		$folder_image = $folder_alt = $l_subforums = '';
-		$subforums_list = array();
+		$subforums_list = [];
 
 		// Generate list of subforums if we need to
 		if (isset($subforums[$forum_id]))
@@ -224,11 +219,11 @@ function display_forums_categories()
 
 				if ($subforum_row['display'] && $subforum_row['name'])
 				{
-					$subforums_list[] = array(
+					$subforums_list[] = [
 						'link'		=> append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $subforum_id),
 						'name'		=> $subforum_row['name'],
 						'unread'	=> $subforum_unread,
-					);
+					];
 				}
 				else
 				{
@@ -285,7 +280,7 @@ function display_forums_categories()
 		$l_post_click_count = ($row['forum_type'] == FORUM_LINK) ? 'CLICKS' : 'POSTS';
 		$post_click_count = ($row['forum_type'] != FORUM_LINK || $row['forum_flags'] & FORUM_FLAG_LINK_TRACK) ? $row['forum_posts_approved'] : '';
 
-		$s_subforums_list = array();
+		$s_subforums_list = [];
 		foreach ($subforums_list as $subforum)
 		{
 			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '">' . $subforum['name'] . '</a>';
@@ -311,7 +306,7 @@ function display_forums_categories()
 			}
 		}
 
-		$template->assign_block_vars('forumrow', array(
+		$template->assign_block_vars('forumrow', [
 			'S_ID'              => $cnt,
 			'S_IS_CAT'			=> false,
 			'S_NO_CAT'			=> $catless && !$last_catless,
@@ -332,16 +327,16 @@ function display_forums_categories()
 
 			'SUBFORUMS'				=> $s_subforums_list,
 			'U_VIEWFORUM'			=> $u_viewforum,
+		]);
 
-		));
 		// Assign subforums loop for style authors
 		foreach ($subforums_list as $subforum)
 		{
-			$template->assign_block_vars('forumrow.subforum', array(
+			$template->assign_block_vars('forumrow.subforum', [
 				'U_SUBFORUM'	=> $subforum['link'],
 				'SUBFORUM_NAME'	=> $subforum['name'],
-				'S_UNREAD'		=> $subforum['unread'])
-			);
+				'S_UNREAD'		=> $subforum['unread']
+			]);
 		}
 
 		$last_catless = $catless;
@@ -357,8 +352,7 @@ function display_forums_categories()
 		The switch below is hard-coded atm but can be added to acp later...
 	*/
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'S_DISPLAY_CATS_ONLY' => false,
-	));
+	]);
 }
-

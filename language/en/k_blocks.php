@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_BLOCKS'                  => 'Blocks',
 	'ACP_BLOCK_TOOLS'             => 'Blocks Tools',
 	'BLOCK_ACTIVE'                => 'Block is Active',
@@ -49,7 +49,7 @@ $lang = array_merge($lang, array(
 	'BLOCK_DELETED'               => ' Block deleted',
 	'BLOCK_DISABLED_BIG'          => 'Block is Disabled',
 	'BLOCK_EDITED'                => ' Block Edited!',
-	'BLOCK_FNAME_EXPLAIN'         => '(styles/portal_common/template/blocks)',
+	'BLOCK_FNAME_EXPLAIN'         => '(ext/phpbbireland/portal/styles/all/template/blocks)',
 	'BLOCK_FNAME_H'               => 'Filename (.html)',
 	'BLOCK_FNAME_H_BIG'           => 'Block Filename.html',
 	'BLOCK_FNAME_I'               => 'Icon',
@@ -90,7 +90,7 @@ $lang = array_merge($lang, array(
 	'BLOCKS_REINDEXED'            => 'All blocks have been Re-Indexed',
 	'BLOCKS_TITLE'                   => 'Block Administration/Management',
 	'BLOCKS_TITLE_EXPLAIN'           => '&bull; Block titles will be replaced with user language variables, if none exits, the values show below will be used.<br />&bull; The last edited block is highlighted (bold).',
-	'BLOCKS_TITLE_EXPLAIN_EXPAND'    => '&bull; The NDX indicates position relative to other blocks in the same column.<br />&bull; Block html files are located in: styles/_portal_common/template/blocks folder.',
+	'BLOCKS_TITLE_EXPLAIN_EXPAND'    => '&bull; The NDX indicates position relative to other blocks in the same column.<br />&bull; Block html files are located in: ext/phpbbireland/portal/styles/all/template/blocks folder.',
 
 	'CONFIRM_OPERATION_BLOCKS'            => 'Do you wish to delete this block?',
 	'CONFIRM_OPERATION_BLOCKS_REINDEX'    => 'Do you wish to re-index the blocks?',
@@ -134,15 +134,15 @@ $lang = array_merge($lang, array(
 	'RIGHT_OF_CENTRE'                => 'Right (centre 2x)',
 	'LEFT_OF_CENTRE'                 => 'Left (centre 2x)',
 
-));
+]);
 
 // Message Settings
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MESSAGE_SETTINGS_EXPLAIN'    => 'Here you can set all default settings for private messaging',
-));
+]);
 
 // common single words
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACTIVE'      => 'Active',
 	'ALL_GROUPS'  => 'All Groups',
 	'BBCODE'      => 'BBcode',
@@ -161,4 +161,4 @@ $lang = array_merge($lang, array(
 	'SAVED'       => 'Data saved...',
 	'VIEW_BY'     => 'View By',
 	'UP'          => 'Up',
-));
+]);

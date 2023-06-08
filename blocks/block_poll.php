@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -61,7 +61,7 @@ if (!$b_post_id)
 	return;
 }
 
-$b_voted_id	= $request->variable('vote_id', array('' => 0));
+$b_voted_id	= $request->variable('vote_id', ['' => 0]);
 
 $b_start = $request->variable('start', 0);
 $b_view = $request->variable('view', '');
@@ -117,23 +117,23 @@ if (!$b_forum_id)
 	// This rather complex gaggle of code handles querying for topics but
 	// also allows for direct linking to a post (and the calculation of which
 	// page the post is on and the correct display of viewtopic)
-	$sql_array = array(
+	$sql_array = [
 		'SELECT'	=> 't.*, f.*',
 
-		'FROM'	  => array(
+		'FROM'	  => [
 			FORUMS_TABLE	=> 'f',
-		)
-	);
+		]
+	];
 
 	if ($user->data['is_registered'])
 	{
 		$sql_array['SELECT'] .= ', tw.notify_status';
-		$sql_array['LEFT_JOIN'] = array();
+		$sql_array['LEFT_JOIN'] = [];
 
-		$sql_array['LEFT_JOIN'][] = array(
+		$sql_array['LEFT_JOIN'][] = [
 			'FROM'	=> array(TOPICS_WATCH_TABLE => 'tw'),
 			'ON'	=> 'tw.user_id = ' . $user->data['user_id'] . ' AND t.topic_id = tw.topic_id'
-		);
+		];
 	}
 
 	if (!$b_post_id)
@@ -222,14 +222,14 @@ if (!empty($topic_data['poll_start']))
 		ORDER BY o.poll_option_id";
 	$result = $db->sql_query($sql, $block_cache_time);
 
-	$b_poll_info = array();
+	$b_poll_info = [];
 	while ($row = $db->sql_fetchrow($result))
 	{
 		$b_poll_info[] = $row;
 	}
 	$db->sql_freeresult($result);
 
-	$cur_voted_id = array();
+	$cur_voted_id = [];
 	if ($user->data['is_registered'])
 	{
 		$sql = 'SELECT poll_option_id
@@ -293,12 +293,12 @@ if (!empty($topic_data['poll_start']))
 
 			if ($user->data['is_registered'])
 			{
-				$sql_ary = array(
+				$sql_ary = [
 					'topic_id'       => (int) $b_topic_id,
 					'poll_option_id' => (int) $option,
 					'vote_user_id'   => (int) $user->data['user_id'],
 					'vote_user_ip'   => (string) $user->ip,
-				);
+				];
 
 				$sql = 'INSERT INTO  ' . POLL_VOTES_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
 				$db->sql_query($sql);
@@ -387,7 +387,7 @@ if (!empty($topic_data['poll_start']))
 		$option_pct = ($b_poll_total > 0) ? $b_poll_option['poll_option_total'] / $b_poll_total : 0;
 		$option_pct_txt = sprintf("%.1d%%", ($option_pct * 100));
 
-		$template->assign_block_vars('b_poll_option', array(
+		$template->assign_block_vars('b_poll_option', [
 			'POLL_OPTION_ID'		=> $b_poll_option['poll_option_id'],
 			'POLL_OPTION_CAPTION'	=> $b_poll_option['poll_option_text'],
 			'POLL_OPTION_RESULT'	=> $b_poll_option['poll_option_total'],
@@ -396,13 +396,12 @@ if (!empty($topic_data['poll_start']))
 			'POLL_OPTION_IMG'		=> $user->img('poll_center', $option_pct_txt, round($option_pct * 95)),
 			'POLL_OPTION_IMG_C'		=> $user->img('poll_center', $option_pct_txt, round($option_pct * 300)),
 			'POLL_OPTION_VOTED'		=> (in_array($b_poll_option['poll_option_id'], $cur_voted_id)) ? true : false,
-			)
-		);
+		]);
 	}
 
 	$b_poll_end = $topic_data['poll_length'] + $topic_data['poll_start'];
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'BPOLL_QUESTION'		=> $topic_data['poll_title'],
 		'BTOTAL_VOTES'			=> $b_poll_total,
 		'BPOLL_LEFT_CAP_IMG'	=> $user->img('poll_left'),
@@ -416,15 +415,14 @@ if (!empty($topic_data['poll_start']))
 		'BS_POLL_ACTION'		=> $b_viewtopic_url,
 		'BU_VIEW_RESULTS'		=> $b_viewtopic_url . '&amp;view=viewpoll',
 		'BU_VIEW_RESULTS'		=> $b_viewtopic_url . '',
-		)
-	);
+	]);
 
 	unset($b_poll_end, $b_poll_info, $b_voted_id);
 
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'S_CENTRE_BLOCK'	=> $wide,
 		'S_VIEW'	        => $k_config['k_poll_view'],
-	));
+	]);
 
 	if ($s_can_vote)
 	{
@@ -432,6 +430,6 @@ if (!empty($topic_data['poll_start']))
 	}
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'POLL_DEBUG'	=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0', ($total_queries) ? $total_queries : '0'),
-));
+]);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,8 +38,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 // SGP Teams Block 15 March 2011
-$lang = array_merge($lang, array(
-
+$lang = array_merge($lang, [
 	'K_BLOCK_TEAMS'              => 'Select teams to display in block',
 	'K_BLOCK_TEAMS_EXPLAIN'      => 'This dropdown is reusable, each selection will update the list.<br />Selecting <strong>none</strong> will reset the list.',
 	'K_BLOCK_TEAMS_SORT'         => 'Sort By',
@@ -58,4 +57,4 @@ $lang = array_merge($lang, array(
 	'TEAMPAGE_MEMBERSHIPS'  => 'Group membership display options',
 
 	'NO_TEAMS'              => 'No teams selected!<br />Can be added in<br /> ACP > PORTAL > BLOCKS (team block variables)',
-));
+]);

@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,7 +38,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 // Top downloads mod 11 July 2013
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'K_TOP_DOWNLOADS_PER_FORUM'          => 'Limit attachemnt count in forums to',
 	'K_TOP_DOWNLOADS_SETTINGS'           => 'Top Downloads Block Variables',
 	'K_TOP_DOWNLOADS_TO_DISPLAY'         => 'Number of attachments to display',
@@ -46,4 +46,4 @@ $lang = array_merge($lang, array(
 	'K_TOP_DOWNLOADS_SEARCH_EXPLAIN'     => 'Limit the number of days we search back to reduce database load.',
 	'K_TOP_DOWNLOADS_TYPES'              => 'Attachments to include',
 	'K_TOP_DOWNLOADS_TYPES_EXPLAIN'      => 'Comma separated file extensions to include, example: zip,gif,arc',
-));
+]);

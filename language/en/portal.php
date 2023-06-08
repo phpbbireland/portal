@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -34,13 +34,13 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 // Common
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'PORTAL'            => 'Portal',
 	'VIEWING_PORTAL'    => 'Portal page',
 	'VIEWING_RULES'     => 'Viewing rules page',
-));
+]);
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_FILE_BACKUP'		=> 'Backup files',
 	'ACP_MINI'				=> 'Admin',
 	'ACP_SHORT'				=> 'ACP',
@@ -361,17 +361,17 @@ $lang = array_merge($lang, array(
 	'VIDEO_WHO'				=> 'Artist',
 	'YOUTUBE_LIMIT'			=> 'limited to %d videos',
 	'YOUTUBE_LINK_LIMIT'	=> 'Number of video to display (0 = no limit)',
-));
+]);
 
 // optional style width
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ALT_WIDTH'				=> 'Alternate width',
 	'DEFAULT_WIDTH'			=> 'Default width',
 	'UCP_K_INFO_WIDTH_NO'	=> 'Please note, this option is not available in all styles...',
-));
+]);
 
 // one word and common short terms //
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_CP'           => 'Admin CP',
 	'ACRONYMS'         => 'Acronyms',
 	'ADVANCED_SEARCH'  => 'Advanced Search',
@@ -404,7 +404,7 @@ $lang = array_merge($lang, array(
 	'COUNT'            => 'Count',
 	'CURRENT_VERSION'  => 'Current version',
 	'DATE'             => 'Date',
-	'DATE_EX'          => 'Date (01-May-2013)',
+	'DATE_EX'          => 'Date (05-January-2022)',
 	'DESIGNED_BY'      => 'Designed by',
 	'DEV_VERSION'      => 'Version (RC)',
 	'DISABLE'          => 'Disable',
@@ -504,13 +504,13 @@ $lang = array_merge($lang, array(
 
 	// donations
 	'TOTAL_DONATIONS'  => 'Total donations for %s are $%01.2f',
-));
+]);
 
 // acronyms and highlighted phrases/text *do not include acronyms in other acronyms* //
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACRO_PHPBB'	=> 'The leading opensource forum software...',
-	'ACRO_SGP'		=> 'Stargate Portal (aka Kiss Portal), the original phpBB3 portal &copy; Michael O’Toole 2005-2011',
-	'ACRO_KPE'		=> 'Kiss Portal Extension (Stargate/Kiss Portal for 3.1)... &copy; Michael O’Toole 2014',
+	'ACRO_SGP'		=> 'Stargate Portal (aka Kiss Portal), the original phpBB3 portal &copy; Michael O’Toole 2005-2022',
+	'ACRO_KPE'		=> 'Kiss Portal Extension (Stargate/Kiss Portal for 3.3)... &copy; Michael O’Toole 2022',
 	'ACRO_KISS'		=> 'Keep It Simple Stupid',
-	'HI_KISS_PORTAL_EXTENSION'	=> 'Kiss Portal Extension (Kiss Portal for 3.1)... &copy; Michael O’Toole 2014',
-));
+	'HI_KISS_PORTAL_EXTENSION'	=> 'Kiss Portal Extension (Kiss Portal for 3.3)... &copy; Michael O’Toole 2022',
+]);

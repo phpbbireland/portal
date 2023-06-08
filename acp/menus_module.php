@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -65,30 +65,30 @@ class menus_module
 		// Can not use append_sid here, the $block_id is assigned to the html but unknow to this code //
 		// Would require I add a form element and use $request->variable to retrieve it //
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'U_BACK'        => $this->u_action,
 			'PORTAL_JS'     => $portal_js,
 			'IMG_PATH'      => $img_path_acp_menu_icons,
 			'IMG_PATH_ACP'  => $img_path_acp_icons,
 			'CSS_PATH'      => $css_path_acp,
 			//'U_MANAGE_PAGES'	=> append_sid("{$phpbb_admin_path}index.$phpEx" , "i={$module_id}&amp;mode=manage"),
-		));
+		]);
 
 		$mode     = $request->variable('mode', '');
 		$menu     = $request->variable('menu', 0);
 		$menuitem = $request->variable('menuitem', '', false);
 		$type     = $request->variable('type', '', false);
 
-		if($submit)
+		if ($submit)
 		{
-			if($mode == 'nav' || $mode == 'sub' || $mode == 'link')
+			if ($mode == 'nav' || $mode == 'sub' || $mode == 'link')
 			{
 				$mode = 'add';
 			}
 		}
 		else
 		{
-			if($mode == 'nav' || $mode == 'sub' || $mode == 'link')
+			if ($mode == 'nav' || $mode == 'sub' || $mode == 'link')
 			{
 				$store = $mode;
 			}
@@ -172,7 +172,7 @@ class menus_module
 						$menu_icon = 'default.png';
 					}
 
-					$sql_ary = array(
+					$sql_ary = [
 						'menu_type'    => $menu_type,
 						'ndx'          => $ndx,
 						'menu_icon'    => $menu_icon,
@@ -185,7 +185,7 @@ class menus_module
 						'sub_heading'  => $sub_heading,
 						'view_all'     => $view_all,
 						'view_groups'  => $view_groups,
-					);
+					];
 
 					$sql = 'UPDATE ' . K_MENUS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . " WHERE m_id = " . (int) $m_id;
 
@@ -212,10 +212,10 @@ class menus_module
 						break;
 					}
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'L_MENU_REPORT' => $user->lang['SAVED'] . '<br />',
 						'S_OPTIONS' => 'save',
-					));
+					]);
 
 					meta_refresh (1, append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=" . $mode));
 					break;
@@ -268,11 +268,11 @@ class menus_module
 				}
 				else
 				{
-					confirm_box (false, $user->lang['CONFIRM_OPERATION_MENUS'], build_hidden_fields(array(
+					confirm_box (false, $user->lang['CONFIRM_OPERATION_MENUS'], build_hidden_fields([
 						'i'       => $module_id,
 						'mode'    => $mode,
 						'action'  => 'delete',
-					)));
+					]));
 				}
 
 				$template->assign_var('L_MENU_REPORT', $user->lang['ACTION_CANCELLED']);
@@ -285,8 +285,8 @@ class menus_module
 			case 'down':
 				$current_ndx = $current_id = $first_id = $last_id = $first_ndx = $last_ndx = $prev_ndx = $next_ndx = $col_count = $current_count = $error = 0;
 
-				$id_array = array();
-				$ndx_array = array();
+				$id_array = [];
+				$ndx_array = [];
 
 				// get current menu id //
 				$sql = "SELECT m_id, ndx, menu_type
@@ -381,10 +381,10 @@ class menus_module
 					trigger_error($user->lang['MENU_MOVE_ERROR'] . basename(dirname(__FILE__)) . '/' . basename(__FILE__) . $user->lang['LINE'] . __LINE__);
 				}
 
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'L_MENU_REPORT' => $user->lang['SORT_ORDER_UPDATING'],
 					'S_OPTIONS' => 'updn',
-				));
+				]);
 
 				$cache->destroy('sql', K_MENUS_TABLE);
 
@@ -429,10 +429,10 @@ class menus_module
 					if ($menu_type == null || $name == null)
 					{
 						// catch all we check menu_type, $name, view)
-						$template->assign_vars(array(
+						$template->assign_vars([
 							'L_MENU_REPORT' => $user->lang['MISSING_DATA'],
 							'S_OPTIONS' => 'updn',
-						));
+						]);
 						return;
 					}
 
@@ -449,7 +449,7 @@ class menus_module
 						$view_groups = '';
 					}
 
-					$sql_array = array(
+					$sql_array = [
 						'menu_type'    => $menu_type,
 						'ndx'          => $ndx,
 						'menu_icon'    => $menu_icon,
@@ -462,7 +462,7 @@ class menus_module
 						'sub_heading'  => $sub_heading,
 						'view_all'     => $view_all,
 						'view_groups'  => $view_groups,
-					);
+					];
 
 					$db->sql_query('INSERT INTO ' . K_MENUS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_array));
 
@@ -499,11 +499,11 @@ class menus_module
 
 					$template->assign_var('S_OPTIONS', 'add');
 
-					$template->assign_vars(array(
+					$template->assign_vars([
 						'S_MENU_ICON' => 'acp.png',
 						'S_OPTIONS'   => 'add',
 						'S_MENU_TYPE' => $type,
-					));
+					]);
 
 					return;
 				}
@@ -513,13 +513,13 @@ class menus_module
 				$dirslist='';
 
 				$i = $this->get_menu_icons();
-				$template->assign_vars(array(
+				$template->assign_vars([
 					'S_OPTIONS'          => 'icons',
 					'S_HIDE'             => 'HIDE',
 					'L_ICONS_REPORT'     => '',
 					'S_MENU_ICON_COUNT'  => $i,
 					'S_MENU_ICONS_LIST'  => $dirslist,
-				));
+				]);
 			break;
 
 			case 'manage':
@@ -568,7 +568,7 @@ class menus_module
 		}
 		else
 		{
-			$k_config = $cached_k_config = array();
+			$k_config = $cached_k_config = [];
 
 			$sql = 'SELECT config_name, config_value
 				FROM ' . K_VARS_TABLE;
@@ -615,7 +615,7 @@ class menus_module
 		{
 			while ($row = $db->sql_fetchrow($result))
 			{
-				$template->assign_block_vars('mdata', array(
+				$template->assign_block_vars('mdata', [
 					'S_MENUID'           => $row['m_id'],
 					'S_MENU_NDX'         => $row['ndx'],
 					'S_MENU_TYPE'        => $row['menu_type'],
@@ -634,7 +634,7 @@ class menus_module
 					'U_UP'      => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=up&amp;menu=" . $row['m_id']),
 					'U_DOWN'    => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=down&amp;menu=" . $row['m_id']),
 					'U_DELETE'  => append_sid("{$phpbb_admin_path}index.$phpEx", "i={$module_id}&amp;mode=delete&amp;menu=" . $row['m_id'] . "&amp;type=" . $mode),
-				));
+				]);
 			}
 			$db->sql_freeresult($result);
 		}
@@ -658,7 +658,7 @@ class menus_module
 			$row = $db->sql_fetchrow($result);
 		}
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_MENUID'          => $row['m_id'],
 			'S_MENU_NDX'        => $row['ndx'],
 			'S_MENU_TYPE'       => $row['menu_type'],
@@ -672,7 +672,7 @@ class menus_module
 			'S_MENU_EXTERN'     => $row['extern'],
 			'S_SOFT_HR'         => $row['soft_hr'],
 			'S_SUB_HEADING'     => $row['sub_heading'],
-		));
+		]);
 		$db->sql_freeresult($result);
 	}
 	public function get_menu_icons()
@@ -700,7 +700,7 @@ class menus_module
 		{
 			if ($dirslist[$i] != '')
 			{
-				$template->assign_block_vars('menuicons', array('S_MENU_ICONS'	=> $dirslist[$i]));
+				$template->assign_block_vars('menuicons', ['S_MENU_ICONS'	=> $dirslist[$i]]);
 			}
 		}
 		return $i;
@@ -732,10 +732,10 @@ class menus_module
 		$result = $db->sql_query($sql);
 
 		// backward compatability, set up group zero //
-		$template->assign_block_vars('groups', array(
+		$template->assign_block_vars('groups', [
 			'GROUP_NAME' => $user->lang['NONE'],
 			'GROUP_ID'   => 0,
-		));
+		]);
 
 		while ($row = $db->sql_fetchrow($result))
 		{
@@ -744,11 +744,10 @@ class menus_module
 
 			$group_name = ($user->lang(strtoupper('G_'.$group_name))) ? $user->lang(strtoupper('G_'.$group_name)) : $user->lang(strtoupper($group_name));
 
-			$template->assign_block_vars('groups', array(
+			$template->assign_block_vars('groups', [
 				'GROUP_NAME' => $group_name,
 				'GROUP_ID'   => $group_id,
-				)
-			);
+			]);
 		}
 		$db->sql_freeresult($result);
 	}

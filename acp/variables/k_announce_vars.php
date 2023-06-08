@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -42,9 +42,9 @@ else
 	$k_announce_type            = $k_config['k_announce_type'];
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_ANNOUNCE_ALLOW'           => $k_announce_allow,
 	'S_K_ANNOUNCE_ITEM_MAX_LENGTH' => $k_announce_item_max_length,
 	'S_K_ANNOUNCE_TO_DISPLAY'      => $k_announce_to_display,
 	'S_K_ANNOUNCE_TYPE'            => $k_announce_type,
-));
+]);

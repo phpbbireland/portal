@@ -1,9 +1,12 @@
 <?php
-
-if (!defined('IN_PHPBB'))
-{
-   exit;
-}
+/**
+*
+* This file is part of the phpBB Forum Software package.
+*
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
 
 global $table_prefix, $phpbb_root_path;
 

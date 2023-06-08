@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -40,9 +40,9 @@ if ($request->is_set_post('submit'))
 	$sgp_functions_admin->sgp_acp_set_config('k_recent_search_days', $k_recent_search_days);
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_K_RECENT_TOPICS_TO_DISPLAY'     => $k_recent_topics_to_display,
 	'S_K_RECENT_TOPICS_PER_FORUM'      => $k_recent_topics_per_forum,
 	'S_K_RECENT_TOPICS_SEARCH_EXCLUDE' => $k_recent_topics_search_exclude,
 	'S_K_RECENT_SEARCH_DAYS'           => $k_recent_search_days
-));
+]);

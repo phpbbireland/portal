@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 // phpbbportal profile fields
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MENUS'                => 'Menus',
 	'ADD_ICON'                 => 'Add new icon',
 	'ALL_GROUPS'               => 'All Groups',
@@ -157,9 +157,9 @@ $lang = array_merge($lang, array(
 	'TITLE_EXPLAIN'         => '&bull; The <strong>*</strong> indicated the fields cannot be empty<br />&bull; Menu names will be replaced with user language variables, if none exits, the values show below will be used.',
 	'TITLE_EXPLAIN_EXPAND'  => '&bull; Fields marked with * cannot be empty.<br />Legend: NDX = Index or sort order, Icon = Menu Icon (each menu item can have a different icon), Alt = Alternative text, Link = Link to whatever... <br />Menu icons are located in images/block_images/menu directory.',
 	'TITLE_ICON_EXPLAIN'    => 'Manage Icons',
-));
+]);
 
 // Message Settings
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MESSAGE_SETTINGS_EXPLAIN'  => 'Here you can set all default settings for private messaging',
-));
+]);

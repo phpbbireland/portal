@@ -1,9 +1,9 @@
-<!-- IDTAG block_announcements.html 24 March 2011 copyright phpbbireland.com 2008 -->
+<!-- IDTAG block_announcements.html 08 January 2022 copyright phpbbireland.com 2008 -->
 
 <div class="news">
-	<a id="start" name="start" accesskey="t"></a>
+	<a id="start" accesskey="t"></a>
 	<!-- IF S_ANNOUNCEMENTS_COUNT_RETURNED == 0 -->
-		<div class="genmed" style="text-align:center;"><strong>{L_NO_ANNOUNCEMENTS}</strong></div>
+		<div class="genmed" style="text-align: center;"><strong>{L_NO_ANNOUNCEMENTS}</strong></div>
 	<!-- ELSE -->
 	<!-- BEGIN announce_row -->
 		<!-- IF announce_row.S_TOPIC_TYPE != 3 -->
@@ -11,8 +11,8 @@
 			<!-- ELSE -->
 			<div class="announce bg3a sgp-corners">
 			<!-- ENDIF -->
-				<div class="inner" style="min-height:50px; width:100%;">
-					<div class="news_header" style="width:100%;">
+				<div class="inner" style="min-height: 50px; width: 100%;">
+					<div class="news_header" style="width: 100%;">
 						<span class="news_title">
 							<!-- IF announce_row.S_TOPIC_TYPE == 3 -->
 							<span class="red"> {announce_row.TITLE}</span>
@@ -23,15 +23,13 @@
 						<span class="news_time">  {announce_row.TIME}</span>
 					</div>
 					<div class="news_body">
-						<div class="news" style="width:100%;">
+						<div class="news" style="width: 100%;">
 							<div class="announce_box">
-
-						<!-- IF announce_row.S_TOPIC_TYPE == 3 -->
-							<img src="{MOD_IMAGE_LANG_PATH}/news/announcement.png" alt="" />
-						<!-- ELSE -->
-							<img src="{MOD_IMAGE_LANG_PATH}/news/announcement2.png" alt="" />
-						<!-- ENDIF -->
-
+							<!-- IF announce_row.S_TOPIC_TYPE == 3 -->
+								<img src="{MOD_IMAGE_LANG_PATH}/news/announcement.png" alt="" />
+							<!-- ELSE -->
+								<img src="{MOD_IMAGE_LANG_PATH}/news/announcement2.png" alt="" />
+							<!-- ENDIF -->
 							</div>
 							<div class="contents">{announce_row.MESSAGE}</div>
 							<!-- IF announce_row.S_HAS_ATTACHMENTS -->
@@ -47,15 +45,15 @@
 							<!-- IF announce_row.S_DISPLAY_NOTICE --><div class="rules">{L_DOWNLOAD_NOTICE}</div><!-- ENDIF -->
 						</div>
 					</div>
-					<div class="news_footer" style="width:100%;">
-						<span class="news_poster" style="width:50%;"> {L_POSTED_BY}: {announce_row.U_POSTER}</span>
-						<span class="news_reply" style="width:50%;">
-							<a href="{announce_row.U_VIEW}"> <img src="{announce_row.VIEW_IMG}" alt="{L_VIEW_FULL_ARTICLE}" title="{L_VIEW_FULL_ARTICLE}" width="16" height="16" /></a>
-							<a href="{announce_row.U_PRINT}"> <img src="{announce_row.PRINT_IMG}" alt="{L_PRINT_IT}" title="{L_PRINT_IT}" width="16" height="16" /></a>
+					<div class="news_footer" style="width: 100%;">
+						<span class="news_poster" style="width: 50%;"> {L_POSTED_BY}: {announce_row.U_POSTER}</span>
+						<span class="news_reply" style="width: 50%;">
+							<a href="{announce_row.U_VIEW}" title="{L_VIEW_FULL_ARTICLE}"> <i class="icon fa-search fa-fw" aria-hidden="true"></i></a>
+							<a href="{announce_row.U_PRINT}" title="{L_PRINT_IT}"> <i class="icon fa-print fa-fw" aria-hidden="true"></i></a>
 							<!-- IF announce_row.ALLOW_REPLY -->
-								<a href="{announce_row.U_REPLY}"> <img src="{announce_row.REPLY_IMG}" alt="{L_POST_COMMENTS}" title="{L_POST_COMMENTS}" width="22" height="17" /></a>
+								<a href="{announce_row.U_REPLY}" title="{L_POST_COMMENTS}"> <i class="icon fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
 							<!-- ENDIF -->
-							<a href="#start" title="Top"><img src="{announce_row.BTP_IMG}" alt="L_BACK_TO_TOP" width="12" height="12" alt="Top" /></a>
+							<a href="#start" title="{L_BACK_TO_TOP}"><i class="icon fa-arrow-up fa-fw" aria-hidden="true"></i></a>
 						</span>
 					</div>
 					<br class="clear" />

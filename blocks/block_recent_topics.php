@@ -3,18 +3,10 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
-
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
 
 // URL PARAMETERS
 if (!defined('POST_TOPIC_URL'))
@@ -54,8 +46,8 @@ global $user, $forum_id, $phpbb_root_path, $phpEx, $SID, $config , $template, $p
 $display_this_many = $k_config['k_recent_topics_to_display'];
 $forum_count = $row_count = 0;
 $except_forum_id = '';
-$forum_data = array();
-$recent_topic_row = array();
+$forum_data = [];
+$recent_topic_row = [];
 
 // get all forums //
 $sql = "SELECT * FROM ". FORUMS_TABLE . " ORDER BY forum_id";
@@ -64,7 +56,7 @@ if (!$result = $db->sql_query($sql))
 	trigger_error('Error! Could not query forums information: ' . basename(dirname(__FILE__)) . '/' . basename(__FILE__) . ', line ' . __LINE__);
 }
 
-while( $row = $db->sql_fetchrow($result) )
+while ( $row = $db->sql_fetchrow($result) )
 {
 	$forum_data[] = $row;
 	$forum_count++;
@@ -129,7 +121,7 @@ $sql = "SELECT scroll, position
 	FROM " . K_BLOCKS_TABLE . "
 		WHERE id = '19'";
 
-if( $result = $db->sql_query($sql, 300) )
+if ( $result = $db->sql_query($sql, 300) )
 {
 	$rowx = $db->sql_fetchrow($result);
 	$scroll = $rowx['scroll'];
@@ -204,7 +196,7 @@ for ($i = 0; $i < $display_this_many; $i++)
 			sgp_checksize ($my_forum, 25);
 		}
 
-		$template->assign_block_vars($style_row . '_recent_topic_row', array(
+		$template->assign_block_vars($style_row . '_recent_topic_row', [
 			'U_FORUM'		=> append_sid("viewforum.$phpEx?" . POST_FORUM_URL . '=' . $recent_topic_row[$i]['forum_id']),
 			'U_LAST_POST'	=> $view_topic_url . '&amp;p=' . $recent_topic_row[$i]['topic_last_post_id'] . '#p' . $recent_topic_row[$i]['topic_last_post_id'],
 			'U_TITLE'		=> append_sid("viewtopic.$phpEx?" . POST_POST_URL  . '=' . $recent_topic_row[$i]['post_id']),
@@ -215,16 +207,15 @@ for ($i = 0; $i < $display_this_many; $i++)
 			'S_TITLE'		=> $my_title,
 			//'S_TITLE_LONG'	=> $my_title_long,
 			'ORI_LAST_POST_IMG'	=> $user->img('icon_topic_newest', 'VIEW_LATEST_POST'),
-			)
-		);
+		]);
 	}
 }
 
-$template->assign_vars(array(
+$template->assign_vars([
 	'S_RECENT_TOPICS_COUNT_ASKED'		=> $display_this_many,
 	'S_RECENT_TOPICS_COUNT_RETURNED'	=> $row_count,
 	'S_ALIGN_IT'						=> 'center',
 	'S_DISPLAY_CENTRE'					=> $display_center,
 	'S_COUNT'							=> $display_this_many,
 	//'RT1_PORTAL_DEBUG'					=> sprintf($user->lang['PORTAL_DEBUG_QUERIES'], ($queries) ? $queries : '0', ($cached_queries) ? $cached_queries : '0'),
-));
+]);

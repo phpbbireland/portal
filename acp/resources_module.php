@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -23,7 +23,7 @@ class resources_module
 
 		include($phpbb_root_path . 'ext/phpbbireland/portal/includes/sgp_functions.'.$phpEx);
 
-		if(!function_exists('obtain_k_config'))
+		if (!function_exists('obtain_k_config'))
 		{
 			include($phpbb_root_path . 'ext/phpbbireland/portal/includes/functions.' . $phpEx);
 			$k_config = obtain_k_config();
@@ -48,7 +48,7 @@ class resources_module
 
 		$add = $request->variable('add', '');
 
-		$id_list = ((isset($_POST['id_list'])) ? $request->variable('id_list', array(0)) : ((isset($_GET['id_list'])) ? $request->variable('id_list', array(0)) : array()));
+		$id_list = ((isset($_POST['id_list'])) ? $request->variable('id_list', [0]) : ((isset($_GET['id_list'])) ? $request->variable('id_list', [0]) : []));
 
 		switch ($action)
 		{
@@ -83,9 +83,9 @@ class resources_module
 
 					$start .= strtoupper($new_word) . $end;
 
-					$sql_array = array(
+					$sql_array = [
 						'word'	=> $start,
-					);
+					];
 
 					if (!$db->sql_query('INSERT INTO ' . K_RESOURCES_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_array)))
 					{
@@ -118,8 +118,8 @@ class resources_module
 			trigger_error($user->lang['ERROR_PORTAL_WORDS'] . basename(dirname(__FILE__)) . '/' . basename(__FILE__) . $user->lang['LINE'] . __LINE__);
 		}
 
-		$a = array('{', '}');
-		$b = array('','');
+		$a = ['{', '}'];
+		$b = ['',''];
 
 		$value = '';
 
@@ -143,13 +143,13 @@ class resources_module
 				$table = $user->lang['NA'];
 			}
 
-			$template->assign_block_vars('wordrow', array(
+			$template->assign_block_vars('wordrow', [
 				'ID'    => $row['id'],
 				'WORD'  => $row['word'],
 				'NAME'  => $name,
 				'VALUE' => $value,
 				'TABLE' => $table
-			));
+			]);
 		}
 		$db->sql_freeresult($result);
 

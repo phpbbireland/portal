@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_PAGES'					=> 'Pages',
 	'ACP_K_PAGES'				=> 'phpBB pages',
 	'ACP_K_PAGES_LAND'			=> 'Set landing page',
@@ -54,7 +54,7 @@ $lang = array_merge($lang, array(
 	'LAND'                      => 'Set the default page to load on logout.<br />
 	Please note, when you login,<br />
 	you will be returned to the page you logged in from.<br /><br />
-	phpBB 3.1 will the above behaviour',
+	phpBB 3.3 will the above behaviour',
 
 	'LANDING_PAGE'				=> 'Landing page',
 	'LANDING_PAGE_EXPLAIN'		=> 'Return to this page after successful login.',
@@ -68,7 +68,7 @@ $lang = array_merge($lang, array(
 
 	'PAGE_INFO'					=> '&bull; PAGE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>List current pages where blocks can be displayed.<br />',
 	'PAGE_INFO2'				=> '&bull; REMOVE: &nbsp;&nbsp; Pressing the delete icon, will delete the associated page from the list.<br />',
-	'PAGE_INFO3'				=> '&bull; LANDING PAGE: Not implemented for phpBB 3.1 atm.<br /><br />',
+	'PAGE_INFO3'				=> '&bull; LANDING PAGE: Not implemented for phpBB 3.3 atm.<br /><br />',
 	'PAGE_NEW_FILENAME'			=> 'Add this file (page) to the list',
 	'PAGE_NEW_FILENAME_EXPLAIN'	=> 'Select file (page) from the dropdown and hit Submit...',
 	'REMOVING_PAGES'			=> 'Page removed... ',
@@ -76,4 +76,4 @@ $lang = array_merge($lang, array(
 	'TRAILING_COMMA'            => 'Removed tailing comma from Mod folder list...',
 	'TITLE_PAGES'               => 'phpBB pages',
 	'TITLE_EXPLAIN_PAGES'		=> '<br />Blocks can be displayed on valid pages including phpBB, Extension and Web pages...',
-));
+]);

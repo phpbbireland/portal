@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -167,7 +167,7 @@ if ($this_page_name == 'portal' || $this_page_name == 'index')
 	}
 /*
 	// The following assigns all _common_ variables that may be used at any point in a template.
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
 		'STARGATE_VERSION'				=> (isset($config['portal_version'])) ? $config['portal_version'] : '',
@@ -244,7 +244,7 @@ if ($this_page_name == 'portal' || $this_page_name == 'index')
 		'S_TOPIC_ID'			=> $topic_id,
 
 		'S_LOGIN_ACTION'		=> ((!defined('ADMIN_START')) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login') : append_sid("index.$phpEx", false, true, $user->session_id)),
-		'S_LOGIN_REDIRECT'		=> build_hidden_fields(array('redirect' => str_replace('&amp;', '&', build_url()))),
+		'S_LOGIN_REDIRECT'		=> build_hidden_fields(['redirect' => str_replace('&amp;', '&', build_url())]),
 
 		'S_ENABLE_FEEDS'			=> ($config['feed_enable']) ? true : false,
 		'S_ENABLE_FEEDS_OVERALL'	=> ($config['feed_overall']) ? true : false,
@@ -285,11 +285,11 @@ if ($this_page_name == 'portal' || $this_page_name == 'index')
 		'AVATAR_SMALL_IMG'		=> get_user_avatar($user->data['user_avatar'], $user->data['user_avatar_type'], '35', '35'),
 		'P_USERNAME'			=> (STARGATE) ? $user->data['username'] : '',
 		'P_USERNAME_FULL'		=> (STARGATE) ? get_username_string('full', $user->data['user_id'], $user->data['username'], $user->data['user_colour']) : '',
-	));
+	]);
 */
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'SITENAME'                      => $config['sitename'],
 		'SITE_DESCRIPTION'              => $config['site_desc'],
 		'PAGE_TITLE'                    => $page_title,
@@ -372,7 +372,7 @@ if ($this_page_name == 'portal' || $this_page_name == 'index')
 		'S_TOPIC_ID'			=> $topic_id,
 
 		'S_LOGIN_ACTION'		=> ((!defined('ADMIN_START')) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login') : append_sid("{$phpbb_admin_path}index.$phpEx", false, true, $user->session_id)),
-		'S_LOGIN_REDIRECT'		=> build_hidden_fields(array('redirect' => build_url())),
+		'S_LOGIN_REDIRECT'		=> build_hidden_fields(['redirect' => build_url()]),
 
 		'S_ENABLE_FEEDS'			=> ($config['feed_enable']) ? true : false,
 		'S_ENABLE_FEEDS_OVERALL'	=> ($config['feed_overall']) ? true : false,
@@ -415,8 +415,6 @@ if ($this_page_name == 'portal' || $this_page_name == 'index')
 		'T_UPLOAD'				=> $config['upload_path'],
 
 		'SITE_LOGO_IMG'			=> $user->img('site_logo'),
-	));
-
-
+	]);
 
 }

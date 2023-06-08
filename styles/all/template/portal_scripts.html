@@ -1,6 +1,6 @@
 <!-- INCLUDEJS assets/portal.js -->
 
-<script type="text/javascript">
+<script>
 // <![CDATA[
 	/**
 	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
@@ -49,10 +49,10 @@
 <!-- IF S_HIGHSLIDE -->
 <!-- INCLUDEJS assets/highslide/highslide-full.packed.js -->
 
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/highslide/highslide-full.packed.js"></script>
+<script src="./ext/phpbbireland/portal/js/highslide/highslide-full.packed.js"></script>
 <link rel="stylesheet" type="text/css" href="./ext/phpbbireland/portal/js/highslide/highslide.css" />
 
-<script type="text/javascript">
+<script>
 // <![CDATA[
 	hs.graphicsDir = './ext/phpbbireland/portal/js/highslide/graphics/';
 	hs.align = 'center';
@@ -79,61 +79,17 @@
 </script>
 <!-- ENDIF -->
 
-<link rel="stylesheet" href="{T_STYLESHEET_PORTAL_COMMON}" type="text/css" />
+<script src="./ext/phpbbireland/portal/js/portal.js"></script>
 
-<!-- xINCLUDEJS assets/jquery/jquery.js -->
-<!-- xINCLUDEJS assets/jquery/jquery.hoverIntent.js -->
-<!-- xINCLUDEJS assets/jquery/imgbubbles.js -->
+<script src="./ext/phpbbireland/portal/js/jquery/jquery.js"></script>
+<script src="./ext/phpbbireland/portal/js/jquery/jquery.hoverIntent.js"></script>
+<script src="./ext/phpbbireland/portal/js/jquery/imgbubbles.js"></script>
 
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/portal.js"></script>
-
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/jquery/jquery.js"></script>
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/jquery/jquery.hoverIntent.js"></script>
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/jquery/imgbubbles.js"></script>
-
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/jquery/jquery_ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./ext/phpbbireland/portal/js/jquery/youtube/jquery.youtubepopup.js"></script>
-
-<!--
-<script type="text/javascript">
-//<![CDATA[
-
-	var $css_file_append = 'fix_ff.css';
-
-	if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
-	{
-		var ieversion = new Number(RegExp.$1)
-		$css_file_append = 'fix_ie_' + ieversion + '.css';
-	}
-	else if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent))
-	{
-		var ffversion=new Number(RegExp.$1)
-		$css_file_append = 'fix_ff.css';
-	}
-	else if (/Opera[\/\s](\d+\.\d+)/.test(navigator.userAgent))
-	{
-		var oprversion=new Number(RegExp.$1)
-		$css_file_append = 'fix_opera.css';
-	}
-	else if (/Safari[\/\s](\d+\.\d+)/.test(navigator.userAgent))
-	{
-		var oprversion=new Number(RegExp.$1)
-		$css_file_append = 'fix_mac.css';
-	}
-
-	jQuery.noConflict();
-	jQuery(document).ready(function(){
-		jQuery('<link rel="stylesheet" href="{T_IMAGE_PATH}theme/' + $css_file_append + '" type="text/css" />').appendTo('body');
-	});
-
-//]]>
-</script>
--->
-<!-- agent script end -->
-
+<script src="./ext/phpbbireland/portal/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+<script src="./ext/phpbbireland/portal/js/jquery/youtube/jquery.youtubepopup.js"></script>
 
 <!-- IF S_VIEWTOPIC -->
-<script type="text/javascript">
+<script>
 // <![CDATA[
 	jQuery.noConflict();
 	jQuery(document).ready(function()
@@ -166,7 +122,7 @@
 </script>
 <!-- ENDIF -->
 
-<script type="text/javascript">
+<script>
 // <![CDATA[
 
 	jQuery.noConflict();
@@ -204,7 +160,7 @@
 
 //]]>
 </script>
-<script type="text/javascript">
+<script>
 // <![CDATA[
 
 	jQuery.noConflict();
@@ -214,7 +170,7 @@
 
 //]]>
 </script>
-<script type="text/javascript">
+<script>
 // <![CDATA[
 
 	jQuery.noConflict();
@@ -243,7 +199,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-<script type="text/javascript">
+<script>
 // <![CDATA[
 
 var w = 100;
@@ -291,7 +247,7 @@ jQuery(document).ready(function(){
 	Fix annoying white flash on page load michaelo 2013
 	set css class flash (flash movie) to display:none as default
 -->
-<script type="text/javascript">
+<script>
 // <![CDATA[
 	// make sure flash is not displayed //
 	jQuery(".flash").css("display", 'none');

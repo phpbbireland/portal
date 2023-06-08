@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -14,10 +14,10 @@ if (!defined('IN_PHPBB'))
 }
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'NO_EDIT'				=> 'Can’t Edit',
 	'NO_DELETE'				=> 'Can’t Delete',
 	'NO_MOVE_DOWN'			=> 'Can’t move down',
@@ -267,5 +267,4 @@ $lang = array_merge($lang, array(
 
 // modules ucp
 	'UCP_PORTAL_TITLE'		=> 'Portal Options',
-));
-
+]);

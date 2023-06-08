@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -32,9 +32,9 @@ $queries = $cached_queries = 0;
 // Can this user view profiles/memberlist/onlinelist?
 if ($auth->acl_gets('u_viewprofile'))
 {
-	$this->template->assign_vars(array(
+	$this->template->assign_vars([
 		'VIEWONLINE' => true,
-	));
+	]);
 
 	//Fetch all the block data
 	$sql = 'SELECT u.user_id, u.username, u.user_colour, u.user_type, u.user_avatar, u.user_avatar_width, u.user_avatar_height, u.user_avatar_type, u.user_lastvisit, s.session_user_id, MAX(s.session_time) AS session_time
@@ -47,7 +47,7 @@ if ($auth->acl_gets('u_viewprofile'))
 
 	$result = $db->sql_query_limit($sql, $k_last_online_max, 0, $block_cache_time);
 
-	$session_times = array();
+	$session_times = [];
 	while ($row = $db->sql_fetchrow($result))
 	{
 		if (!$row['username'])
@@ -60,12 +60,12 @@ if ($auth->acl_gets('u_viewprofile'))
 		$row['last_visit'] = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 		$last_visit = (!empty($row['session_time'])) ? $row['session_time'] : $row['user_lastvisit'];
 
-		$this->template->assign_block_vars('last_online', array(
+		$this->template->assign_block_vars('last_online', [
 			'USERNAME_FULL'		=> get_username_string('full', $row['user_id'], sgp_checksize($row['username'],15), $row['user_colour']),
 			'ONLINE_TIME'		=> (empty($last_visit)) ? ' - ' : $user->format_date($last_visit, '|d M Y|, H:i'),
 			'USER_AVATAR_IMG'	=> phpbb_get_user_avatar($row, $user->lang['USER_AVATAR'], false),
 			'U_REGISTER'		=> 'append_sid("{$phpbb_root_path}ucp.$phpEx", mode=register)',
-		));
+		]);
 	}
 	$db->sql_freeresult($result);
 }
@@ -73,7 +73,15 @@ if ($auth->acl_gets('u_viewprofile'))
 //Is user logged in and have no auth  to view profiles/memberlist/onlinelist?
 if ($user->data['user_type'] <> USER_IGNORE && !$auth->acl_gets('u_viewprofile'))
 {
-	$template->assign_vars(array(
+	$template->assign_vars([
 		'NO_VIEWONLINE_R' => true,
-	));
+	]);
+}
+
+//Is user not logged in and have no auth to view profiles/memberlist/onlinelist?
+if ($user->data['user_id'] == ANONYMOUS && !$auth->acl_gets('u_viewprofile'))
+{
+	$template->assign_vars([
+		'NO_VIEWONLINE_A' => true,
+	]);
 }

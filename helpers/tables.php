@@ -3,7 +3,7 @@
 *
 * Kiss Portal extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2014 Michael O’Toole <http://www.phpbbireland.com>
+* @copyright (c) 2022 Michael O’Toole <http://www.phpbbireland.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -33,14 +33,14 @@ class tables
 		$k_pages     = 'k_pages';
 		$k_resources = 'k_resources';
 
-		$this->tables = array(
+		$this->tables = [
 			'k_config'	    => $k_config,
 			'k_vars'        => $k_vars,
 			'k_blocks'		=> $k_blocks,
 			'k_pages'		=> $k_pages,
 			'k_menus'		=> $k_menus,
 			'k_resources'	=> $k_resources,
-		);
+		];
 	}
 
 	public function get($table_name)
